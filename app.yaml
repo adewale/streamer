@@ -1,0 +1,15 @@
+application: scaggregator
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /css
+  static_dir: css
+- url: /images
+  static_dir: images
+- url: /_ah/queue/deferred
+  script: $PYTHON_LIB/google/appengine/ext/deferred/deferred.py
+  login: admin
+- url: /.*
+  script: streamer.py

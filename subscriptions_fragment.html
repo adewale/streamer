@@ -1,0 +1,8 @@
+<!-- Generate a list of the subscriptions -->
+	<div  id="mainbox" class="grid_8">
+		<div class="featured-post" align="left">
+		{% for subscription in subscriptions %}
+			<h3>Author: <a href="{{subscription.sourceUrl}}">{{subscription.author}} </a> has a feed at: <a href="{{subscription.url}}">{{subscription.url}}</a></h3>
+		{% endfor %}
+		</div>
+	</div>

@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<title>Delete Subscription</title>
+		<link rel="stylesheet" type="text/css" media="screen" href="../css/screen.css" />
+	</head>
+	
+	<body>
+	
+		<form action="/admin/deleteSubscription" method="post">
+			<input type="text" size="50" name="url">
+			</input>
+			
+			<!-- The extra space is needed to make the button look pretty-->
+			<input type="submit" value=" Delete subscription " />
+		</form>
+	<hr/>
+	
+	{% include "subscriptions_fragment.html" %}
+		
+	{% include "sidemenu_fragment.html" %}
+	
+	{% include "footer_fragment.html" %}
+	
+	</body>
+</html>

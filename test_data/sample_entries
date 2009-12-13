@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Random test blog</title>
+  <link href="http://pubsubhubbub-loadtest.appspot.com/feed/foo" type="application/atom+xml" rel="self"/>
+  <link href="http://pubsubhubbub.appspot.com" rel="hub"/>
+  <updated>2009-12-11T12:22:43Z</updated>
+  <id>http://pubsubhubbub-loadtest.appspot.com/foo</id>
+  <author>
+    <name>Foobar</name>
+  </author>
+
+<entry>
+    <title>1Random item #460920825</title>
+    <id>http://pubsubhubbub-loadtest.appspot.com/foo/460920825</id>
+    <published>2009-12-11T12:22:44Z</published>
+    <updated>2009-12-11T12:22:44Z</updated>
+    <content type="html">
+      This is the content for random item #460920825
+    </content>
+  </entry>
+<entry>
+    <title>2Random item #695555168</title>
+    <id>http://pubsubhubbub-loadtest.appspot.com/foo/695555168</id>
+    <published>2009-12-11T12:22:45Z</published>
+    <updated>2009-12-11T12:22:45Z</updated>
+    <content type="html">
+      This is the content for random item #695555168
+    </content>
+  </entry>
+</feed>

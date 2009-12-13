@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+  <channel>
+    <title>Hacker News</title>
+    <link>http://news.ycombinator.com/</link>
+    <description>Links for the intellectually curious, ranked by readers.</description>
+    <item>
+      <title>Gnome to Split Off from GNU Project?</title>
+      <link>http://www.pwnage.ca/?p=433</link>
+      <comments>http://news.ycombinator.com/item?id=991627</comments>
+      <description><![CDATA[<a href="http://news.ycombinator.com/item?id=991627">Comments</a>]]></description>
+    </item>
+  </channel>
+</rss>
