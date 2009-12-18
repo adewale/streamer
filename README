@@ -1,4 +1,5 @@
-An aggregator along the lines of Planet but using the Pubsubhubbub protocol for updates rather than doing it's own polling or being powered by a cron job.
+An aggregator along the lines of Planet but using the Pubsubhubbub protocol for updates 
+rather than doing it's own polling or being powered by a cron job.
 
 It's meant to be deployed on Google App Engine and it's written in Python.
 
@@ -7,7 +8,9 @@ INSTALLATION
 
 
 TESTING
-When it comes to trying to do TDD on GAE then this blog post: http://www.cuberick.com/2008/11/unit-test-your-google-app-engine-models.html is the best guide I've found so far.
+When it comes to trying to do TDD on GAE then this blog post:
+	http://www.cuberick.com/2008/11/unit-test-your-google-app-engine-models.html
+is the best guide I've found so far.
 
 The main thing to takeaway is that you need nose and nose-gae. So...
 sudo easy_install nose
