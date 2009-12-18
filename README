@@ -1,1 +1,23 @@
-An aggregator along the lines of Planet but using PSHB for updates
+An aggregator along the lines of Planet but using the Pubsubhubbub protocol for updates rather than doing it's own polling or being powered by a cron job.
+
+It's meant to be deployed on Google App Engine and it's written in Python.
+
+INSTALLATION
+~ This isn't yet ready for installation by other people
+
+
+TESTING
+When it comes to trying to do TDD on GAE then this blog post: http://www.cuberick.com/2008/11/unit-test-your-google-app-engine-models.html is the best guide I've found so far.
+
+The main thing to takeaway is that you need nose and nose-gae. So...
+sudo easy_install nose
+sudo easy_install nosegae
+
+Now that you've got the testrunners installed you can run the functional tests:
+	nosetests --with-gae streamer_functional_tests.py 
+
+Then you can run the unit tests:
+	nosetests --with-gae streamer_tests.py
+
+You can run all the tests by doing:
+	nosetests --with-gae streamer_functional_tests.py && nosetests --with-gae streamer_tests.py

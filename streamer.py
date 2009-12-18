@@ -22,7 +22,7 @@ ALWAYS_USE_DEFAULT_HUB = False
 DEFAULT_HUB = "http://pollinghub.appspot.com/"
 # Use a cron job to re-subscribe to all feeds
 LEASE_SECONDS = "86400" * 60 #90 days
-OPEN_ACCESS = True
+OPEN_ACCESS = False
 
 class Post(db.Model):
 	url = db.StringProperty(required=True)
