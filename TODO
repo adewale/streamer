@@ -1,0 +1,10 @@
+Each post (identified by a url or id) should only turn up once on the Posts page. New entries with the same url/id should replace old ones. Follow the heuristics I suggested on the feedparser mailing list.
+
+Use keys to identify posts and subscriptions.
+
+The handle* function calls should all be made into invocations of deferred.defer()
+
+Subscriptions should be for 90 days with a scheduled resubscription task being set up to run 30 days in the future. This should ensure that feeds get re-subscribed often enough that changes in hubs will get picked up and ensure that old code doesn't get enqueued.
+
+List all the things needed to be a valid PSHB subscriber.
+
