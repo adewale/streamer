@@ -11,5 +11,8 @@ handlers:
 - url: /_ah/queue/deferred
   script: $PYTHON_LIB/google/appengine/ext/deferred/deferred.py
   login: admin
+- url: /bgtasks
+  script: streamer.py
+  login: admin
 - url: /.*
   script: streamer.py
