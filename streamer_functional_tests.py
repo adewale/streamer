@@ -37,33 +37,7 @@ class SubscriptionsHandlerTest(FunctionalTestCase, unittest.TestCase):
 	def testCanAddNewSubscriptionUsingTaskQueue(self):
 		data = {'function':'handleNewSubscription', 'url':'http://blog.oshineye.com/feeds/posts/default', 'nickname':'ade'}
 		response = self.post('/bgtasks', data=data, expect_errors=True)
-		self.assertEqual(streamer.Subscription.all().count(), 1)
-
-	def printTasks(self):
-		tasks = []
-		stub = self.get_task_queue_stub()
-		
-		for queue_name in self.get_task_queue_names():
-			tasks.extend(stub.GetTasks(queue_name))
-				
-		for task in tasks:
-			print task
-		for task in tasks:
-			params = {}
-			decoded_body = base64.b64decode(task['body'])
-            
-			if decoded_body:
-				# urlparse.parse_qs doesn't seem to be in Python 2.5...
-				print "Decoded body:", decoded_body
-				parts = [item.split('=', 2) for item in decoded_body.split('&')]
-				print "Parts:", parts, len(parts)
-				params = dict(parts)
-            
-				task.update({
-					'decoded_body': decoded_body,
-					'params': params,
-					})
-            
+		self.assertEqual(streamer.Subscription.all().count(), 1)            
 
 	def testEnqueuesTaskForNewSubscription(self):
 		data = {'url':'http://blog.oshineye.com/feeds/posts/default'}
