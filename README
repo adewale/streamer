@@ -12,7 +12,8 @@ When it comes to trying to do TDD on GAE then this blog post:
 	http://www.cuberick.com/2008/11/unit-test-your-google-app-engine-models.html
 is the best guide I've found so far.
 
-The main thing to takeaway is that you need nose and nose-gae. So...
+You need gae-testbed, nose and nose-gae. So...
+sudo easy_install gaetestbed
 sudo easy_install nose
 sudo easy_install nosegae
 

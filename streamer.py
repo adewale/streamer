@@ -24,6 +24,14 @@ DEFAULT_HUB = "http://pollinghub.appspot.com/"
 LEASE_SECONDS = "86400" * 60 #90 days
 OPEN_ACCESS = False
 
+from google.appengine.api.labs import taskqueue
+class BackGroundTaskHandler(webapp.RequestHandler):
+	def post(self):
+		functionName = self.request.get('function')
+		logging.info("Background task being executed. Function is: <%s>" % (functionName))
+		if functionName == 'handleNewSubscription':
+			handleNewSubscription(self.request.get('url'), self.request.get('nickname'))
+
 class Post(db.Model):
 	url = db.StringProperty(required=True)
 	feedUrl = db.StringProperty(required=True)
@@ -188,12 +196,14 @@ class SubscriptionsHandler(webapp.RequestHandler):
 			#TODO Put a flash message in there to tell the user they've added a duplicate feed
 			self.redirect('/subscriptions')
 			return
-		
+		if not url or len(url.strip()) == 0:
+			self.response.set_status(500)
+			return
 		user = users.get_current_user()
 		nickname = user.nickname()
-		handleNewSubscription(url, nickname)
-		#TODO Make this a deferred task
-		#deferred.defer(handleNewSubscription, url=url, nickname=nickname)
+
+		# This is basically calling handleNewSubscription(url, nickname) in the background
+		taskqueue.add(url='/bgtasks', params={'function': 'handleNewSubscription', 'url':url, 'nickname':nickname})
 		
 		# Redirect the user via a GET
 		self.redirect('/subscriptions')
@@ -264,7 +274,6 @@ class ContentParser(object):
 		logging.error('Bad feed data. %s: %r', self.data.bozo_exception.__class__.__name__, self.data.bozo_exception)
 
 	def __createDateTime(self, entry):
-		print entry
 		if hasattr(entry, 'updated_parsed'):
 			return datetime.datetime(*(entry.updated_parsed[0:6]))
 		else:
@@ -284,7 +293,6 @@ class ContentParser(object):
 		return entryOrFeed.get('id', '')
 
 	def __extractAuthor(self, entryOrFeed):
-		print entryOrFeed
 		# Get the precise name of the author if we can
 		if hasattr(entryOrFeed, 'author_detail'):
 			author = entryOrFeed['author_detail']['name']
@@ -348,7 +356,8 @@ application = webapp.WSGIApplication([
 ('/admin/addSubscription', AdminAddSubscriptionHandler),
 ('/admin/deleteSubscription', AdminDeleteSubscriptionHandler),
 ('/posts', PostsHandler),
-('/subscriptions', SubscriptionsHandler)],
+('/subscriptions', SubscriptionsHandler),
+('/bgtasks', BackGroundTaskHandler),],
   debug = True)
 def main():
 	run_wsgi_app(application)

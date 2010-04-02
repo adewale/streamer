@@ -164,9 +164,3 @@ class ContentParserTest(unittest.TestCase):
 		self.assertEquals("http://blogs.thoughtworks.com/", ContentParser(self.FEEDBURNER_FEED).extractSourceUrl())
 		self.assertEquals("http://news.ycombinator.com/", ContentParser(self.RSS_FEED).extractSourceUrl())
 		self.assertEquals("http://www.scripting.com/", ContentParser(self.CANONICAL_RSS_FEED).extractSourceUrl())
-
-class ContentParserLargeTest(unittest.TestCase):
-	def testCanExtractPostsFromRemoteSite(self):
-		parser = ContentParser(None, urlToFetch = "http://blog.oshineye.com/feeds/posts/default")
-		posts = parser.extractPosts();
-		self.assertTrue(len(posts) > 2 )
