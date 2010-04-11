@@ -37,7 +37,15 @@ class SubscriptionsHandlerTest(FunctionalTestCase, unittest.TestCase):
 	def testCanAddNewSubscriptionUsingTaskQueue(self):
 		data = {'function':'handleNewSubscription', 'url':'http://blog.oshineye.com/feeds/posts/default', 'nickname':'ade'}
 		response = self.post('/bgtasks', data=data, expect_errors=True)
-		self.assertEqual(streamer.Subscription.all().count(), 1)            
+		self.assertEqual(streamer.Subscription.all().count(), 1)
+
+	def testAddingNewSubscriptionsUsingTaskQueueIsIdempotent(self):
+		data = {'function':'handleNewSubscription', 'url':'http://blog.oshineye.com/feeds/posts/default', 'nickname':'ade'}
+		self.assertEqual(streamer.Subscription.all().count(), 0)
+		response = self.post('/bgtasks', data=data, expect_errors=True)
+		self.assertEqual(streamer.Subscription.all().count(), 1)
+		response = self.post('/bgtasks', data=data, expect_errors=True)
+		self.assertEqual(streamer.Subscription.all().count(), 1)
 
 	def testEnqueuesTaskForNewSubscription(self):
 		data = {'url':'http://blog.oshineye.com/feeds/posts/default'}

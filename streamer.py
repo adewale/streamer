@@ -57,18 +57,26 @@ class Subscription(db.Model):
 	# Automatically work out when a feed was added
 	dateAdded = db.DateTimeProperty(auto_now_add=True)
 	author = db.StringProperty()
+
+	@staticmethod
+	def find(url):
+		"""Return a Query object so that the caller can choose how many results should be fetched"""
+		# This query only fetches the key because that's faster and computationally cheaper.
+		query = db.GqlQuery("SELECT __key__ from Subscription where url= :1", url)
+		
+		return query
 	
 	@staticmethod
 	def exists(url):
 		"""Return True or False to indicate if a subscription with the given url exists"""
-		# This query only fetches the key because that's faster and computationally cheaper.
-		query = db.GqlQuery("SELECT __key__ from Subscription where url= :1", url)
+		query = Subscription.find(url)
 		return len(query.fetch(1)) > 0
 	
 	@staticmethod
 	def deleteSubscriptionWithMatchingUrl(url):
 		query = db.GqlQuery("SELECT __key__ from Subscription where url= :1", url)
-		for key in query.fetch(1):
+		# We deliberately use a large fetch value to ensure we delete all feeds matching that URL
+		for key in query.fetch(500):
 			db.delete(key)
 
 class HubSubscriber(object):
@@ -159,13 +167,14 @@ def handleDeleteSubscription(url):
 
 def handleNewSubscription(url, nickname):
 	logging.info("Subscription added: %s by %s" % (url, nickname))
+
 	parser = ContentParser(None, DEFAULT_HUB, ALWAYS_USE_DEFAULT_HUB, urlToFetch = url)
 	hub = parser.extractHub()
 	sourceUrl = parser.extractSourceUrl()
 	author = parser.extractFeedAuthor()
 	
 	# Store the url as a Feed
-	subscription = Subscription(url=url, subscriber = nickname, hub = hub, sourceUrl = sourceUrl, author = author)
+	subscription = Subscription(url=url, subscriber = nickname, hub = hub, sourceUrl = sourceUrl, author = author, key_name = url)
 	subscription.put()
 	
 	# Tell the hub about the url
@@ -191,11 +200,6 @@ class SubscriptionsHandler(webapp.RequestHandler):
 		
 		# Extract the url from the request
 		url = self.request.get('url')
-		if Subscription.exists(url):
-			logging.warning("Subscription already exists: %s" % url)
-			#TODO Put a flash message in there to tell the user they've added a duplicate feed
-			self.redirect('/subscriptions')
-			return
 		if not url or len(url.strip()) == 0:
 			self.response.set_status(500)
 			return

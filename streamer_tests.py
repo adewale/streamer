@@ -17,7 +17,7 @@ class SubscriptionTest(unittest.TestCase):
 
 	def testCanTellIfFeedIsAlreadyStored(self):
 		url = "http://example.org/atom"
-		f = Subscription(url=url, hub = "http://hub.example.org/", sourceUrl = "http://example.org/")
+		f = Subscription(url=url, hub = "http://hub.example.org/", sourceUrl = "http://example.org/", key_name = url)
 		f.put()
 		
 		self.assertTrue(Subscription.exists(url))
@@ -25,10 +25,19 @@ class SubscriptionTest(unittest.TestCase):
 	def testCanTellIfFeedIsNew(self):
 		url = "http://example.org/atom"
 		self.assertFalse(Subscription.exists(url))
+
+	def testAddingSubscriptionTwiceOnlyAddsOneRecordToDataStore(self):
+		url = "http://example.org/atom"
+		f = Subscription(url=url, hub = "http://hub.example.org/", sourceUrl = "http://example.org/", key_name = url)
+		f.put()
+		self.assertEquals(1, len(Subscription.find(url).fetch(1000)))
+		f2 = Subscription(url=url, hub = "http://hub.example.org/", sourceUrl = "http://example.org/", key_name = url)
+		f2.put()
+		self.assertEquals(1, len(Subscription.find(url).fetch(1000)))
 	
 	def testCanDeleteSubscription(self):
 		url = "http://example.org/atom"
-		f = Subscription(url=url, hub = "http://hub.example.org/", sourceUrl = "http://example.org/")
+		f = Subscription(url=url, hub = "http://hub.example.org/", sourceUrl = "http://example.org/", key_name = url)
 		f.put()
 		self.assertTrue(Subscription.exists(url))
 		Subscription.deleteSubscriptionWithMatchingUrl(url)
