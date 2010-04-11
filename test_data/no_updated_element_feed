@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~d/styles/atom10full.xsl"?><?xml-stylesheet type="text/css" media="screen" href="http://feeds.feedburner.com/~d/styles/itemcontent.css"?><feed xmlns="http://www.w3.org/2005/Atom" xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0">
+ 
+ <title>Chris Parsons</title>
+
+ <link href="http://chrismdp.github.com/" />
+ <updated>2010-03-30T02:13:18-07:00</updated>
+ <id>http://chrismdp.github.com/</id>
+ <author>
+   <name>Chris Parsons</name>
+   <email>chrismdp@gmail.com</email>
+ </author>
+ 
+ 
+ <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/atom+xml" href="http://feeds.feedburner.com/ChrisParsons" /><feedburner:info uri="chrisparsons" /><atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com/" /><entry>
+   <title>Announcing edash</title>
+   
+   <category term="information radiator" />
+   
+   <link href="http://feedproxy.google.com/~r/ChrisParsons/~3/r5jZqCRf1Qk/announcing-edash" />
+   <updated>Liquid error: undefined method `xmlschema' for "2010-03-29 22:05:00 +0100":String</updated>
+   <id>http://chrismdp.github.com/2010/03/announcing-edash</id>
+   <content type="html">&lt;p&gt;I&amp;#8217;ve been hinting at the dashboard application I&amp;#8217;ve been hacking on recently and after showing it off to a few people at the &lt;a href='http://scottishrubyconference.com'&gt;Scottish Ruby Conference&lt;/a&gt; it&amp;#8217;s about time I released it open source.&lt;/p&gt;
+
+&lt;h2 id='introducing_edash'&gt;Introducing edash&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src='/files/edash-1.png' alt='edash screenshot' /&gt;&lt;/p&gt;
+
+&lt;p&gt;This is the version currently running on a screen at &lt;a href='http://edendevelopment.co.uk'&gt;Eden&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;IMPORTANT NOTE: This application only works on &lt;a href='http://google.com/chrome'&gt;Chrome&lt;/a&gt;.&lt;/em&gt; There is enough browser specific hackery to render it unusable in other browsers currently. Patches to fix this are most welcome.&lt;/p&gt;
+
+&lt;p&gt;That said, I&amp;#8217;ve put together a short screencast showing it off, along with how to get it running:&lt;/p&gt;
+&lt;object height='344' width='550'&gt;&lt;param name='allowfullscreen' value='true' /&gt;&lt;param name='allowscriptaccess' value='always' /&gt;&lt;param name='movie' value='http://vimeo.com/moogaloop.swf?clip_id=10535751&amp;amp;server=vimeo.com&amp;amp;show_title=1&amp;amp;show_byline=1&amp;amp;show_portrait=0&amp;amp;color=c9ff23&amp;amp;fullscreen=1' /&gt;&lt;embed src='http://vimeo.com/moogaloop.swf?clip_id=10535751&amp;amp;server=vimeo.com&amp;amp;show_title=1&amp;amp;show_byline=1&amp;amp;show_portrait=0&amp;amp;color=c9ff23&amp;amp;fullscreen=1' allowfullscreen='true' type='application/x-shockwave-flash' allowscriptaccess='always' height='344' width='550' /&gt;&lt;/object&gt;&lt;p&gt;&lt;a href='http://vimeo.com/10535751'&gt;edash demo and usage instructions&lt;/a&gt; from &lt;a href='http://vimeo.com/user2596622'&gt;Chris Parsons&lt;/a&gt; on &lt;a href='http://vimeo.com'&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id='getting_it_running'&gt;Getting it running&lt;/h2&gt;
+
+&lt;p&gt;Here&amp;#8217;s a minimal set of steps to get it running:&lt;/p&gt;
+&lt;div class='highlight'&gt;&lt;pre&gt;&lt;code class='bash'&gt;gem install sinatra haml sass json pstore md5 eventmachine em-http-request
+git clone git://github.com/edendevelopment/edash.git
+&lt;span class='nb'&gt;cd &lt;/span&gt;edash
+git submodule update --init
+&lt;span class='c'&gt;# runs the websocket server, make sure port 8080 is readable from where you are. Use nohup to run as a daemon.&lt;/span&gt;
+scripts/server &amp;amp;
+&lt;span class='c'&gt;# Run rackup in place, or use your favourite rack-compatible server&lt;/span&gt;
+rackup &amp;amp;
+&lt;span class='c'&gt;# post a message to the server. Add a form of this to your build hooks.&lt;/span&gt;
+curl -d &lt;span class='s2'&gt;&amp;quot;project=&amp;lt;project&amp;gt;&amp;quot;&lt;/span&gt; -d &lt;span class='s2'&gt;&amp;quot;status=&amp;lt;pass|fail|building&amp;gt;&amp;quot;&lt;/span&gt; &lt;span class='o'&gt;[&lt;/span&gt;-d &lt;span class='s2'&gt;&amp;quot;author=Name &amp;lt;email&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class='o'&gt;]&lt;/span&gt; -- http://localhost:9292/build
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Check out the screencast for a walkthrough.&lt;/p&gt;
+
+&lt;h2 id='under_the_hood'&gt;Under the hood&lt;/h2&gt;
+
+&lt;p&gt;The code is &lt;a href='http://github.com/edendevelopment/edash'&gt;on github&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Check it out and let me know if you find it useful. I&amp;#8217;m trying to keep it pretty thin and build server agnostic: it should work with a number of build servers out of the box just by configuring (hacking) your server to fire off HTTP posts as shown in the screencast.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;d welcome patches and fixes: it should be under fairly active development in the next few weeks. The plan is to add a generic statistic tracking module that will allow us to keep track of MetricFu stats, and you to keep track of almost anything&amp;#8230; watch this blog for updates.&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/ChrisParsons/~4/r5jZqCRf1Qk" height="1" width="1"/&gt;</content>
+ <feedburner:origLink>http://chrismdp.github.com/2010/03/announcing-edash</feedburner:origLink></entry>
+  
+</feed>

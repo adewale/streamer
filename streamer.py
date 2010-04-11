@@ -20,13 +20,18 @@ SECRET_TOKEN = "SOME_SECRET_TOKEN"
 ALWAYS_USE_DEFAULT_HUB = False
 # This is a hub I've set up that does polling
 DEFAULT_HUB = "http://pollinghub.appspot.com/"
-# Use a cron job to re-subscribe to all feeds
-LEASE_SECONDS = "86400" * 60 #90 days
 OPEN_ACCESS = False
+MAX_TASK_RETRIES = 10
 
 from google.appengine.api.labs import taskqueue
 class BackGroundTaskHandler(webapp.RequestHandler):
 	def post(self):
+		logging.info("Request body %s" % self.request.body)
+		retryCount = self.request.headers.get('X-AppEngine-TaskRetryCount')
+		taskName = self.request.headers.get('X-AppEngine-TaskName')
+		if retryCount and int(retryCount) > MAX_TASK_RETRIES:
+			logging.warning("Abandoning this task: %s after %s retries" % (taskName, retryCount))
+			return
 		functionName = self.request.get('function')
 		logging.info("Background task being executed. Function is: <%s>" % (functionName))
 		if functionName == 'handleNewSubscription':
@@ -89,7 +94,6 @@ class HubSubscriber(object):
 					  "hub.mode" : "subscribe",
 					  "hub.topic" : self.url,
 					  "hub.verify" : "async", # We don't want subscriptions to block until verification happens
-					  "hub.lease_seconds" : LEASE_SECONDS,
 					  "hub.verify_token" : SECRET_TOKEN, #TODO Must generate a token based on some secret value
 		}
 		payload = urllib.urlencode(parameters)
@@ -168,7 +172,11 @@ def handleDeleteSubscription(url):
 def handleNewSubscription(url, nickname):
 	logging.info("Subscription added: %s by %s" % (url, nickname))
 
-	parser = ContentParser(None, DEFAULT_HUB, ALWAYS_USE_DEFAULT_HUB, urlToFetch = url)
+	try:
+		parser = ContentParser(None, DEFAULT_HUB, ALWAYS_USE_DEFAULT_HUB, urlToFetch = url)
+	except UrlNotFoundError:
+		logging.warn("Url added by: %s not found: %s" % (nickname, url))
+		return
 	hub = parser.extractHub()
 	sourceUrl = parser.extractSourceUrl()
 	author = parser.extractFeedAuthor()
@@ -260,10 +268,21 @@ class PostsHandler(webapp.RequestHandler):
 			self.response.set_status(200)
 			self.response.out.write("Good entries")
 
+class UrlNotFoundError(Exception):
+	def __init__(self, url):
+		self.url = url
+
+	def __str__(self):
+		return self.url
+
 class ContentParser(object):
 	def __init__(self, content, defaultHub = DEFAULT_HUB, alwaysUseDefaultHub = ALWAYS_USE_DEFAULT_HUB, urlToFetch = ""):
 		if urlToFetch:
-			content = urlfetch.fetch(urlToFetch).content
+			response = urlfetch.fetch(urlToFetch)
+			logging.info("Status was: [%s]" % response.status_code)
+			if response.status_code == 404:
+				raise UrlNotFoundError(urlToFetch)
+			content = response.content
 		self.data = feedparser.parse(content)
 		self.defaultHub = defaultHub
 		self.alwaysUseDefaultHub = alwaysUseDefaultHub
@@ -278,7 +297,7 @@ class ContentParser(object):
 		logging.error('Bad feed data. %s: %r', self.data.bozo_exception.__class__.__name__, self.data.bozo_exception)
 
 	def __createDateTime(self, entry):
-		if hasattr(entry, 'updated_parsed'):
+		if hasattr(entry, 'updated_parsed') and entry.updated_parsed:
 			return datetime.datetime(*(entry.updated_parsed[0:6]))
 		else:
 			return datetime.datetime.utcnow()

@@ -47,6 +47,11 @@ class SubscriptionsHandlerTest(FunctionalTestCase, unittest.TestCase):
 		response = self.post('/bgtasks', data=data, expect_errors=True)
 		self.assertEqual(streamer.Subscription.all().count(), 1)
 
+	def testAddingNoneExistentFeedsDoesNotRaiseAnException(self):
+		data = {'function':'handleNewSubscription', 'url':'http://www.oshineye.com/404FromStreamer', 'nickname':'ade'}
+		response = self.post('/bgtasks', data=data, expect_errors=True)
+		self.assertEquals('200 OK', response.status)
+
 	def testEnqueuesTaskForNewSubscription(self):
 		data = {'url':'http://blog.oshineye.com/feeds/posts/default'}
 		self.assertTasksInQueue(0)
@@ -99,4 +104,4 @@ class ContentParserFunctionalTest(unittest.TestCase):
 	def testCanExtractPostsFromRemoteSite(self):
 		parser = streamer.ContentParser(None, urlToFetch = "http://blog.oshineye.com/feeds/posts/default")
 		posts = parser.extractPosts();
-		self.assertTrue(len(posts) > 2 )
+		self.assertTrue(len(posts) > 2)

@@ -70,7 +70,14 @@ class ContentParserTest(unittest.TestCase):
 	CANONICAL_RSS_FEED = open("test_data/canonical_rss_feed").read()
 	VALID_ATOM_FEED = open("test_data/valid_atom_feed").read()
 	NO_AUTHOR_RSS_FEED = open("test_data/no_author_rss_feed").read()
-		
+	NO_UPDATED_ELEMENT_FEED = open("test_data/no_updated_element_feed").read()
+
+	def testCanExtractCorrectNumberOfPostsFromFeedWithMissingUpdatedElement(self):
+		parser = ContentParser(self.NO_UPDATED_ELEMENT_FEED)
+		posts = parser.extractPosts()
+		self.assertTrue(parser.dataValid())
+		self.assertEquals(1, len(posts))
+
 	def testCanIdentifyPostsWithGoodData(self):
 		parser = ContentParser(self.SAMPLE_FEED)
 		posts = parser.extractPosts()
@@ -137,7 +144,7 @@ class ContentParserTest(unittest.TestCase):
 	
 	def testCanExtractHubFromFeed(self):
 		parser = ContentParser(self.BLOGGER_FEED)
-		hub = parser.extractHub();
+		hub = parser.extractHub()
 		self.assertEquals("http://pubsubhubbub.appspot.com/", hub)
 	
 	def testCanOverrideHubForFeed(self):
@@ -148,14 +155,13 @@ class ContentParserTest(unittest.TestCase):
 		parser.alwaysUseDefaultHub = True
 		self.assertEquals(fakeDefaultHub, parser.extractHub())
 	
-	def testCanExtractHubFromFeedburnerFeed(self):
-		parser = ContentParser(self.FEEDBURNER_FEED)
-		hub = parser.extractHub();
-		self.assertEquals("http://pubsubhubbub.appspot.com", hub)
+	def testCanExtractHubFromFeedburnerFeeds(self):
+		self.assertEquals("http://pubsubhubbub.appspot.com", ContentParser(self.FEEDBURNER_FEED).extractHub())
+		self.assertEquals("http://pubsubhubbub.appspot.com/", ContentParser(self.NO_UPDATED_ELEMENT_FEED).extractHub())
 	
 	def testCanExtractsDefaultHubForHubLessFeeds(self):
 		parser = ContentParser(self.HUBLESS_FEED)
-		hub = parser.extractHub();
+		hub = parser.extractHub()
 		self.assertEquals(DEFAULT_HUB, hub)
 	
 	def testCanExtractFeedUrls(self):
@@ -165,6 +171,7 @@ class ContentParserTest(unittest.TestCase):
 		self.assertEquals("http://feeds.feedburner.com/PlanetTw", ContentParser(self.FEEDBURNER_FEED).extractFeedUrl())
 		self.assertEquals("http://news.ycombinator.com/rss", ContentParser(self.RSS_FEED).extractFeedUrl())
 		self.assertEquals("http://www.scripting.com/rss", ContentParser(self.CANONICAL_RSS_FEED).extractFeedUrl())
+		self.assertEquals("http://feeds.feedburner.com/ChrisParsons", ContentParser(self.NO_UPDATED_ELEMENT_FEED).extractFeedUrl())
 
 	def testCanExtractSourceUrls(self):
 		self.assertEquals("http://pubsubhubbub-loadtest.appspot.com/foo", ContentParser(self.SAMPLE_FEED).extractSourceUrl())
@@ -173,3 +180,4 @@ class ContentParserTest(unittest.TestCase):
 		self.assertEquals("http://blogs.thoughtworks.com/", ContentParser(self.FEEDBURNER_FEED).extractSourceUrl())
 		self.assertEquals("http://news.ycombinator.com/", ContentParser(self.RSS_FEED).extractSourceUrl())
 		self.assertEquals("http://www.scripting.com/", ContentParser(self.CANONICAL_RSS_FEED).extractSourceUrl())
+		self.assertEquals("http://chrismdp.github.com/", ContentParser(self.NO_UPDATED_ELEMENT_FEED).extractSourceUrl())
