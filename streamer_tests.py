@@ -61,15 +61,16 @@ class ContentParserTest(unittest.TestCase):
 	CANONICAL_RSS_FEED = open("test_data/canonical_rss_feed").read()
 	VALID_ATOM_FEED = open("test_data/valid_atom_feed").read()
 	NO_AUTHOR_RSS_FEED = open("test_data/no_author_rss_feed").read()
+	MULTI_AUTHOR_FEED = open("test_data/multi_author_feed").read()
 		
 	def testCanIdentifyPostsWithGoodData(self):
 		parser = ContentParser(self.SAMPLE_FEED)
-		posts = parser.extractPosts()
+		parser.extractPosts()
 		self.assertTrue(parser.dataValid())
 	
 	def testCanIdentifyPostsWithBadData(self):
 		parser = ContentParser("Bad data that isn't an atom entry")
-		posts = parser.extractPosts()
+		parser.extractPosts()
 		self.assertFalse(parser.dataValid())
 	
 	def testCanExtractCorrectNumberOfPostsFromSampleFeed(self):
@@ -77,6 +78,12 @@ class ContentParserTest(unittest.TestCase):
 		posts = parser.extractPosts()
 		self.assertEquals(2, len(posts))
 	
+	def testExtractedPostsHaveOriginalEntry(self):
+		parser = ContentParser(self.SAMPLE_FEED)
+		posts = parser.extractPosts()
+		self.assertTrue(posts[0].getFeedParserEntry())
+		self.assertEqual(posts[0].content, posts[0].getFeedParserEntry()['content'][0]['value'])
+
 	def testCanExtractPostsWithExpectedContentFromSampleFeed(self):
 		parser = ContentParser(self.SAMPLE_FEED)
 		posts = parser.extractPosts()
@@ -125,6 +132,10 @@ class ContentParserTest(unittest.TestCase):
 	def testCanExtractAuthorNameViaDublinCoreCreatorFromRssFeed(self):
 		parser = ContentParser(self.NO_AUTHOR_RSS_FEED)
 		self.assertEquals("Chris", parser.extractFeedAuthor())
+
+	def testDoesNotExtractAuthorFromFeedWithMultipleAuthors(self):
+		parser = ContentParser(self.MULTI_AUTHOR_FEED)
+		self.assertEquals("", parser.extractFeedAuthor())
 	
 	def testCanExtractHubFromFeed(self):
 		parser = ContentParser(self.BLOGGER_FEED)
@@ -144,7 +155,7 @@ class ContentParserTest(unittest.TestCase):
 		hub = parser.extractHub();
 		self.assertEquals("http://pubsubhubbub.appspot.com", hub)
 	
-	def testCanExtractsDefaultHubForHubLessFeeds(self):
+	def testCanExtractDefaultHubForHubLessFeeds(self):
 		parser = ContentParser(self.HUBLESS_FEED)
 		hub = parser.extractHub();
 		self.assertEquals(DEFAULT_HUB, hub)

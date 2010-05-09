@@ -54,28 +54,6 @@ As those who have visited the little Granary office know, we&#8217;ve been too b
       <slash:comments>2</slash:comments>
     </item>
     <item>
-      <title>Eden Hack day report</title>
-      <link>http://blog.edendevelopment.co.uk/2009/11/13/eden-hack-day-report/</link>
-      <comments>http://blog.edendevelopment.co.uk/2009/11/13/eden-hack-day-report/#comments</comments>
-      <pubDate>Fri, 13 Nov 2009 20:54:11 +0000</pubDate>
-      <dc:creator>aimee</dc:creator>
-      <category><![CDATA[code]]></category>
-      <category><![CDATA[fun]]></category>
-      <guid isPermaLink="false">http://blog.edendevelopment.co.uk/?p=658</guid>
-      <description><![CDATA[Friday 13th November 2009 was Eden&#8217;s first hack day! Following on from the previous success of &#8220;Code something cool in 2 hours&#8221; we decided to devote a day to each doing whatever we wanted to do. It could be anything at all; the only requirement was that we had to demo something at the end [...]]]></description>
-      <content:encoded><![CDATA[<div class="tweetmeme_button" style="float: left; margin-right: 10px;"><a href="http://api.tweetmeme.com/share?url=http%3A%2F%2Fblog.edendevelopment.co.uk%2F2009%2F11%2F13%2Feden-hack-day-report%2F"><img src="http://api.tweetmeme.com/imagebutton.gif?url=http%3A%2F%2Fblog.edendevelopment.co.uk%2F2009%2F11%2F13%2Feden-hack-day-report%2F" height="61" width="51" /></a></div><p>Friday 13<sup>th</sup> November 2009 was Eden&#8217;s first hack day! Following on from the previous success of &#8220;Code something cool in 2 hours&#8221; we decided to devote a day to each doing whatever we wanted to do. It could be anything at all; the only requirement was that we had to demo something at the end of the day.</p>
-<p>Tris and Richard did a multi-user dungeon game using Rails, Javascript and Juggernaut: <a href="http://github.com/richardeden/the_fall">The Fall</a>. It was impressive and extensible. It was cool that it was already responding to multiple players by around about lunch time! They did a great job on the user interface.</p>
-<p>Chris worked on an integration system between multiple contact lists. <a href="http://github.com/chrismdp/bigcity">Big City</a>. The demo example was between Highrise and Google Contacts. The synchronisation didn&#8217;t quite work, but we could see its potential.</p>
-<p>Enrique and Steve made an ambitious framework for customers to put features into git with scenarios and steps. <a href="http://github.com/ecomba/gourd">Gourd</a>. It will link up with projects and iterations, storing the features safely until it is time for them to be automatically inserted into the filesystem for the appropriate iterations.</p>
-<p>Todd spent the day learning how to make iPhone applications, and successfully followed a demo app known as &#8220;Whoops, i broke my iPhone!&#8221; which made us all laugh &#8230; at least 3 times! ;)</p>
-<p>Spencer did a useful Sinatra app to help people send HTML-formatted emails. <a href="http://github.com/edenspencer/easymail">Easymail</a>. I think the idea is to write an HTML template, and then use the tool to add in content. It handles inline CSS and multipart correctly without any fuss.</p>
-<p>I (aimee) wrote my first Adobe Air application. <a href="http://github.com/sermoa/Pomo">Pomo</a>. It is something like the OSX pomodoro application. Not having found a suitable Linux equivalent, i thought i&#8217;d write my own in Air to make it cross-platform.</p>
-<p>I think we all had a great day, learnt a lot of new things, and enjoyed seeing what we&#8217;d all managed to produce at the end of the day. Which is your favourite idea? All these projects are open source, so if you&#8217;d like to help out, dive in!</p>
-]]></content:encoded>
-      <wfw:commentRss>http://blog.edendevelopment.co.uk/2009/11/13/eden-hack-day-report/feed/</wfw:commentRss>
-      <slash:comments>2</slash:comments>
-    </item>
-    <item>
       <title>Sing Pomodoro takes the stage</title>
       <link>http://blog.edendevelopment.co.uk/2009/10/16/sing-pomodoro-takes-the-stage/</link>
       <comments>http://blog.edendevelopment.co.uk/2009/10/16/sing-pomodoro-takes-the-stage/#comments</comments>
@@ -146,61 +124,6 @@ We spent an hour or two showing him around our [...]]]></description>
 <p>If you&#8217;re in the area and fancy stopping by the office, <a href="mailto:info@edendevelopment.co.uk">get in touch</a>: our doors are open and we love great conversation!</p>
 ]]></content:encoded>
       <wfw:commentRss>http://blog.edendevelopment.co.uk/2009/09/02/lunch-with-uncle-bob-photos-and-thoughts/feed/</wfw:commentRss>
-      <slash:comments>4</slash:comments>
-    </item>
-    <item>
-      <title>Geohashing at Eden Development</title>
-      <link>http://blog.edendevelopment.co.uk/2009/08/31/geohashing-at-eden-development/</link>
-      <comments>http://blog.edendevelopment.co.uk/2009/08/31/geohashing-at-eden-development/#comments</comments>
-      <pubDate>Mon, 31 Aug 2009 21:43:23 +0000</pubDate>
-      <dc:creator>aimee</dc:creator>
-      <category><![CDATA[fun]]></category>
-      <category><![CDATA[geohashing]]></category>
-      <guid isPermaLink="false">http://blog.edendevelopment.co.uk/?p=581</guid>
-      <description><![CDATA[Geohashing is a game, best described as a random adventure generator! It combines the Dow Jones stock market index with the current date, performs an MD5 hash function, and converts from hexadecimal to decimal coordinates in order to generate a series of geographic coordinates all over the country. There&#8217;s usually a geohash within about 50 [...]]]></description>
-      <content:encoded><![CDATA[<div class="tweetmeme_button" style="float: left; margin-right: 10px;"><a href="http://api.tweetmeme.com/share?url=http%3A%2F%2Fblog.edendevelopment.co.uk%2F2009%2F08%2F31%2Fgeohashing-at-eden-development%2F"><img src="http://api.tweetmeme.com/imagebutton.gif?url=http%3A%2F%2Fblog.edendevelopment.co.uk%2F2009%2F08%2F31%2Fgeohashing-at-eden-development%2F" height="61" width="51" /></a></div><p><a href="http://wiki.xkcd.com/geohashing">Geohashing</a> is a game, best described as a <em>random adventure generator!</em> It combines the <a href="http://en.wikipedia.org/wiki/Dow_Jones_Industrial_Average">Dow Jones stock market index</a> with the current date, performs an <a href="http://en.wikipedia.org/wiki/Md5">MD5 hash function</a>, and converts from hexadecimal to decimal coordinates in order to generate a series of geographic coordinates all over the country. There&#8217;s usually a geohash within about 50 miles of your location, and it changes every day.</p>
-<p>The aim of the game is simply to reach the coordinates, with possible side effects being the opportunity to get out, see new places, meet other people doing the same thing, play games at the geohash, etc.</p>
-<p>On Sunday 30th August 2009 something very exciting happened: the geohash landed at Barton Farm, right next to the office of Eden Development! This was especially exciting since I (Aimee) am a keen geohasher! I came home early from my weekend away in Essex, and 4 geohashers came to celebrate!</p>
-<p><a href="http://www.flickr.com/photos/sermoa/3874059253/" title="Found the geohash location, right near the office by sermoa, on Flickr"><img src="http://farm3.static.flickr.com/2441/3874059253_c5d8c4486e.jpg" width="500" height="375" alt="Found the geohash location, right near the office" /></a></p>
-<p>We had to photograph the location for documentation purposes.</p>
-<p><a href="http://www.flickr.com/photos/sermoa/3873460855/" title="Geohash party at The Granary by sermoa, on Flickr"><img src="http://farm3.static.flickr.com/2457/3873460855_024555a67d.jpg" width="500" height="375" alt="Geohash party at The Granary" /></a></p>
-<p>Chris very kindly let us have a geohash celebration party in the office!</p>
-<p><a href="http://www.flickr.com/photos/sermoa/3874246548/" title="Geohashing tutorial on the whiteboard by sermoa, on Flickr"><img src="http://farm4.static.flickr.com/3436/3874246548_608034fd2c.jpg" width="500" height="375" alt="Geohashing tutorial on the whiteboard" /></a></p>
-<p>I did a little tutorial on the whiteboard about how the geohash is calculated, and how it ended up on Barton Farm.</p>
-<p><a href="http://www.flickr.com/photos/sermoa/3874244426/" title="A poster we left on the telegraph pole as a marker by sermoa, on Flickr"><img src="http://farm4.static.flickr.com/3522/3874244426_bec91785b5.jpg" width="500" height="375" alt="A poster we left on the telegraph pole as a marker" /></a></p>
-<p>We printed and laminated a poster, showing us celebrating the geohash! Hopefully it&#8217;ll stay there for a while to come!</p>
-<p>Here is a video montage i&#8217;ve made, with <a href="http://animoto.com">animoto.com</a>:</p>
-<p><object width="560" height="340"><param name="movie" value="http://www.youtube.com/v/wPELFSFAZlk&#038;hl=en&#038;fs=1&#038;"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/wPELFSFAZlk&#038;hl=en&#038;fs=1&#038;" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="560" height="340"></embed></object></p>
-<p>For more information about the day&#8217;s events have a look on the geohashing wiki: <a href="http://wiki.xkcd.com/geohashing/2009-08-30_51_-1">wiki.xkcd.com/geohashing/2009-08-30_51_-1</a></p>
-]]></content:encoded>
-      <wfw:commentRss>http://blog.edendevelopment.co.uk/2009/08/31/geohashing-at-eden-development/feed/</wfw:commentRss>
-      <slash:comments>3</slash:comments>
-    </item>
-    <item>
-      <title>BizConf 2009: Thoughts and Pictures</title>
-      <link>http://blog.edendevelopment.co.uk/2009/08/24/bizconf-2009-thoughts-and-pictures/</link>
-      <comments>http://blog.edendevelopment.co.uk/2009/08/24/bizconf-2009-thoughts-and-pictures/#comments</comments>
-      <pubDate>Mon, 24 Aug 2009 22:57:17 +0000</pubDate>
-      <dc:creator>Chris</dc:creator>
-      <category><![CDATA[agile]]></category>
-      <category><![CDATA[business]]></category>
-      <category><![CDATA[conferences]]></category>
-      <guid isPermaLink="false">http://blog.edendevelopment.co.uk/?p=549</guid>
-      <description><![CDATA[So, BizConf. A conference for people who do business on the web, with only 75 attendees, Florida, 20-21 August. It was a stretch to go that far, but it was so worth the trip. Some highlights for me:
-The Content: There were four tracks, which surprised me for such a small conference, but after a while [...]]]></description>
-      <content:encoded><![CDATA[<div class="tweetmeme_button" style="float: left; margin-right: 10px;"><a href="http://api.tweetmeme.com/share?url=http%3A%2F%2Fblog.edendevelopment.co.uk%2F2009%2F08%2F24%2Fbizconf-2009-thoughts-and-pictures%2F"><img src="http://api.tweetmeme.com/imagebutton.gif?url=http%3A%2F%2Fblog.edendevelopment.co.uk%2F2009%2F08%2F24%2Fbizconf-2009-thoughts-and-pictures%2F" height="61" width="51" /></a></div><p>So, <a href="http://bizconf.org">BizConf</a>. A conference for people who do business on the web, with only 75 attendees, Florida, 20-21 August. It was a stretch to go that far, but it was so worth the trip. Some highlights for me:</p>
-<div id="attachment_571" class="wp-caption aligncenter" style="width: 310px"><a href="http://blog.edendevelopment.co.uk/wp-content/uploads/2009/08/img_04731.jpg"><img src="http://blog.edendevelopment.co.uk/wp-content/uploads/2009/08/img_04731-300x202.jpg" alt="Photography Seminar" title="Photography Seminar" width="300" height="202" class="size-medium wp-image-571" /></a><p class="wp-caption-text">Photography Seminar</p></div>
-<p><strong>The Content:</strong> There were four tracks, which surprised me for such a small conference, but after a while I realised that it was a deliberate play to get the numbers in the seminars down. It worked: every seminar I went to was interactive and interesting. I especially enjoyed the Improv seminar with <a href="http://www.bizconf.org/speakers/jessica-shternshus">Jesse</a>, and the photography seminar with <a href="http://www.bizconf.org/speakers/james-duncan-davidson">Duncan Davidson</a> (pictured above). Most conferences I end up at are very tech-focused, and it was refreshing to try some different things.</p>
-<div id="attachment_558" class="wp-caption aligncenter" style="width: 310px"><a href="http://blog.edendevelopment.co.uk/wp-content/uploads/2009/08/img_0460.jpg"><img src="http://blog.edendevelopment.co.uk/wp-content/uploads/2009/08/img_0460-300x256.jpg" alt="Three hour impromtu hallway seminar" title="JerryConf" width="300" height="256" class="size-medium wp-image-558" /></a><p class="wp-caption-text">Three hour impromtu Jerry Weinberg hallway seminar</p></div>
-<p><strong>HallwayConf:</strong> the conversations in the hallway are in my opinion the best bit going to these things. In this case, the speaker/attendee ratio was 1:2, which meant that the level of conversation was the highest I&#8217;ve experienced at any conference. We talked agile (small &#8216;a&#8217; :-), ruby, business, cashflow, hiring, pairing, solving intractable world political issues over scotch, you name it. There were no cliques, and everyone listened as much as talked. Everyone threw a few thoughts into the mix, and collected some great ideas in return.</p>
-<div id="attachment_559" class="wp-caption aligncenter" style="width: 266px"><a href="http://blog.edendevelopment.co.uk/wp-content/uploads/2009/08/img_0461.jpg"><img src="http://blog.edendevelopment.co.uk/wp-content/uploads/2009/08/img_0461-256x300.jpg" alt="Jerry Weinberg and Corey Haines" title="Jerry Weinberg and Corey Haines" width="256" height="300" class="size-medium wp-image-559" /></a><p class="wp-caption-text">Jerry Weinberg and Corey Haines</p></div>
-<p><strong><a href="http://www.geraldmweinberg.com/">Jerry Weinberg</a>:</strong> talking and listening to Jerry was humbling. It&#8217;s so easy to forget your years and think you&#8217;re some hotshot, whereas actually with my paltry decade of experience I&#8217;m at the very beginning of my professional career. I&#8217;ve a lot to learn and had an amazing opportunity to rethink many of my own ideas in the light of hard earned wisdom.</p>
-<div id="attachment_554" class="wp-caption aligncenter" style="width: 310px"><a href="http://blog.edendevelopment.co.uk/wp-content/uploads/2009/08/img_0478.jpg"><img src="http://blog.edendevelopment.co.uk/wp-content/uploads/2009/08/img_0478-300x225.jpg" alt="Five hours for breakfast" title="Breakfast" width="300" height="225" class="size-medium wp-image-554" /></a><p class="wp-caption-text">Five hours for breakfast</p></div>
-<p>Perhaps this experience sums it up: I went down for breakfast the day after the conference at about 9:30am (my jet-lag got me up rather earlier than expected after a great after-party). People drifted down at different times and we all got talking. And talking. The conversation continued right there in the restaurant for another <em>five hours</em>: I stayed so late after breakfast I got hungry again and had lunch too. I only reluctantly left to catch a plane. Nobody wanted it to stop.</p>
-<p>I started some great friendships with some fantastic people and I&#8217;m looking forward to continuing the conversation, starting now. I&#8217;m only beginning to realise how much I&#8217;ve got out of it now I&#8217;m back in the office: a decision I&#8217;ve been putting off now appears obvious, my head is buzzing with ideas, and I feel inspired to raise my game even further. </p>
-<p>Thanks to Obie for hosting and the Hashrocket guys (especially <a href="http://twitter.com/JenRemsik">Jen</a> and <a href="http://twitter.com/jremsikjr">Jim</a> for doing such a great job). I&#8217;ve put together a reading list of some of the books that were recommended <a href="http://bit.ly/y9oN4">here</a>.</p>
-]]></content:encoded>
-      <wfw:commentRss>http://blog.edendevelopment.co.uk/2009/08/24/bizconf-2009-thoughts-and-pictures/feed/</wfw:commentRss>
       <slash:comments>4</slash:comments>
     </item>
     <item>
