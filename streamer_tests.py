@@ -5,8 +5,9 @@ from google.appengine.ext.webapp import template
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.api import urlfetch
 
-from streamer import ContentParser, DEFAULT_HUB, Subscription, Post
+from streamer import ContentParser, DEFAULT_HUB, Subscription, Post, PostFactory
 import datetime
+import feedparser
 import unittest
 
 class SubscriptionTest(unittest.TestCase):
@@ -17,7 +18,7 @@ class SubscriptionTest(unittest.TestCase):
 
 	def testCanTellIfFeedIsAlreadyStored(self):
 		url = "http://example.org/atom"
-		f = Subscription(url=url, hub = "http://hub.example.org/", sourceUrl = "http://example.org/")
+		f = Subscription(url=url, hub = "http://hub.example.org/", sourceUrl = "http://example.org/", key_name = url)
 		f.put()
 		
 		self.assertTrue(Subscription.exists(url))
@@ -25,23 +26,35 @@ class SubscriptionTest(unittest.TestCase):
 	def testCanTellIfFeedIsNew(self):
 		url = "http://example.org/atom"
 		self.assertFalse(Subscription.exists(url))
+
+	def testAddingSubscriptionTwiceOnlyAddsOneRecordToDataStore(self):
+		url = "http://example.org/atom"
+		f = Subscription(url=url, hub = "http://hub.example.org/", sourceUrl = "http://example.org/", key_name = url)
+		f.put()
+		self.assertEquals(1, len(Subscription.find(url).fetch(1000)))
+		f2 = Subscription(url=url, hub = "http://hub.example.org/", sourceUrl = "http://example.org/", key_name = url)
+		f2.put()
+		self.assertEquals(1, len(Subscription.find(url).fetch(1000)))
 	
 	def testCanDeleteSubscription(self):
 		url = "http://example.org/atom"
-		f = Subscription(url=url, hub = "http://hub.example.org/", sourceUrl = "http://example.org/")
+		f = Subscription(url=url, hub = "http://hub.example.org/", sourceUrl = "http://example.org/", key_name = url)
 		f.put()
 		self.assertTrue(Subscription.exists(url))
 		Subscription.deleteSubscriptionWithMatchingUrl(url)
 		self.assertFalse(Subscription.exists(url))
 
 class PostTest(unittest.TestCase):
-	def testCanDeleteMatchingPost(self):
+
+	def testCanDeleteMatchingPostsCreatedUsingPostFactory(self):
 		feedUrl = "some feed url"
-		p1 = Post(url="someurl", feedUrl = feedUrl)
+		entry1 = feedparser.FeedParserDict({'id':feedUrl})
+		p1 = PostFactory.createPost(url='someurl', feedUrl=feedUrl, title='title', content=None, datePublished=None, author=None, entry=entry1)
 		p1.put()
 		
 		otherFeedUrl = "other feed url"
-		p2 = Post(url="someurl", feedUrl = otherFeedUrl)
+		entry2 = feedparser.FeedParserDict({'id':otherFeedUrl})
+		p2 = PostFactory.createPost(url='someurl', feedUrl=otherFeedUrl,  title='title', content=None, datePublished=None, author=None, entry=entry2)
 		p2.put()
 		
 		self.assertEquals(2, len(Post.all().fetch(2)))
@@ -62,7 +75,15 @@ class ContentParserTest(unittest.TestCase):
 	VALID_ATOM_FEED = open("test_data/valid_atom_feed").read()
 	NO_AUTHOR_RSS_FEED = open("test_data/no_author_rss_feed").read()
 	MULTI_AUTHOR_FEED = open("test_data/multi_author_feed").read()
-		
+	NO_UPDATED_ELEMENT_FEED = open("test_data/no_updated_element_feed").read()
+	FLICKR_RSS_FEED = open("test_data/flickr_rss_feed").read()
+
+	def testCanExtractCorrectNumberOfPostsFromFeedWithMissingUpdatedElement(self):
+		parser = ContentParser(self.NO_UPDATED_ELEMENT_FEED)
+		posts = parser.extractPosts()
+		self.assertTrue(parser.dataValid())
+		self.assertEquals(1, len(posts))
+
 	def testCanIdentifyPostsWithGoodData(self):
 		parser = ContentParser(self.SAMPLE_FEED)
 		parser.extractPosts()
@@ -93,6 +114,11 @@ class ContentParserTest(unittest.TestCase):
 		self.assertEquals("This is the content for random item #695555168", posts[1].content)
 		self.assertEquals("http://pubsubhubbub-loadtest.appspot.com/foo/695555168", posts[1].url)
 		self.assertEquals("http://pubsubhubbub-loadtest.appspot.com/feed/foo", posts[1].feedUrl)
+
+	def testCanExtractPostWithExpectedContentFromFlickrRssFeed(self):
+		parser = ContentParser(self.FLICKR_RSS_FEED)
+		posts = parser.extractPosts()
+		self.assertEquals("""<p><a href="http://www.flickr.com/people/adewale_oshineye/">adewale_oshineye</a> posted a photo:</p>\n\t\n<p><a href="http://www.flickr.com/photos/adewale_oshineye/4589378281/" title="47: First past the post"><img src="http://farm5.static.flickr.com/4048/4589378281_265c641ebb_m.jpg" width="240" height="160" alt="47: First past the post" /></a></p>""", posts[0].content)
 
 	def testCanExtractPostFromRssFeed(self):
 		parser = ContentParser(self.RSS_FEED)
@@ -139,7 +165,7 @@ class ContentParserTest(unittest.TestCase):
 	
 	def testCanExtractHubFromFeed(self):
 		parser = ContentParser(self.BLOGGER_FEED)
-		hub = parser.extractHub();
+		hub = parser.extractHub()
 		self.assertEquals("http://pubsubhubbub.appspot.com/", hub)
 	
 	def testCanOverrideHubForFeed(self):
@@ -150,14 +176,13 @@ class ContentParserTest(unittest.TestCase):
 		parser.alwaysUseDefaultHub = True
 		self.assertEquals(fakeDefaultHub, parser.extractHub())
 	
-	def testCanExtractHubFromFeedburnerFeed(self):
-		parser = ContentParser(self.FEEDBURNER_FEED)
-		hub = parser.extractHub();
-		self.assertEquals("http://pubsubhubbub.appspot.com", hub)
+	def testCanExtractHubFromFeedburnerFeeds(self):
+		self.assertEquals("http://pubsubhubbub.appspot.com", ContentParser(self.FEEDBURNER_FEED).extractHub())
+		self.assertEquals("http://pubsubhubbub.appspot.com/", ContentParser(self.NO_UPDATED_ELEMENT_FEED).extractHub())
 	
 	def testCanExtractDefaultHubForHubLessFeeds(self):
 		parser = ContentParser(self.HUBLESS_FEED)
-		hub = parser.extractHub();
+		hub = parser.extractHub()
 		self.assertEquals(DEFAULT_HUB, hub)
 	
 	def testCanExtractFeedUrls(self):
@@ -167,6 +192,7 @@ class ContentParserTest(unittest.TestCase):
 		self.assertEquals("http://feeds.feedburner.com/PlanetTw", ContentParser(self.FEEDBURNER_FEED).extractFeedUrl())
 		self.assertEquals("http://news.ycombinator.com/rss", ContentParser(self.RSS_FEED).extractFeedUrl())
 		self.assertEquals("http://www.scripting.com/rss", ContentParser(self.CANONICAL_RSS_FEED).extractFeedUrl())
+		self.assertEquals("http://feeds.feedburner.com/ChrisParsons", ContentParser(self.NO_UPDATED_ELEMENT_FEED).extractFeedUrl())
 
 	def testCanExtractSourceUrls(self):
 		self.assertEquals("http://pubsubhubbub-loadtest.appspot.com/foo", ContentParser(self.SAMPLE_FEED).extractSourceUrl())
@@ -175,3 +201,4 @@ class ContentParserTest(unittest.TestCase):
 		self.assertEquals("http://blogs.thoughtworks.com/", ContentParser(self.FEEDBURNER_FEED).extractSourceUrl())
 		self.assertEquals("http://news.ycombinator.com/", ContentParser(self.RSS_FEED).extractSourceUrl())
 		self.assertEquals("http://www.scripting.com/", ContentParser(self.CANONICAL_RSS_FEED).extractSourceUrl())
+		self.assertEquals("http://chrismdp.github.com/", ContentParser(self.NO_UPDATED_ELEMENT_FEED).extractSourceUrl())

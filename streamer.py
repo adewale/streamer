@@ -21,13 +21,18 @@ SECRET_TOKEN = "SOME_SECRET_TOKEN"
 ALWAYS_USE_DEFAULT_HUB = False
 # This is a hub I've set up that does polling
 DEFAULT_HUB = "http://pollinghub.appspot.com/"
-# Use a cron job to re-subscribe to all feeds
-LEASE_SECONDS = "86400" * 60 #90 days
 OPEN_ACCESS = False
+MAX_TASK_RETRIES = 10
 
 from google.appengine.api.labs import taskqueue
 class BackGroundTaskHandler(webapp.RequestHandler):
 	def post(self):
+		logging.info("Request body %s" % self.request.body)
+		retryCount = self.request.headers.get('X-AppEngine-TaskRetryCount')
+		taskName = self.request.headers.get('X-AppEngine-TaskName')
+		if retryCount and int(retryCount) > MAX_TASK_RETRIES:
+			logging.warning("Abandoning this task: %s after %s retries" % (taskName, retryCount))
+			return
 		functionName = self.request.get('function')
 		logging.info("Background task being executed. Function is: <%s>" % (functionName))
 		if functionName == 'handleNewSubscription':
@@ -52,11 +57,11 @@ class Post(db.Model):
 	"""An atom:entry or RSS item."""
 	url = db.StringProperty(required=True)
 	feedUrl = db.StringProperty(required=True)
-	title = db.StringProperty()
+	title = db.StringProperty(multiline=True)
 	content = db.TextProperty()
 	datePublished = db.DateTimeProperty()
 	author = db.StringProperty()
-	entryString = db.StringProperty()
+	entryString = db.TextProperty()
 
 	def getFeedParserEntry(self):
 		entry = eval(self.entryString)
@@ -80,18 +85,26 @@ class Subscription(db.Model):
 	# Automatically work out when a feed was added
 	dateAdded = db.DateTimeProperty(auto_now_add=True)
 	author = db.StringProperty()
+
+	@staticmethod
+	def find(url):
+		"""Return a Query object so that the caller can choose how many results should be fetched"""
+		# This query only fetches the key because that's faster and computationally cheaper.
+		query = db.GqlQuery("SELECT __key__ from Subscription where url= :1", url)
+		
+		return query
 	
 	@staticmethod
 	def exists(url):
 		"""Return True or False to indicate if a subscription with the given url exists"""
-		# This query only fetches the key because that's faster and computationally cheaper.
-		query = db.GqlQuery("SELECT __key__ from Subscription where url= :1", url)
+		query = Subscription.find(url)
 		return len(query.fetch(1)) > 0
 	
 	@staticmethod
 	def deleteSubscriptionWithMatchingUrl(url):
 		query = db.GqlQuery("SELECT __key__ from Subscription where url= :1", url)
-		for key in query.fetch(1):
+		# We deliberately use a large fetch value to ensure we delete all feeds matching that URL
+		for key in query.fetch(500):
 			db.delete(key)
 
 class HubSubscriber(object):
@@ -104,7 +117,6 @@ class HubSubscriber(object):
 					  "hub.mode" : "subscribe",
 					  "hub.topic" : self.url,
 					  "hub.verify" : "async", # We don't want subscriptions to block until verification happens
-					  "hub.lease_seconds" : LEASE_SECONDS,
 					  "hub.verify_token" : SECRET_TOKEN, #TODO Must generate a token based on some secret value
 		}
 		payload = urllib.urlencode(parameters)
@@ -182,13 +194,18 @@ def handleDeleteSubscription(url):
 
 def handleNewSubscription(url, nickname):
 	logging.info("Subscription added: %s by %s" % (url, nickname))
-	parser = ContentParser(None, DEFAULT_HUB, ALWAYS_USE_DEFAULT_HUB, urlToFetch = url)
+
+	try:
+		parser = ContentParser(None, DEFAULT_HUB, ALWAYS_USE_DEFAULT_HUB, urlToFetch = url)
+	except UrlNotFoundError:
+		logging.warn("Url added by: %s not found: %s" % (nickname, url))
+		return
 	hub = parser.extractHub()
 	sourceUrl = parser.extractSourceUrl()
 	author = parser.extractFeedAuthor()
 	
 	# Store the url as a Feed
-	subscription = Subscription(url=url, subscriber = nickname, hub = hub, sourceUrl = sourceUrl, author = author)
+	subscription = Subscription(url=url, subscriber = nickname, hub = hub, sourceUrl = sourceUrl, author = author, key_name = url)
 	subscription.put()
 	
 	# Tell the hub about the url
@@ -214,11 +231,6 @@ class SubscriptionsHandler(webapp.RequestHandler):
 		
 		# Extract the url from the request
 		url = self.request.get('url')
-		if Subscription.exists(url):
-			logging.warning("Subscription already exists: %s" % url)
-			#TODO Put a flash message in there to tell the user they've added a duplicate feed
-			self.redirect('/subscriptions')
-			return
 		if not url or len(url.strip()) == 0:
 			self.response.set_status(500)
 			return
@@ -279,13 +291,24 @@ class PostsHandler(webapp.RequestHandler):
 			self.response.set_status(200)
 			self.response.out.write("Good entries")
 
+class UrlNotFoundError(Exception):
+	def __init__(self, url):
+		self.url = url
+
+	def __str__(self):
+		return self.url
+
 class ContentParser(object):
 	"""A parser that turns PSHB feeds into Streamer types.
 
 	It uses the FeedParser library to parse the feeds, extracts information about the PSHB hub being used and creates valid Streamer Posts."""
 	def __init__(self, content, defaultHub = DEFAULT_HUB, alwaysUseDefaultHub = ALWAYS_USE_DEFAULT_HUB, urlToFetch = ""):
 		if urlToFetch:
-			content = urlfetch.fetch(urlToFetch).content
+			response = urlfetch.fetch(urlToFetch)
+			logging.info("Status was: [%s]" % response.status_code)
+			if response.status_code == 404:
+				raise UrlNotFoundError(urlToFetch)
+			content = response.content
 		self.data = feedparser.parse(content)
 		self.defaultHub = defaultHub
 		self.alwaysUseDefaultHub = alwaysUseDefaultHub
@@ -300,7 +323,7 @@ class ContentParser(object):
 		logging.error('Bad feed data. %s: %r', self.data.bozo_exception.__class__.__name__, self.data.bozo_exception)
 
 	def __createDateTime(self, entry):
-		if hasattr(entry, 'updated_parsed'):
+		if hasattr(entry, 'updated_parsed') and entry.updated_parsed:
 			return datetime.datetime(*(entry.updated_parsed[0:6]))
 		else:
 			return datetime.datetime.utcnow()
@@ -331,10 +354,15 @@ class ContentParser(object):
 			link = self.__extractAtomPermaLink(entry)
 			title = entry.get('title', '')
 			content = entry.content[0].value
+			#Workaround for Flickr's RSS feeds. I should probably ignore it but they use RSS 2.0 as their default format.
+			#TODO(ade) Check to see if this is actually a bug in Feedparser.py since arguably rss2.0:description elements should be mapped to atom:content elements.
+			if not content:
+				content = entry.get('summary', '')
 			datePublished = self.__createDateTime(entry)
 			
 			author = self.__extractAuthor(entry)
 		else:
+			logging.debug("Entry has no atom:content")
 			link = entry.get('link', '')
 			title = entry.get('title', '')
 			content = entry.get('description', '')

@@ -25,3 +25,6 @@ Then you can run the unit tests:
 
 You can run all the tests by doing:
 	nosetests --with-gae streamer_functional_tests.py && nosetests --with-gae streamer_tests.py
+
+You can run individual tests by doing:
+    	nosetests --with-gae streamer_tests.py:ContentParserTest.testCanExtractPostsWithExpectedContentFromSampleFeed
