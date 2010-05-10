@@ -2,11 +2,15 @@
 	<div class="grid_4 alpha">
 		<div id="navbox" class="sidemenu">
 			<ul>
-				<h3>Streamer</h3>
+				<h3>Streamer{{admin}}</h3>
 				<li><h3><a href="/about">About</a></h3></li>
 				<li><h3><a href="/subscriptions">Subscriptions</a></h3></li>
 				<li><h3><a href="/posts">Posts</a></h3></li>
-				<li><h3><a href="/admin">Admin</a></h3></li>
+
+				{% if admin%}
+				<li><h3><a href="/admin/addSubscription">Admin::Add Subscription</a></h3></li>
+				<li><h3><a href="/admin/deleteSubscription">Admin::Delete Subscription</a></h3></li>
+				{% endif %}
 				<li></li>
 				<li></li>
 			</ul>

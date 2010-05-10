@@ -79,13 +79,6 @@ class AboutHandlerTest(FunctionalTestCase, unittest.TestCase):
 		self.assertOK(response)
 		response.mustcontain("<title>About</title>")
 
-class AdminHandlerTest(FunctionalTestCase, unittest.TestCase):
-	APPLICATION = streamer.application
-	def testCanShowAdminPage(self):
-		response = self.get('/admin')
-		self.assertOK(response)
-		response.mustcontain("<title>Admin</title>")
-
 class AdminAddSubscriptionHandlerTest(FunctionalTestCase, unittest.TestCase):
 	APPLICATION = streamer.application
 	def testCanShowAddSubscriptionPage(self):

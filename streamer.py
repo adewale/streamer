@@ -129,6 +129,7 @@ class HubSubscriber(object):
 			logging.info(response.content)
 
 def render(out, htmlPage, templateValues = {}):
+	templateValues['admin'] = userIsAdmin()
 	path = os.path.join(os.path.dirname(__file__), htmlPage)
 	out.write(template.render(path, templateValues))
 
@@ -147,11 +148,6 @@ def userIsAdmin():
 		return True
 	return False
 
-class AdminHandler(webapp.RequestHandler):
-	def get(self):
-		# Everybody can see this page
-		render(self.response.out, 'admin.html')
-
 class AdminAddSubscriptionHandler(webapp.RequestHandler):
 	@login_required
 	def get(self):
@@ -160,7 +156,7 @@ class AdminAddSubscriptionHandler(webapp.RequestHandler):
 			templateValues = getAllSubscriptionsAsTemplateValues()
 			render(self.response.out, 'add_subscriptions.html', templateValues)
 		else:
-			self.error(404)
+			self.error(403)
 
 class AdminDeleteSubscriptionHandler(webapp.RequestHandler):
 	@login_required
@@ -170,7 +166,7 @@ class AdminDeleteSubscriptionHandler(webapp.RequestHandler):
 			templateValues = getAllSubscriptionsAsTemplateValues()
 			render(self.response.out, 'delete_subscriptions.html', templateValues)
 		else:
-			self.error(404)
+			self.error(403)
 	def post(self):
 		# Only admin users can see this page
 		if userIsAdmin():
@@ -180,7 +176,7 @@ class AdminDeleteSubscriptionHandler(webapp.RequestHandler):
 				handleDeleteSubscription(url)
 			self.redirect('/admin/deleteSubscription')
 		else:
-			self.error(404)
+			self.error(403)
 
 class AboutHandler(webapp.RequestHandler):
 	def get(self):
@@ -412,7 +408,6 @@ class ContentParser(object):
 application = webapp.WSGIApplication([
 ('/', PostsHandler),
 ('/about', AboutHandler),
-('/admin', AdminHandler),
 ('/admin/addSubscription', AdminAddSubscriptionHandler),
 ('/admin/deleteSubscription', AdminDeleteSubscriptionHandler),
 ('/posts', PostsHandler),
