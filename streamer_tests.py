@@ -5,8 +5,9 @@ from google.appengine.ext.webapp import template
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.api import urlfetch
 
-from streamer import ContentParser, DEFAULT_HUB, Subscription, Post
+from streamer import ContentParser, DEFAULT_HUB, Subscription, Post, PostFactory
 import datetime
+import feedparser
 import unittest
 
 class SubscriptionTest(unittest.TestCase):
@@ -44,13 +45,16 @@ class SubscriptionTest(unittest.TestCase):
 		self.assertFalse(Subscription.exists(url))
 
 class PostTest(unittest.TestCase):
-	def testCanDeleteMatchingPost(self):
+
+	def testCanDeleteMatchingPostsCreatedUsingPostFactory(self):
 		feedUrl = "some feed url"
-		p1 = Post(url="someurl", feedUrl = feedUrl)
+		entry1 = feedparser.FeedParserDict({'id':feedUrl})
+		p1 = PostFactory.createPost(url='someurl', feedUrl=feedUrl, title='title', content=None, datePublished=None, author=None, entry=entry1)
 		p1.put()
 		
 		otherFeedUrl = "other feed url"
-		p2 = Post(url="someurl", feedUrl = otherFeedUrl)
+		entry2 = feedparser.FeedParserDict({'id':otherFeedUrl})
+		p2 = PostFactory.createPost(url='someurl', feedUrl=otherFeedUrl,  title='title', content=None, datePublished=None, author=None, entry=entry2)
 		p2.put()
 		
 		self.assertEquals(2, len(Post.all().fetch(2)))
@@ -70,7 +74,9 @@ class ContentParserTest(unittest.TestCase):
 	CANONICAL_RSS_FEED = open("test_data/canonical_rss_feed").read()
 	VALID_ATOM_FEED = open("test_data/valid_atom_feed").read()
 	NO_AUTHOR_RSS_FEED = open("test_data/no_author_rss_feed").read()
+	MULTI_AUTHOR_FEED = open("test_data/multi_author_feed").read()
 	NO_UPDATED_ELEMENT_FEED = open("test_data/no_updated_element_feed").read()
+	FLICKR_RSS_FEED = open("test_data/flickr_rss_feed").read()
 
 	def testCanExtractCorrectNumberOfPostsFromFeedWithMissingUpdatedElement(self):
 		parser = ContentParser(self.NO_UPDATED_ELEMENT_FEED)
@@ -80,12 +86,12 @@ class ContentParserTest(unittest.TestCase):
 
 	def testCanIdentifyPostsWithGoodData(self):
 		parser = ContentParser(self.SAMPLE_FEED)
-		posts = parser.extractPosts()
+		parser.extractPosts()
 		self.assertTrue(parser.dataValid())
 	
 	def testCanIdentifyPostsWithBadData(self):
 		parser = ContentParser("Bad data that isn't an atom entry")
-		posts = parser.extractPosts()
+		parser.extractPosts()
 		self.assertFalse(parser.dataValid())
 	
 	def testCanExtractCorrectNumberOfPostsFromSampleFeed(self):
@@ -93,6 +99,12 @@ class ContentParserTest(unittest.TestCase):
 		posts = parser.extractPosts()
 		self.assertEquals(2, len(posts))
 	
+	def testExtractedPostsHaveOriginalEntry(self):
+		parser = ContentParser(self.SAMPLE_FEED)
+		posts = parser.extractPosts()
+		self.assertTrue(posts[0].getFeedParserEntry())
+		self.assertEqual(posts[0].content, posts[0].getFeedParserEntry()['content'][0]['value'])
+
 	def testCanExtractPostsWithExpectedContentFromSampleFeed(self):
 		parser = ContentParser(self.SAMPLE_FEED)
 		posts = parser.extractPosts()
@@ -102,6 +114,11 @@ class ContentParserTest(unittest.TestCase):
 		self.assertEquals("This is the content for random item #695555168", posts[1].content)
 		self.assertEquals("http://pubsubhubbub-loadtest.appspot.com/foo/695555168", posts[1].url)
 		self.assertEquals("http://pubsubhubbub-loadtest.appspot.com/feed/foo", posts[1].feedUrl)
+
+	def testCanExtractPostWithExpectedContentFromFlickrRssFeed(self):
+		parser = ContentParser(self.FLICKR_RSS_FEED)
+		posts = parser.extractPosts()
+		self.assertEquals("""<p><a href="http://www.flickr.com/people/adewale_oshineye/">adewale_oshineye</a> posted a photo:</p>\n\t\n<p><a href="http://www.flickr.com/photos/adewale_oshineye/4589378281/" title="47: First past the post"><img src="http://farm5.static.flickr.com/4048/4589378281_265c641ebb_m.jpg" width="240" height="160" alt="47: First past the post" /></a></p>""", posts[0].content)
 
 	def testCanExtractPostFromRssFeed(self):
 		parser = ContentParser(self.RSS_FEED)
@@ -141,6 +158,10 @@ class ContentParserTest(unittest.TestCase):
 	def testCanExtractAuthorNameViaDublinCoreCreatorFromRssFeed(self):
 		parser = ContentParser(self.NO_AUTHOR_RSS_FEED)
 		self.assertEquals("Chris", parser.extractFeedAuthor())
+
+	def testDoesNotExtractAuthorFromFeedWithMultipleAuthors(self):
+		parser = ContentParser(self.MULTI_AUTHOR_FEED)
+		self.assertEquals("", parser.extractFeedAuthor())
 	
 	def testCanExtractHubFromFeed(self):
 		parser = ContentParser(self.BLOGGER_FEED)
@@ -159,7 +180,7 @@ class ContentParserTest(unittest.TestCase):
 		self.assertEquals("http://pubsubhubbub.appspot.com", ContentParser(self.FEEDBURNER_FEED).extractHub())
 		self.assertEquals("http://pubsubhubbub.appspot.com/", ContentParser(self.NO_UPDATED_ELEMENT_FEED).extractHub())
 	
-	def testCanExtractsDefaultHubForHubLessFeeds(self):
+	def testCanExtractDefaultHubForHubLessFeeds(self):
 		parser = ContentParser(self.HUBLESS_FEED)
 		hub = parser.extractHub()
 		self.assertEquals(DEFAULT_HUB, hub)

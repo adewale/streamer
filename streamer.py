@@ -12,6 +12,7 @@ import urllib
 import feedparser
 import logging
 import os
+import pprint
 import time
 
 # Change this for your installation
@@ -37,14 +38,35 @@ class BackGroundTaskHandler(webapp.RequestHandler):
 		if functionName == 'handleNewSubscription':
 			handleNewSubscription(self.request.get('url'), self.request.get('nickname'))
 
+class PostFactory(object):
+	"""A factory for Posts.
+
+	This avoids having to over-ride AppEngine's __init__ method in order to convert a FeedParser entry into a type that can be stored in the DataStore. Solutions like using an Expando won't work because many of the FeedParser types are things like time.struct_time which don't map cleanly onto built-in DataStore types."""
+	@staticmethod
+	def createPost(url, feedUrl, title, content, datePublished, author, entry):
+		if hasattr(entry, 'id'):
+			uniqueId = entry.id
+		elif hasattr(entry, 'link'):
+			uniqueId = entry.link
+		else:
+			raise ValueError("Entry with no unique identifier: %s" % pprint.pformat(entry))
+		entryString = repr(entry)
+		return Post(keyName=uniqueId, url=url, feedUrl=feedUrl, title=title, content=content, datePublished=datePublished, author=author, entryString=entryString)
+
 class Post(db.Model):
+	"""An atom:entry or RSS item."""
 	url = db.StringProperty(required=True)
 	feedUrl = db.StringProperty(required=True)
-	title = db.StringProperty()
+	title = db.StringProperty(multiline=True)
 	content = db.TextProperty()
 	datePublished = db.DateTimeProperty()
 	author = db.StringProperty()
-	
+	entryString = db.TextProperty()
+
+	def getFeedParserEntry(self):
+		entry = eval(self.entryString)
+		return entry
+
 	@staticmethod
 	def deleteAllPostsWithMatchingFeedUrl(url):
 		"""This method cheats and only deletes the first 500 due to GAE constraints"""
@@ -53,6 +75,7 @@ class Post(db.Model):
 			db.delete(postKey)
 
 class Subscription(db.Model):
+	"""A record of a PSHB lease."""
 	url = db.StringProperty(required=True)
 	hub = db.StringProperty(required=True)
 	sourceUrl = db.StringProperty(required=True)
@@ -106,6 +129,7 @@ class HubSubscriber(object):
 			logging.info(response.content)
 
 def render(out, htmlPage, templateValues = {}):
+	templateValues['admin'] = userIsAdmin()
 	path = os.path.join(os.path.dirname(__file__), htmlPage)
 	out.write(template.render(path, templateValues))
 
@@ -124,11 +148,6 @@ def userIsAdmin():
 		return True
 	return False
 
-class AdminHandler(webapp.RequestHandler):
-	def get(self):
-		# Everybody can see this page
-		render(self.response.out, 'admin.html')
-
 class AdminAddSubscriptionHandler(webapp.RequestHandler):
 	@login_required
 	def get(self):
@@ -137,7 +156,7 @@ class AdminAddSubscriptionHandler(webapp.RequestHandler):
 			templateValues = getAllSubscriptionsAsTemplateValues()
 			render(self.response.out, 'add_subscriptions.html', templateValues)
 		else:
-			self.error(404)
+			self.error(403)
 
 class AdminDeleteSubscriptionHandler(webapp.RequestHandler):
 	@login_required
@@ -147,7 +166,7 @@ class AdminDeleteSubscriptionHandler(webapp.RequestHandler):
 			templateValues = getAllSubscriptionsAsTemplateValues()
 			render(self.response.out, 'delete_subscriptions.html', templateValues)
 		else:
-			self.error(404)
+			self.error(403)
 	def post(self):
 		# Only admin users can see this page
 		if userIsAdmin():
@@ -157,7 +176,7 @@ class AdminDeleteSubscriptionHandler(webapp.RequestHandler):
 				handleDeleteSubscription(url)
 			self.redirect('/admin/deleteSubscription')
 		else:
-			self.error(404)
+			self.error(403)
 
 class AboutHandler(webapp.RequestHandler):
 	def get(self):
@@ -276,6 +295,9 @@ class UrlNotFoundError(Exception):
 		return self.url
 
 class ContentParser(object):
+	"""A parser that turns PSHB feeds into Streamer types.
+
+	It uses the FeedParser library to parse the feeds, extracts information about the PSHB hub being used and creates valid Streamer Posts."""
 	def __init__(self, content, defaultHub = DEFAULT_HUB, alwaysUseDefaultHub = ALWAYS_USE_DEFAULT_HUB, urlToFetch = ""):
 		if urlToFetch:
 			response = urlfetch.fetch(urlToFetch)
@@ -328,22 +350,32 @@ class ContentParser(object):
 			link = self.__extractAtomPermaLink(entry)
 			title = entry.get('title', '')
 			content = entry.content[0].value
+			#Workaround for Flickr's RSS feeds. I should probably ignore it but they use RSS 2.0 as their default format.
+			#TODO(ade) Check to see if this is actually a bug in Feedparser.py since arguably rss2.0:description elements should be mapped to atom:content elements.
+			if not content:
+				content = entry.get('summary', '')
 			datePublished = self.__createDateTime(entry)
 			
 			author = self.__extractAuthor(entry)
 		else:
+			logging.debug("Entry has no atom:content")
 			link = entry.get('link', '')
 			title = entry.get('title', '')
 			content = entry.get('description', '')
 			datePublished = self.__createDateTime(entry)
 			author = ""
 		feedUrl = self.extractFeedUrl()
-		return Post(url=link, feedUrl = feedUrl, title=title, content=content, datePublished=datePublished, author=author)
+		return PostFactory.createPost(url=link, feedUrl=feedUrl, title=title, content=content, datePublished=datePublished, author=author, entry=entry)
 
 	def extractFeedAuthor(self):
 		author = self.__extractAuthor(self.data.feed)
 		if not author:
-			return self.__extractAuthor(self.data.entries[0])
+			# Get the authors of all the entries and if they're the same assume that author made all the tntries.
+			#TODO(ade) This and the extractAuthor method don't correctly handle situations where a feed or an entry has multiple authors.
+			authors = [self.__extractAuthor(entry) for entry in self.data.entries]
+			if len(set(authors)) > 1:
+				return ""
+			return authors[0]
 		return author
 
 	def extractPosts(self):
@@ -372,10 +404,10 @@ class ContentParser(object):
 	def extractSourceUrl(self):
 		sourceUrl = self.__extractAtomPermaLink(self.data.feed)
 		return sourceUrl
+
 application = webapp.WSGIApplication([
 ('/', PostsHandler),
 ('/about', AboutHandler),
-('/admin', AdminHandler),
 ('/admin/addSubscription', AdminAddSubscriptionHandler),
 ('/admin/deleteSubscription', AdminDeleteSubscriptionHandler),
 ('/posts', PostsHandler),
