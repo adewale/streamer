@@ -5,13 +5,11 @@ heuristics I suggested on the feedparser mailing list: http://groups.google.com/
 - Use keys to identify posts. A posts's key should be a tuple
   containing : feed url, post url and (if available) atom:source id
 
-- The handle* function calls should all be made into invocations of deferred.defer()
-
-- Subscriptions should be for 90 days with a scheduled resubscription task being set up to run 30 days in the future. This should ensure that feeds get re-subscribed often enough that changes in hubs will get picked up and ensure that old code doesn't get enqueued.
+- The handle* function calls should all be made into background tasks by putting them into task queues.
 
 - List all the things needed to be a valid PSHB subscriber. Consider extracting that out as a reusable interface based on callbacks. Make that into its own configurable library.
 - OPML import/export
 
 - Expose an atom feed with support for PSHB and atom:source
 
-- Consider storing the entirety of the feedarser entry
+- Store the entirety of the feedarser entry and expose all of it in the Atom feed that's generated. We should support MustIgnore by making sure that anything that comes in to Streamer goes out.
