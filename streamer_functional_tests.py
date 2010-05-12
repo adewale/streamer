@@ -14,9 +14,7 @@ os.environ['USER_EMAIL'] = 'example@example.org'
 os.environ['USER_ID'] = 'example' # Our test user is logged in
 streamer.OPEN_ACCESS = True #Make the Admin pages visible to all
 
-
-class SubscriptionsHandlerTest(FunctionalTestCase, unittest.TestCase):
-	APPLICATION = streamer.application
+class BaseSubscriptionHandlerTest(FunctionalTestCase, unittest.TestCase):
 	def assertOKAfterRedirect(self, response, expectedString=None):
 		# Response should be a redirect that takes the user to a sensible page
 		self.assertRedirects(response)
@@ -24,6 +22,9 @@ class SubscriptionsHandlerTest(FunctionalTestCase, unittest.TestCase):
 		self.assertOK(response)
 		if expectedString:
 			response.mustcontain(expectedString)
+
+class SubscriptionsHandlerTest(BaseSubscriptionHandlerTest):
+	APPLICATION = streamer.application
 		
 	def testCanShowSubscriptions(self):
 		response = self.get('/subscriptions')
@@ -37,7 +38,7 @@ class SubscriptionsHandlerTest(FunctionalTestCase, unittest.TestCase):
 	def testCanAddNewSubscriptionUsingTaskQueue(self):
 		data = {'function':'handleNewSubscription', 'url':'http://blog.oshineye.com/feeds/posts/default', 'nickname':'ade'}
 		response = self.post('/bgtasks', data=data, expect_errors=True)
-		self.assertEqual(streamer.Subscription.all().count(), 1)
+		self.assertEqual(1, streamer.Subscription.all().count())
 
 	def testAddingNewSubscriptionsUsingTaskQueueIsIdempotent(self):
 		data = {'function':'handleNewSubscription', 'url':'http://blog.oshineye.com/feeds/posts/default', 'nickname':'ade'}
@@ -78,6 +79,21 @@ class AboutHandlerTest(FunctionalTestCase, unittest.TestCase):
 		response = self.get('/about')
 		self.assertOK(response)
 		response.mustcontain("<title>About</title>")
+
+class AdminRefreshSubscriptionsHandlerTest(BaseSubscriptionHandlerTest):
+	APPLICATION = streamer.application
+	def testCanShowRefreshSubscriptionsPage(self):
+		response = self.get('/admin/refreshSubscriptions')
+		self.assertOKAfterRedirect(response, '<title>Subscriptions</title>')
+
+	def testEnqueuesTaskPerSubscription(self):
+		self.assertTasksInQueue(0)
+		for i in range(5):
+			url = "http://example.org/atom" + str(i)
+			f = streamer.Subscription(url=url, hub = "http://hub.example.org/", sourceUrl = "http://example.org/", key_name = url)
+			f.put()
+		self.get('/admin/refreshSubscriptions')
+		self.assertTasksInQueue(streamer.Subscription.all().count())
 
 class AdminAddSubscriptionHandlerTest(FunctionalTestCase, unittest.TestCase):
 	APPLICATION = streamer.application
