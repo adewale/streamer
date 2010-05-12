@@ -35,6 +35,7 @@ class SubscriptionTest(unittest.TestCase):
 		f2 = Subscription(url=url, hub = "http://hub.example.org/", sourceUrl = "http://example.org/", key_name = url)
 		f2.put()
 		self.assertEquals(1, len(Subscription.find(url).fetch(1000)))
+		self.assertEquals(1, Subscription.all().count())
 	
 	def testCanDeleteSubscription(self):
 		url = "http://example.org/atom"
@@ -73,7 +74,7 @@ class PostTest(unittest.TestCase):
 		
 		p2 = PostFactory.createPost(url='someurl', feedUrl=feedUrl,  title='title', content=None, datePublished=None, author=None, entry=entry1)
 		p2.put()
-		self.assertEquals(1, len(Post.all().fetch(5)))
+		self.assertEquals(1, Post.all().count())
 
 class ContentParserTest(unittest.TestCase):
 	SAMPLE_FEED = open("test_data/sample_entries").read()

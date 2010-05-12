@@ -15,7 +15,7 @@ import os
 import pprint
 import time
 
-# Change this for your installation
+# Change these for your installation
 APP_NAME = "streamer-ade"
 
 # This is the token that will act as a shared secret to verify that this application is the one that registered the given subscription. The hub will send us a challenge containing this token.
@@ -32,6 +32,10 @@ OPEN_ACCESS = False
 
 # How often should a task, such as registering a subscription, be retried before we give up
 MAX_TASK_RETRIES = 10
+# Installation specific config ends.
+
+# Maximum number of items to be fetched for any part of the system that wants everything of a given data model type
+MAX_FETCH = 500
 
 from google.appengine.api.labs import taskqueue
 class BackGroundTaskHandler(webapp.RequestHandler):
@@ -78,9 +82,8 @@ class Post(db.Model):
 
 	@staticmethod
 	def deleteAllPostsWithMatchingFeedUrl(url):
-		"""This method cheats and only deletes the first 500 due to GAE constraints"""
 		postsQuery = db.GqlQuery("SELECT __key__ from Post where feedUrl= :1", url)
-		for postKey in postsQuery.fetch(500):
+		for postKey in postsQuery.fetch(MAX_FETCH):
 			db.delete(postKey)
 
 class Subscription(db.Model):
@@ -113,7 +116,7 @@ class Subscription(db.Model):
 	def deleteSubscriptionWithMatchingUrl(url):
 		query = db.GqlQuery("SELECT __key__ from Subscription where url= :1", url)
 		# We deliberately use a large fetch value to ensure we delete all feeds matching that URL
-		for key in query.fetch(500):
+		for key in query.fetch(MAX_FETCH):
 			db.delete(key)
 
 class HubSubscriber(object):
@@ -156,6 +159,26 @@ def userIsAdmin():
 	if OPEN_ACCESS or (user and users.is_current_user_admin()):
 		return True
 	return False
+
+class BaseAdminHandler(webapp.RequestHandler):
+	def addNewSubscription(self, url):
+		user = users.get_current_user()
+		nickname = user.nickname()
+		# This is basically calling handleNewSubscription(url, nickname) in the background
+		taskqueue.add(url='/bgtasks', params={'function': 'handleNewSubscription', 'url':url, 'nickname':nickname})
+
+class AdminRefreshSubscriptionsHandler(BaseAdminHandler):
+	@login_required
+	def get(self):
+		# Only admin users can see this page
+		if userIsAdmin():
+			query = Subscription.all()
+			for subscription in query.fetch(MAX_FETCH):
+				logging.info("Refreshing subscription: %s " % subscription.url)
+				self.addNewSubscription(subscription.url)
+			self.redirect('/subscriptions')
+		else:
+			self.error(403)
 
 class AdminAddSubscriptionHandler(webapp.RequestHandler):
 	@login_required
@@ -222,7 +245,7 @@ def handleNewSubscription(url, nickname):
 	logging.info("About to store %d new posts for subscription: %s" % (len(posts), url))
 	db.put(posts)
 
-class SubscriptionsHandler(webapp.RequestHandler):
+class SubscriptionsHandler(BaseAdminHandler):
 	def get(self):
 		"""Show all the resources in this collection"""
 		# Render them in the template
@@ -232,18 +255,15 @@ class SubscriptionsHandler(webapp.RequestHandler):
 		"""Create a new resource in this collection"""
 		# Only admins can add new subscriptions
 		if not userIsAdmin():
-			self.error(404)
+			self.error(403)
 		
 		# Extract the url from the request
 		url = self.request.get('url')
 		if not url or len(url.strip()) == 0:
 			self.response.set_status(500)
 			return
-		user = users.get_current_user()
-		nickname = user.nickname()
 
-		# This is basically calling handleNewSubscription(url, nickname) in the background
-		taskqueue.add(url='/bgtasks', params={'function': 'handleNewSubscription', 'url':url, 'nickname':nickname})
+		self.addNewSubscription(url)
 		
 		# Redirect the user via a GET
 		self.redirect('/subscriptions')
@@ -423,6 +443,7 @@ application = webapp.WSGIApplication([
 ('/about', AboutHandler),
 ('/admin/addSubscription', AdminAddSubscriptionHandler),
 ('/admin/deleteSubscription', AdminDeleteSubscriptionHandler),
+('/admin/refreshSubscriptions', AdminRefreshSubscriptionsHandler),
 ('/posts', PostsHandler),
 ('/subscriptions', SubscriptionsHandler),
 ('/bgtasks', BackGroundTaskHandler),],
