@@ -14,5 +14,7 @@ handlers:
 - url: /bgtasks
   script: streamer.py
   login: admin
+- url: /stats.*
+  script: $PYTHON_LIB/google/appengine/ext/appstats/ui.py
 - url: /.*
   script: streamer.py
