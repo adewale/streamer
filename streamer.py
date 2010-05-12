@@ -16,12 +16,21 @@ import pprint
 import time
 
 # Change this for your installation
-APP_NAME = "scaggregator"
+APP_NAME = "streamer-ade"
+
+# This is the token that will act as a shared secret to verify that this application is the one that registered the given subscription. The hub will send us a challenge containing this token.
 SECRET_TOKEN = "SOME_SECRET_TOKEN"
+
+# Should we ignore the hubs defined in the feeds we're consuming
 ALWAYS_USE_DEFAULT_HUB = False
-# This is a hub I've set up that does polling
+
+# What PSHB hub should we use for feeds that don't support PSHB. pollinghub.appspot.com is a hub I've set up that does polling.
 DEFAULT_HUB = "http://pollinghub.appspot.com/"
+
+# Should anyone be able to add/delete subscriptions or should access be restricted to admins
 OPEN_ACCESS = False
+
+# How often should a task, such as registering a subscription, be retried before we give up
 MAX_TASK_RETRIES = 10
 
 from google.appengine.api.labs import taskqueue
@@ -51,7 +60,7 @@ class PostFactory(object):
 		else:
 			raise ValueError("Entry with no unique identifier: %s" % pprint.pformat(entry))
 		entryString = repr(entry)
-		return Post(keyName=uniqueId, url=url, feedUrl=feedUrl, title=title, content=content, datePublished=datePublished, author=author, entryString=entryString)
+		return Post(key_name=uniqueId, url=url, feedUrl=feedUrl, title=title, content=content, datePublished=datePublished, author=author, entryString=entryString)
 
 class Post(db.Model):
 	"""An atom:entry or RSS item."""
@@ -189,12 +198,12 @@ def handleDeleteSubscription(url):
 	Subscription.deleteSubscriptionWithMatchingUrl(url)
 
 def handleNewSubscription(url, nickname):
-	logging.info("Subscription added: %s by %s" % (url, nickname))
+	logging.info("Subscription added: <%s> by <%s>" % (url, nickname))
 
 	try:
 		parser = ContentParser(None, DEFAULT_HUB, ALWAYS_USE_DEFAULT_HUB, urlToFetch = url)
-	except UrlNotFoundError:
-		logging.warn("Url added by: %s not found: %s" % (nickname, url))
+	except UrlError, e:
+		logging.warn("Url added by: %s had problem.\n Error was: %s" % (nickname, e))
 		return
 	hub = parser.extractHub()
 	sourceUrl = parser.extractSourceUrl()
@@ -275,7 +284,6 @@ class PostsHandler(webapp.RequestHandler):
 			self.response.out.write("We don't have a subscription for that feed: %s" % url)
 			return
 
-		parser = ContentParser(self.request.body, DEFAULT_HUB, ALWAYS_USE_DEFAULT_HUB)
 		if not parser.dataValid():
 			parser.logErrors()
 			self.response.out.write("Bad entries: %s" % data)
@@ -287,12 +295,14 @@ class PostsHandler(webapp.RequestHandler):
 			self.response.set_status(200)
 			self.response.out.write("Good entries")
 
-class UrlNotFoundError(Exception):
-	def __init__(self, url):
+class UrlError(Exception):
+	def __init__(self, url, status_code, response_string):
 		self.url = url
+		self.status_code = status_code
+		self.response_string = response_string
 
 	def __str__(self):
-		return self.url
+		return 'url: %s status code: %d response:<%s>' % (self.url, self.status_code, self.response_string)
 
 class ContentParser(object):
 	"""A parser that turns PSHB feeds into Streamer types.
@@ -302,8 +312,8 @@ class ContentParser(object):
 		if urlToFetch:
 			response = urlfetch.fetch(urlToFetch)
 			logging.info("Status was: [%s]" % response.status_code)
-			if response.status_code == 404:
-				raise UrlNotFoundError(urlToFetch)
+			if response.status_code == 404 or response.status_code == 400:
+				raise UrlError(urlToFetch, response.status_code, str(response))
 			content = response.content
 		self.data = feedparser.parse(content)
 		self.defaultHub = defaultHub
@@ -325,6 +335,9 @@ class ContentParser(object):
 			return datetime.datetime.utcnow()
 
 	def __extractLink(self, entryOrFeed, relName):
+		if not hasattr(entryOrFeed, 'links'):
+			logging.warning("Object doesn't have links: %s" % str(entryOrFeed))
+			return None
 		for link in entryOrFeed.links:
 			if link['rel'] == relName:
 				return str(link['href'])

@@ -4,7 +4,12 @@ rather than doing it's own polling or being powered by a cron job.
 It's meant to be deployed on Google App Engine and it's written in Python.
 
 INSTALLATION
-~ This isn't yet ready for installation by other people
+This isn't yet ready for installation by people who don't feel like changing the Python code. However if you feel brave you should:
+- Register an AppEngine application at http://appengine.google.com/start/createapp?
+- Change the app.yaml file to have the same Application Identifier as your application.
+- Change the APP_NAME constant to have the same Application Identifier as your application.
+- Change the SECRET_TOKEN from the default
+- Use the Google App Engine Launcher: http://code.google.com/appengine/downloads.html#Google_App_Engine_SDK_for_Python to deploy the application.
 
 
 TESTING

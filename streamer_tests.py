@@ -65,12 +65,23 @@ class PostTest(unittest.TestCase):
 		self.assertEquals(p2.feedUrl, allPosts[0].feedUrl)
 		self.assertEquals(1, len(allPosts))
 
+       	def testAddingPostTwiceOnlyAddsOneRecordToDataStore(self):
+		feedUrl = "some feed url"
+		entry1 = feedparser.FeedParserDict({'id':feedUrl})
+		p1 = PostFactory.createPost(url='someurl', feedUrl=feedUrl, title='title', content=None, datePublished=None, author=None, entry=entry1)
+		p1.put()
+		
+		p2 = PostFactory.createPost(url='someurl', feedUrl=feedUrl,  title='title', content=None, datePublished=None, author=None, entry=entry1)
+		p2.put()
+		self.assertEquals(1, len(Post.all().fetch(5)))
+
 class ContentParserTest(unittest.TestCase):
 	SAMPLE_FEED = open("test_data/sample_entries").read()
 	BLOGGER_FEED = open("test_data/blogger_feed").read()
 	HUBLESS_FEED = open("test_data/hubless_feed").read()
 	FEEDBURNER_FEED = open("test_data/feedburner_feed").read()
 	RSS_FEED = open("test_data/rss_feed").read()
+	RSS_FEED_WITHOUT_LINKS = open("test_data/rss_feed_without_links").read()
 	CANONICAL_RSS_FEED = open("test_data/canonical_rss_feed").read()
 	VALID_ATOM_FEED = open("test_data/valid_atom_feed").read()
 	NO_AUTHOR_RSS_FEED = open("test_data/no_author_rss_feed").read()
