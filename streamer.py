@@ -55,15 +55,27 @@ class PostFactory(object):
 	"""A factory for Posts.
 
 	This avoids having to over-ride AppEngine's __init__ method in order to convert a FeedParser entry into a type that can be stored in the DataStore. Solutions like using an Expando won't work because many of the FeedParser types are things like time.struct_time which don't map cleanly onto built-in DataStore types."""
+
 	@staticmethod
-	def createPost(url, feedUrl, title, content, datePublished, author, entry):
+	def __extractUniqueId(entry):
+		# TODO(ade) Change this to a normal class rather than use staticmethod everywhere
+		if hasattr(entry, 'source'):
+			return entry.source.id
+
 		if hasattr(entry, 'id'):
-			uniqueId = entry.id
+			return entry.id
 		elif hasattr(entry, 'link'):
-			uniqueId = entry.link
+			return entry.link
 		else:
 			raise ValueError("Entry with no unique identifier: %s" % pprint.pformat(entry))
+	
+	@staticmethod
+	def createPost(url, feedUrl, title, content, datePublished, author, entry):
+	       	uniqueId = PostFactory.__extractUniqueId(entry)
+
 		entryString = repr(entry)
+		logging.debug("Unique id is: %s for entry: %s" % (uniqueId, pprint.pformat(entry)))
+
 		return Post(key_name=uniqueId, url=url, feedUrl=feedUrl, title=title, content=content, datePublished=datePublished, author=author, entryString=entryString)
 
 class Post(db.Model):

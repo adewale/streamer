@@ -89,6 +89,7 @@ class ContentParserTest(unittest.TestCase):
 	MULTI_AUTHOR_FEED = open("test_data/multi_author_feed").read()
 	NO_UPDATED_ELEMENT_FEED = open("test_data/no_updated_element_feed").read()
 	FLICKR_RSS_FEED = open("test_data/flickr_rss_feed").read()
+	GREADER_FEED = open("test_data/greader_feed").read()
 
 	def testCanExtractCorrectNumberOfPostsFromFeedWithMissingUpdatedElement(self):
 		parser = ContentParser(self.NO_UPDATED_ELEMENT_FEED)
@@ -130,7 +131,13 @@ class ContentParserTest(unittest.TestCase):
 	def testCanExtractPostWithExpectedContentFromFlickrRssFeed(self):
 		parser = ContentParser(self.FLICKR_RSS_FEED)
 		posts = parser.extractPosts()
-		self.assertEquals("""<p><a href="http://www.flickr.com/people/adewale_oshineye/">adewale_oshineye</a> posted a photo:</p>\n\t\n<p><a href="http://www.flickr.com/photos/adewale_oshineye/4589378281/" title="47: First past the post"><img src="http://farm5.static.flickr.com/4048/4589378281_265c641ebb_m.jpg" width="240" height="160" alt="47: First past the post" /></a></p>""", posts[0].content)
+		self.assertEquals("""<p><a href="http://www.flickr.com/people/adewale_oshineye/">adewale_oshineye</a> posted a photo:</p>\n\t\n<p><a href="http://www.flickr.com/photos/adewale_oshineye/4589378281/" title="47: First past the post"><img alt="47: First past the post" height="160" src="http://farm5.static.flickr.com/4048/4589378281_265c641ebb_m.jpg" width="240" /></a></p>""", posts[0].content)
+
+	def testExtractsAtomIdFromSourceElementIfPresent(self):
+		parser = ContentParser(self.GREADER_FEED)
+		posts = parser.extractPosts()
+		self.assertEquals("tag:google.com,2005:reader/user/12054031251002776633/source/com.google/link", posts[0].key().name())
+		self.assertEquals("tag:google.com,2005:reader/user/12054031251002776633/syndication/source/s:youtube", posts[1].key().name())
 
 	def testCanExtractPostFromRssFeed(self):
 		parser = ContentParser(self.RSS_FEED)
