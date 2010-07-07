@@ -1,12 +1,5 @@
 - Adding a feed should send you back to the addSubscription page
 - Add a handler for exporting a textual list of the feeds of the blogs that are being consumed.
-- Each post (identified by a url or id) should only turn up once on the Posts page. 
-New entries with the same url/id should replace old ones. Follow the
-heuristics I suggested on the feedparser mailing list: http://groups.google.com/group/feedparser-dev/msg/29ff575f669bc092 
-
-- Use keys to identify posts. A posts's key should be a tuple
-  containing : feed url, post url and (if available) atom:source id
-
 - The handle* function calls should all be made into background tasks by putting them into task queues.
 
 - List all the things needed to be a valid PSHB subscriber. Consider extracting that out as a reusable interface based on callbacks. Make that into its own configurable library.
