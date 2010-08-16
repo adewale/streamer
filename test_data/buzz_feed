@@ -1,0 +1,918 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:activity="http://activitystrea.ms/spec/1.0/" xmlns:buzz="http://schemas.google.com/buzz/2010" xmlns:crosspost="http://purl.org/syndication/cross-posting" xmlns:gd="http://schemas.google.com/g/2005" xmlns:georss="http://www.georss.org/georss" xmlns:media="http://search.yahoo.com/mrss/" xmlns:poco="http://portablecontacts.net/ns/1.0" xmlns:thr="http://purl.org/syndication/thread/1.0" gd:kind="buzz#activityFeed">
+  <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@public?alt=atom" rel="self" type="application/atom+xml"/>
+  <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@public?alt=atom&amp;max-results=20&amp;c=CNrP1IbvtKMCSM-dnoSAuaMC" rel="next"/>
+  <link href="http://pubsubhubbub.appspot.com/" rel="hub"/>
+  <title type="text">Google Buzz Public Feed for Adewale Oshineye</title>
+  <updated>2010-08-14T10:06:44.350Z</updated>
+  <id>tag:google.com,2010:buzz-feed:public:posted:105037104815911535953</id>
+  <generator uri="http://www.google.com/buzz">Google Buzz</generator>
+  <entry gd:kind="buzz#activity">
+    <title>OAuth is a 4-letter word OAuth Test Client - term.ie</title>
+    <published>2010-08-13T22:49:51.055Z</published>
+    <updated>2010-08-13T22:49:51.055Z</updated>
+    <id>tag:google.com,2010:buzz:z13kczpwqtyiwd0ps04cjldqhk2ffnwpzys0k</id>
+    <link href="http://www.google.com/buzz/105037104815911535953/XnDuPjMb36f" rel="alternate" type="text/html"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z13kczpwqtyiwd0ps04cjldqhk2ffnwpzys0k?alt=atom" rel="self" type="application/atom+xml"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z13kczpwqtyiwd0ps04cjldqhk2ffnwpzys0k/@comments?alt=atom" rel="replies" thr:count="3" thr:updated="2010-08-14T10:06:44.350Z" type="application/atom+xml"/>
+    <author>
+      <poco:id>105037104815911535953</poco:id>
+      <poco:photoUrl>http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8</poco:photoUrl>
+      <name>Adewale Oshineye</name>
+      <uri>http://www.google.com/profiles/adewale</uri>
+      <link href="http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8" rel="photo" type="image/jpeg"/>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <content type="text/html">OAuth is a 4-letter word&lt;br /&gt;&lt;br /&gt;&lt;a href="http://term.ie/oauth/example/client.php"&gt;&lt;b&gt;OAuth Test Client&lt;/b&gt;&lt;/a&gt; - &lt;a href="http://term.ie/" class="ot-origin-anchor"&gt;term.ie&lt;/a&gt;</content>
+    <activity:verb>http://activitystrea.ms/schema/1.0/share</activity:verb>
+    <activity:object>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/note</activity:object-type>
+      <content type="html">OAuth is a 4-letter word&lt;br /&gt;&lt;br /&gt;&lt;a href="http://term.ie/oauth/example/client.php"&gt;&lt;b&gt;OAuth Test Client&lt;/b&gt;&lt;/a&gt; - &lt;a href="http://term.ie/" class="ot-origin-anchor"&gt;term.ie&lt;/a&gt;</content>
+      <buzz:original-content type="text"/>
+      <link href="http://www.google.com/buzz/105037104815911535953/XnDuPjMb36f" rel="alternate" type="text/html"/>
+    </activity:object>
+    <source>
+      <activity:service>
+        <title>Google Reader</title>
+      </activity:service>
+    </source>
+    <buzz:visibility>
+      <buzz:aclentry type="group">
+        <poco:id>tag:google.com,2010:buzz-group:@me:@public</poco:id>
+        <uri>https://www.googleapis.com/buzz/v1/people/@me/@groups/G:@me:@public?alt=atom</uri>
+        <poco:name>Public</poco:name>
+      </buzz:aclentry>
+    </buzz:visibility>
+    <link buzz:count="3" href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z13kczpwqtyiwd0ps04cjldqhk2ffnwpzys0k/@liked?alt=atom" rel="http://schemas.google.com/buzz/2010#liked" type="application/poco+xml"/>
+  </entry>
+  <entry gd:kind="buzz#activity">
+    <title>"Conventional wisdom is usually wrong - Startups create new products for new markets. It is never...</title>
+    <published>2010-08-14T01:01:36.814Z</published>
+    <updated>2010-08-14T01:01:36.814Z</updated>
+    <id>tag:google.com,2010:buzz:z12sin2oksv1sxrcc23wehng0muwz5jzq04</id>
+    <link href="http://www.google.com/buzz/105037104815911535953/2TfhRibHnco" rel="alternate" type="text/html"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z12sin2oksv1sxrcc23wehng0muwz5jzq04?alt=atom" rel="self" type="application/atom+xml"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z12sin2oksv1sxrcc23wehng0muwz5jzq04/@comments?alt=atom" rel="replies" thr:count="0" thr:updated="2010-08-14T01:01:36.814Z" type="application/atom+xml"/>
+    <author>
+      <poco:id>105037104815911535953</poco:id>
+      <poco:photoUrl>http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8</poco:photoUrl>
+      <name>Adewale Oshineye</name>
+      <uri>http://www.google.com/profiles/adewale</uri>
+      <link href="http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8" rel="photo" type="image/jpeg"/>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <content type="text/html">&amp;quot;Conventional wisdom is usually wrong - Startups create new products for new markets. It is never obvious or easy. If it were, hundreds of companies would have already done it. Trying to chase the latest idea or craze rarely works. Trying to follow conventional wisdom in a startup puts you on a path like AltaVista, Excite, Lycos, or Yahoo.&amp;quot;&lt;br /&gt;&lt;br /&gt;&lt;a href="http://feedproxy.google.com/~r/TheNextBigThing/~3/wRxmssTDqP4/what-happened-to-altavista-and-yahoo.html"&gt;&lt;b&gt;What happened to AltaVista and Yahoo? From innovator to imitator to forgotten&lt;/b&gt;&lt;/a&gt; - &lt;a href="http://dondodge.typepad.com/the_next_big_thing/" class="ot-origin-anchor"&gt;Don Dodge on The Next Big Thing&lt;/a&gt;</content>
+    <activity:verb>http://activitystrea.ms/schema/1.0/share</activity:verb>
+    <activity:object>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/note</activity:object-type>
+      <content type="html">&amp;quot;Conventional wisdom is usually wrong - Startups create new products for new markets. It is never obvious or easy. If it were, hundreds of companies would have already done it. Trying to chase the latest idea or craze rarely works. Trying to follow conventional wisdom in a startup puts you on a path like AltaVista, Excite, Lycos, or Yahoo.&amp;quot;&lt;br /&gt;&lt;br /&gt;&lt;a href="http://feedproxy.google.com/~r/TheNextBigThing/~3/wRxmssTDqP4/what-happened-to-altavista-and-yahoo.html"&gt;&lt;b&gt;What happened to AltaVista and Yahoo? From innovator to imitator to forgotten&lt;/b&gt;&lt;/a&gt; - &lt;a href="http://dondodge.typepad.com/the_next_big_thing/" class="ot-origin-anchor"&gt;Don Dodge on The Next Big Thing&lt;/a&gt;</content>
+      <buzz:original-content type="text"/>
+      <link href="http://www.google.com/buzz/105037104815911535953/2TfhRibHnco" rel="alternate" type="text/html"/>
+    </activity:object>
+    <source>
+      <activity:service>
+        <title>Google Reader</title>
+      </activity:service>
+    </source>
+    <buzz:visibility>
+      <buzz:aclentry type="group">
+        <poco:id>tag:google.com,2010:buzz-group:@me:@public</poco:id>
+        <uri>https://www.googleapis.com/buzz/v1/people/@me/@groups/G:@me:@public?alt=atom</uri>
+        <poco:name>Public</poco:name>
+      </buzz:aclentry>
+    </buzz:visibility>
+    <link buzz:count="1" href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z12sin2oksv1sxrcc23wehng0muwz5jzq04/@liked?alt=atom" rel="http://schemas.google.com/buzz/2010#liked" type="application/poco+xml"/>
+  </entry>
+  <entry gd:kind="buzz#activity">
+    <title>Opinions vs. Data - ignorethecode.net</title>
+    <published>2010-08-14T00:56:57.956Z</published>
+    <updated>2010-08-14T00:56:57.956Z</updated>
+    <id>tag:google.com,2010:buzz:z12est5rjkrhjfhfa23wehng0muwz5jzq04</id>
+    <link href="http://www.google.com/buzz/105037104815911535953/J8cdonX3w3z" rel="alternate" type="text/html"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z12est5rjkrhjfhfa23wehng0muwz5jzq04?alt=atom" rel="self" type="application/atom+xml"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z12est5rjkrhjfhfa23wehng0muwz5jzq04/@comments?alt=atom" rel="replies" thr:count="0" thr:updated="2010-08-14T00:56:57.956Z" type="application/atom+xml"/>
+    <author>
+      <poco:id>105037104815911535953</poco:id>
+      <poco:photoUrl>http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8</poco:photoUrl>
+      <name>Adewale Oshineye</name>
+      <uri>http://www.google.com/profiles/adewale</uri>
+      <link href="http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8" rel="photo" type="image/jpeg"/>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <content type="text/html">&lt;a href="http://feedproxy.google.com/~r/IgnoreTheCode/~3/fCKko2oSGAA/"&gt;&lt;b&gt;Opinions vs. Data&lt;/b&gt;&lt;/a&gt; - &lt;a href="http://ignorethecode.net" class="ot-origin-anchor"&gt;ignorethecode.net&lt;/a&gt;</content>
+    <activity:verb>http://activitystrea.ms/schema/1.0/share</activity:verb>
+    <activity:object>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/note</activity:object-type>
+      <content type="html">&lt;a href="http://feedproxy.google.com/~r/IgnoreTheCode/~3/fCKko2oSGAA/"&gt;&lt;b&gt;Opinions vs. Data&lt;/b&gt;&lt;/a&gt; - &lt;a href="http://ignorethecode.net" class="ot-origin-anchor"&gt;ignorethecode.net&lt;/a&gt;</content>
+      <buzz:original-content type="text"/>
+      <link href="http://www.google.com/buzz/105037104815911535953/J8cdonX3w3z" rel="alternate" type="text/html"/>
+    </activity:object>
+    <source>
+      <activity:service>
+        <title>Google Reader</title>
+      </activity:service>
+    </source>
+    <buzz:visibility>
+      <buzz:aclentry type="group">
+        <poco:id>tag:google.com,2010:buzz-group:@me:@public</poco:id>
+        <uri>https://www.googleapis.com/buzz/v1/people/@me/@groups/G:@me:@public?alt=atom</uri>
+        <poco:name>Public</poco:name>
+      </buzz:aclentry>
+    </buzz:visibility>
+    <link buzz:count="2" href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z12est5rjkrhjfhfa23wehng0muwz5jzq04/@liked?alt=atom" rel="http://schemas.google.com/buzz/2010#liked" type="application/poco+xml"/>
+  </entry>
+  <entry gd:kind="buzz#activity">
+    <title>Random Friday ∞ Reissued Modern Day Masterpiece - The Late Greats Music Blog</title>
+    <published>2010-08-14T00:04:00.376Z</published>
+    <updated>2010-08-14T00:04:00.376Z</updated>
+    <id>tag:google.com,2010:buzz:z13adt2jlpr2uh3oy04cjldqhk2ffnwpzys0k</id>
+    <link href="http://www.google.com/buzz/105037104815911535953/TSt9Rd5e7ko" rel="alternate" type="text/html"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z13adt2jlpr2uh3oy04cjldqhk2ffnwpzys0k?alt=atom" rel="self" type="application/atom+xml"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z13adt2jlpr2uh3oy04cjldqhk2ffnwpzys0k/@comments?alt=atom" rel="replies" thr:count="0" thr:updated="2010-08-14T00:04:00.376Z" type="application/atom+xml"/>
+    <author>
+      <poco:id>105037104815911535953</poco:id>
+      <poco:photoUrl>http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8</poco:photoUrl>
+      <name>Adewale Oshineye</name>
+      <uri>http://www.google.com/profiles/adewale</uri>
+      <link href="http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8" rel="photo" type="image/jpeg"/>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <content type="text/html">&lt;a href="http://dukeofstraw.com/lategreats/?p=2333"&gt;&lt;b&gt;Random Friday ∞ Reissued Modern Day Masterpiece&lt;/b&gt;&lt;/a&gt; - &lt;a href="http://dukeofstraw.com/lategreats" class="ot-origin-anchor"&gt;The Late Greats Music Blog&lt;/a&gt;</content>
+    <activity:verb>http://activitystrea.ms/schema/1.0/share</activity:verb>
+    <activity:object>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/note</activity:object-type>
+      <content type="html">&lt;a href="http://dukeofstraw.com/lategreats/?p=2333"&gt;&lt;b&gt;Random Friday ∞ Reissued Modern Day Masterpiece&lt;/b&gt;&lt;/a&gt; - &lt;a href="http://dukeofstraw.com/lategreats" class="ot-origin-anchor"&gt;The Late Greats Music Blog&lt;/a&gt;</content>
+      <buzz:original-content type="text"/>
+      <link href="http://www.google.com/buzz/105037104815911535953/TSt9Rd5e7ko" rel="alternate" type="text/html"/>
+      <buzz:attachment>
+        <activity:object-type>http://activitystrea.ms/schema/1.0/photo</activity:object-type>
+        <link href="http://dukeofstraw.com/lategreats/wp-content/uploads/2010/08/Antibalas-Who-Is-This-America-cover-300x300.jpg" media:height="300" media:width="300" rel="enclosure" type="image/jpeg"/>
+        <link href="http://images0-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&amp;gadget=a&amp;resize_h=100&amp;url=http%3A%2F%2Fdukeofstraw.com%2Flategreats%2Fwp-content%2Fuploads%2F2010%2F08%2FAntibalas-Who-Is-This-America-cover-300x300.jpg" rel="preview" type="image/jpeg"/>
+      </buzz:attachment>
+    </activity:object>
+    <source>
+      <activity:service>
+        <title>Google Reader</title>
+      </activity:service>
+    </source>
+    <buzz:visibility>
+      <buzz:aclentry type="group">
+        <poco:id>tag:google.com,2010:buzz-group:@me:@public</poco:id>
+        <uri>https://www.googleapis.com/buzz/v1/people/@me/@groups/G:@me:@public?alt=atom</uri>
+        <poco:name>Public</poco:name>
+      </buzz:aclentry>
+    </buzz:visibility>
+    <link buzz:count="0" href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z13adt2jlpr2uh3oy04cjldqhk2ffnwpzys0k/@liked?alt=atom" rel="http://schemas.google.com/buzz/2010#liked" type="application/poco+xml"/>
+  </entry>
+  <entry gd:kind="buzz#activity">
+    <title>The post Hurd HP opportunity - the Onda</title>
+    <published>2010-08-13T23:58:57.164Z</published>
+    <updated>2010-08-13T23:58:57.164Z</updated>
+    <id>tag:google.com,2010:buzz:z12nhvai0puuzlsub23wehng0muwz5jzq04</id>
+    <link href="http://www.google.com/buzz/105037104815911535953/D1N5zK4CcFf" rel="alternate" type="text/html"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z12nhvai0puuzlsub23wehng0muwz5jzq04?alt=atom" rel="self" type="application/atom+xml"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z12nhvai0puuzlsub23wehng0muwz5jzq04/@comments?alt=atom" rel="replies" thr:count="0" thr:updated="2010-08-13T23:58:57.164Z" type="application/atom+xml"/>
+    <author>
+      <poco:id>105037104815911535953</poco:id>
+      <poco:photoUrl>http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8</poco:photoUrl>
+      <name>Adewale Oshineye</name>
+      <uri>http://www.google.com/profiles/adewale</uri>
+      <link href="http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8" rel="photo" type="image/jpeg"/>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <content type="text/html">&lt;a href="http://theonda.org/articles/2010/08/13/the-post-hurd-hp-opportunity"&gt;&lt;b&gt;The post Hurd HP opportunity&lt;/b&gt;&lt;/a&gt; - &lt;a href="http://theonda.org/xml/rss" class="ot-origin-anchor"&gt;the Onda&lt;/a&gt;</content>
+    <activity:verb>http://activitystrea.ms/schema/1.0/share</activity:verb>
+    <activity:object>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/note</activity:object-type>
+      <content type="html">&lt;a href="http://theonda.org/articles/2010/08/13/the-post-hurd-hp-opportunity"&gt;&lt;b&gt;The post Hurd HP opportunity&lt;/b&gt;&lt;/a&gt; - &lt;a href="http://theonda.org/xml/rss" class="ot-origin-anchor"&gt;the Onda&lt;/a&gt;</content>
+      <buzz:original-content type="text"/>
+      <link href="http://www.google.com/buzz/105037104815911535953/D1N5zK4CcFf" rel="alternate" type="text/html"/>
+    </activity:object>
+    <source>
+      <activity:service>
+        <title>Google Reader</title>
+      </activity:service>
+    </source>
+    <buzz:visibility>
+      <buzz:aclentry type="group">
+        <poco:id>tag:google.com,2010:buzz-group:@me:@public</poco:id>
+        <uri>https://www.googleapis.com/buzz/v1/people/@me/@groups/G:@me:@public?alt=atom</uri>
+        <poco:name>Public</poco:name>
+      </buzz:aclentry>
+    </buzz:visibility>
+    <link buzz:count="0" href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z12nhvai0puuzlsub23wehng0muwz5jzq04/@liked?alt=atom" rel="http://schemas.google.com/buzz/2010#liked" type="application/poco+xml"/>
+  </entry>
+  <entry gd:kind="buzz#activity">
+    <title>Ludic Lens - Design with Intent Toolkit - danlockton.com</title>
+    <published>2010-08-13T22:36:02.023Z</published>
+    <updated>2010-08-13T22:36:02.023Z</updated>
+    <id>tag:google.com,2010:buzz:z133ytxj2nrmi53bq04cjldqhk2ffnwpzys0k</id>
+    <link href="http://www.google.com/buzz/105037104815911535953/iAUcio9zvXY" rel="alternate" type="text/html"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z133ytxj2nrmi53bq04cjldqhk2ffnwpzys0k?alt=atom" rel="self" type="application/atom+xml"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z133ytxj2nrmi53bq04cjldqhk2ffnwpzys0k/@comments?alt=atom" rel="replies" thr:count="0" thr:updated="2010-08-13T22:36:02.023Z" type="application/atom+xml"/>
+    <author>
+      <poco:id>105037104815911535953</poco:id>
+      <poco:photoUrl>http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8</poco:photoUrl>
+      <name>Adewale Oshineye</name>
+      <uri>http://www.google.com/profiles/adewale</uri>
+      <link href="http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8" rel="photo" type="image/jpeg"/>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <content type="text/html">&lt;a href="http://danlockton.com/dwi/Ludic_Lens"&gt;&lt;b&gt;Ludic Lens - Design with Intent Toolkit&lt;/b&gt;&lt;/a&gt; - &lt;a href="http://danlockton.com/" class="ot-origin-anchor"&gt;danlockton.com&lt;/a&gt;</content>
+    <activity:verb>http://activitystrea.ms/schema/1.0/share</activity:verb>
+    <activity:object>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/note</activity:object-type>
+      <content type="html">&lt;a href="http://danlockton.com/dwi/Ludic_Lens"&gt;&lt;b&gt;Ludic Lens - Design with Intent Toolkit&lt;/b&gt;&lt;/a&gt; - &lt;a href="http://danlockton.com/" class="ot-origin-anchor"&gt;danlockton.com&lt;/a&gt;</content>
+      <buzz:original-content type="text"/>
+      <link href="http://www.google.com/buzz/105037104815911535953/iAUcio9zvXY" rel="alternate" type="text/html"/>
+    </activity:object>
+    <source>
+      <activity:service>
+        <title>Google Reader</title>
+      </activity:service>
+    </source>
+    <buzz:visibility>
+      <buzz:aclentry type="group">
+        <poco:id>tag:google.com,2010:buzz-group:@me:@public</poco:id>
+        <uri>https://www.googleapis.com/buzz/v1/people/@me/@groups/G:@me:@public?alt=atom</uri>
+        <poco:name>Public</poco:name>
+      </buzz:aclentry>
+    </buzz:visibility>
+    <link buzz:count="0" href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z133ytxj2nrmi53bq04cjldqhk2ffnwpzys0k/@liked?alt=atom" rel="http://schemas.google.com/buzz/2010#liked" type="application/poco+xml"/>
+  </entry>
+  <entry gd:kind="buzz#activity">
+    <title>I'm sure this used to look more like Python than Ruby. Reia Programming Language - Reia - wiki.re...</title>
+    <published>2010-08-13T22:23:09.296Z</published>
+    <updated>2010-08-13T22:23:09.296Z</updated>
+    <id>tag:google.com,2010:buzz:z13tddeg0mfxwdz1o23wehng0muwz5jzq04</id>
+    <link href="http://www.google.com/buzz/105037104815911535953/9ruSFx8gLbj" rel="alternate" type="text/html"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z13tddeg0mfxwdz1o23wehng0muwz5jzq04?alt=atom" rel="self" type="application/atom+xml"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z13tddeg0mfxwdz1o23wehng0muwz5jzq04/@comments?alt=atom" rel="replies" thr:count="0" thr:updated="2010-08-13T22:23:09.296Z" type="application/atom+xml"/>
+    <author>
+      <poco:id>105037104815911535953</poco:id>
+      <poco:photoUrl>http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8</poco:photoUrl>
+      <name>Adewale Oshineye</name>
+      <uri>http://www.google.com/profiles/adewale</uri>
+      <link href="http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8" rel="photo" type="image/jpeg"/>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <content type="text/html">I&amp;#39;m sure this used to look more like Python than Ruby.&lt;br /&gt;&lt;br /&gt;&lt;a href="http://wiki.reia-lang.org/wiki/Reia_Programming_Language"&gt;&lt;b&gt;Reia Programming Language - Reia&lt;/b&gt;&lt;/a&gt; - &lt;a href="http://wiki.reia-lang.org/" class="ot-origin-anchor"&gt;wiki.reia-lang.org&lt;/a&gt;</content>
+    <activity:verb>http://activitystrea.ms/schema/1.0/share</activity:verb>
+    <activity:object>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/note</activity:object-type>
+      <content type="html">I&amp;#39;m sure this used to look more like Python than Ruby.&lt;br /&gt;&lt;br /&gt;&lt;a href="http://wiki.reia-lang.org/wiki/Reia_Programming_Language"&gt;&lt;b&gt;Reia Programming Language - Reia&lt;/b&gt;&lt;/a&gt; - &lt;a href="http://wiki.reia-lang.org/" class="ot-origin-anchor"&gt;wiki.reia-lang.org&lt;/a&gt;</content>
+      <buzz:original-content type="text"/>
+      <link href="http://www.google.com/buzz/105037104815911535953/9ruSFx8gLbj" rel="alternate" type="text/html"/>
+    </activity:object>
+    <source>
+      <activity:service>
+        <title>Google Reader</title>
+      </activity:service>
+    </source>
+    <buzz:visibility>
+      <buzz:aclentry type="group">
+        <poco:id>tag:google.com,2010:buzz-group:@me:@public</poco:id>
+        <uri>https://www.googleapis.com/buzz/v1/people/@me/@groups/G:@me:@public?alt=atom</uri>
+        <poco:name>Public</poco:name>
+      </buzz:aclentry>
+    </buzz:visibility>
+    <link buzz:count="0" href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z13tddeg0mfxwdz1o23wehng0muwz5jzq04/@liked?alt=atom" rel="http://schemas.google.com/buzz/2010#liked" type="application/poco+xml"/>
+  </entry>
+  <entry gd:kind="buzz#activity">
+    <title>"A little over two years ago I practically stopped development on Rev and Revactor. Ever since di...</title>
+    <published>2010-08-13T22:15:28.501Z</published>
+    <updated>2010-08-13T22:15:28.501Z</updated>
+    <id>tag:google.com,2010:buzz:z12hy3kikxqcc52lm23wehng0muwz5jzq04</id>
+    <link href="http://www.google.com/buzz/105037104815911535953/9NpfZ3MKiVp" rel="alternate" type="text/html"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z12hy3kikxqcc52lm23wehng0muwz5jzq04?alt=atom" rel="self" type="application/atom+xml"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z12hy3kikxqcc52lm23wehng0muwz5jzq04/@comments?alt=atom" rel="replies" thr:count="0" thr:updated="2010-08-13T22:15:28.501Z" type="application/atom+xml"/>
+    <author>
+      <poco:id>105037104815911535953</poco:id>
+      <poco:photoUrl>http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8</poco:photoUrl>
+      <name>Adewale Oshineye</name>
+      <uri>http://www.google.com/profiles/adewale</uri>
+      <link href="http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8" rel="photo" type="image/jpeg"/>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <content type="text/html">&amp;quot;A little over two years ago I practically stopped development on Rev and Revactor. Ever since discovering Erlang I thought of it as a language with great semantics but a very ugly face. I started making little text files prototyping a language with Ruby-like syntax that could be translated into Erlang. At the time I had outgrown my roots as an I/O obsessed programmer and got very interested in programming languages, how they work, and had a deep desire to make my own.&lt;br /&gt;&lt;br /&gt;The result was Reia, a Ruby-like language which runs on top of the Erlang VM. I&amp;#39;ve been working on it for over two years and it&amp;#39;s close to being ready! It&amp;#39;s got blocks! It&amp;#39;s got Ruby-like syntax! Everything is an (immutable) object! All of the core types are self-hosted in Reia. It&amp;#39;s got a teensy standard library. Exceptions are kind of working. I&amp;#39;d say it&amp;#39;s about 75% of the way to its initial release. Soon you&amp;#39;ll be able to write CouchDB views with it.A little over two years ago I practically stopped development on Rev and Revactor. Ever since discovering Erlang I thought of it as a language with great semantics but a very ugly face. I started making little text files prototyping a language with Ruby-like syntax that could be translated into Erlang. At the time I had outgrown my roots as an I/O obsessed programmer and got very interested in programming languages, how they work, and had a deep desire to make my own.&lt;br /&gt;&lt;br /&gt;The result was Reia, a Ruby-like language which runs on top of the Erlang VM. I&amp;#39;ve been working on it for over two years and it&amp;#39;s close to being ready! It&amp;#39;s got blocks! It&amp;#39;s got Ruby-like syntax! Everything is an (immutable) object! All of the core types are self-hosted in Reia. It&amp;#39;s got a teensy standard library. Exceptions are kind of working. I&amp;#39;d say it&amp;#39;s about 75% of the way to its initial release. Soon you&amp;#39;ll be able to write CouchDB views with it.&amp;quot;&lt;br /&gt;&lt;br /&gt;&lt;a href="http://www.unlimitednovelty.com/2010/08/multithreaded-rails-is-generally-better.html"&gt;&lt;b&gt;Unlimited Novelty: Multithreaded Rails is generally better than Async Rails, and Rainbows is cooler than Node&lt;/b&gt;&lt;/a&gt; - &lt;a href="http://www.unlimitednovelty.com/" class="ot-origin-anchor"&gt;www.unlimitednovelty.com&lt;/a&gt;</content>
+    <activity:verb>http://activitystrea.ms/schema/1.0/share</activity:verb>
+    <activity:object>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/note</activity:object-type>
+      <content type="html">&amp;quot;A little over two years ago I practically stopped development on Rev and Revactor. Ever since discovering Erlang I thought of it as a language with great semantics but a very ugly face. I started making little text files prototyping a language with Ruby-like syntax that could be translated into Erlang. At the time I had outgrown my roots as an I/O obsessed programmer and got very interested in programming languages, how they work, and had a deep desire to make my own.&lt;br /&gt;&lt;br /&gt;The result was Reia, a Ruby-like language which runs on top of the Erlang VM. I&amp;#39;ve been working on it for over two years and it&amp;#39;s close to being ready! It&amp;#39;s got blocks! It&amp;#39;s got Ruby-like syntax! Everything is an (immutable) object! All of the core types are self-hosted in Reia. It&amp;#39;s got a teensy standard library. Exceptions are kind of working. I&amp;#39;d say it&amp;#39;s about 75% of the way to its initial release. Soon you&amp;#39;ll be able to write CouchDB views with it.A little over two years ago I practically stopped development on Rev and Revactor. Ever since discovering Erlang I thought of it as a language with great semantics but a very ugly face. I started making little text files prototyping a language with Ruby-like syntax that could be translated into Erlang. At the time I had outgrown my roots as an I/O obsessed programmer and got very interested in programming languages, how they work, and had a deep desire to make my own.&lt;br /&gt;&lt;br /&gt;The result was Reia, a Ruby-like language which runs on top of the Erlang VM. I&amp;#39;ve been working on it for over two years and it&amp;#39;s close to being ready! It&amp;#39;s got blocks! It&amp;#39;s got Ruby-like syntax! Everything is an (immutable) object! All of the core types are self-hosted in Reia. It&amp;#39;s got a teensy standard library. Exceptions are kind of working. I&amp;#39;d say it&amp;#39;s about 75% of the way to its initial release. Soon you&amp;#39;ll be able to write CouchDB views with it.&amp;quot;&lt;br /&gt;&lt;br /&gt;&lt;a href="http://www.unlimitednovelty.com/2010/08/multithreaded-rails-is-generally-better.html"&gt;&lt;b&gt;Unlimited Novelty: Multithreaded Rails is generally better than Async Rails, and Rainbows is cooler than Node&lt;/b&gt;&lt;/a&gt; - &lt;a href="http://www.unlimitednovelty.com/" class="ot-origin-anchor"&gt;www.unlimitednovelty.com&lt;/a&gt;</content>
+      <buzz:original-content type="text"/>
+      <link href="http://www.google.com/buzz/105037104815911535953/9NpfZ3MKiVp" rel="alternate" type="text/html"/>
+    </activity:object>
+    <source>
+      <activity:service>
+        <title>Google Reader</title>
+      </activity:service>
+    </source>
+    <buzz:visibility>
+      <buzz:aclentry type="group">
+        <poco:id>tag:google.com,2010:buzz-group:@me:@public</poco:id>
+        <uri>https://www.googleapis.com/buzz/v1/people/@me/@groups/G:@me:@public?alt=atom</uri>
+        <poco:name>Public</poco:name>
+      </buzz:aclentry>
+    </buzz:visibility>
+    <link buzz:count="0" href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z12hy3kikxqcc52lm23wehng0muwz5jzq04/@liked?alt=atom" rel="http://schemas.google.com/buzz/2010#liked" type="application/poco+xml"/>
+  </entry>
+  <entry gd:kind="buzz#activity">
+    <title>Fire Eagle : Developer Code of Conduct</title>
+    <published>2010-08-13T18:33:23.000Z</published>
+    <updated>2010-08-13T19:15:21.548Z</updated>
+    <id>tag:google.com,2010:buzz:z12lubjyctzevdk2d23wehng0muwz5jzq04</id>
+    <link href="http://www.google.com/buzz/105037104815911535953/DJ5FS8YgyvS" rel="alternate" type="text/html"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z12lubjyctzevdk2d23wehng0muwz5jzq04?alt=atom" rel="self" type="application/atom+xml"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z12lubjyctzevdk2d23wehng0muwz5jzq04/@comments?alt=atom" rel="replies" thr:count="1" thr:updated="2010-08-13T21:34:01.506Z" type="application/atom+xml"/>
+    <author>
+      <poco:id>105037104815911535953</poco:id>
+      <poco:photoUrl>http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8</poco:photoUrl>
+      <name>Adewale Oshineye</name>
+      <uri>http://www.google.com/profiles/adewale</uri>
+      <link href="http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8" rel="photo" type="image/jpeg"/>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <content type="text/html">Fire Eagle : Developer Code of Conduct</content>
+    <activity:verb>http://activitystrea.ms/schema/1.0/post</activity:verb>
+    <activity:object>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/note</activity:object-type>
+      <content type="html">Fire Eagle : Developer Code of Conduct</content>
+      <buzz:original-content type="text"/>
+      <link href="http://www.google.com/buzz/105037104815911535953/DJ5FS8YgyvS" rel="alternate" type="text/html"/>
+    </activity:object>
+    <crosspost:source>
+      <id>http://fireeagle.yahoo.net/developer/documentation/code_of_conduct</id>
+    </crosspost:source>
+    <source>
+      <activity:service>
+        <title>del.icio.us</title>
+      </activity:service>
+    </source>
+    <buzz:visibility>
+      <buzz:aclentry type="group">
+        <poco:id>tag:google.com,2010:buzz-group:@me:@public</poco:id>
+        <uri>https://www.googleapis.com/buzz/v1/people/@me/@groups/G:@me:@public?alt=atom</uri>
+        <poco:name>Public</poco:name>
+      </buzz:aclentry>
+    </buzz:visibility>
+    <link buzz:count="0" href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z12lubjyctzevdk2d23wehng0muwz5jzq04/@liked?alt=atom" rel="http://schemas.google.com/buzz/2010#liked" type="application/poco+xml"/>
+  </entry>
+  <entry gd:kind="buzz#activity">
+    <title>How black people use Twitter. - By Farhad Manjoo - Slate Magazine - www.slate.com</title>
+    <published>2010-08-13T18:34:18.591Z</published>
+    <updated>2010-08-13T18:34:18.591Z</updated>
+    <id>tag:google.com,2010:buzz:z13djbjx4miadna1m23wehng0muwz5jzq04</id>
+    <link href="http://www.google.com/buzz/105037104815911535953/9PtzkLRYouT" rel="alternate" type="text/html"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z13djbjx4miadna1m23wehng0muwz5jzq04?alt=atom" rel="self" type="application/atom+xml"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z13djbjx4miadna1m23wehng0muwz5jzq04/@comments?alt=atom" rel="replies" thr:count="2" thr:updated="2010-08-13T19:46:28.872Z" type="application/atom+xml"/>
+    <author>
+      <poco:id>105037104815911535953</poco:id>
+      <poco:photoUrl>http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8</poco:photoUrl>
+      <name>Adewale Oshineye</name>
+      <uri>http://www.google.com/profiles/adewale</uri>
+      <link href="http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8" rel="photo" type="image/jpeg"/>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <content type="text/html">&lt;a href="http://www.slate.com/id/2263462/pagenum/all/#"&gt;&lt;b&gt;How black people use Twitter. - By Farhad Manjoo - Slate Magazine&lt;/b&gt;&lt;/a&gt; - &lt;a href="http://www.slate.com/" class="ot-origin-anchor"&gt;www.slate.com&lt;/a&gt;</content>
+    <activity:verb>http://activitystrea.ms/schema/1.0/share</activity:verb>
+    <activity:object>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/note</activity:object-type>
+      <content type="html">&lt;a href="http://www.slate.com/id/2263462/pagenum/all/#"&gt;&lt;b&gt;How black people use Twitter. - By Farhad Manjoo - Slate Magazine&lt;/b&gt;&lt;/a&gt; - &lt;a href="http://www.slate.com/" class="ot-origin-anchor"&gt;www.slate.com&lt;/a&gt;</content>
+      <buzz:original-content type="text"/>
+      <link href="http://www.google.com/buzz/105037104815911535953/9PtzkLRYouT" rel="alternate" type="text/html"/>
+    </activity:object>
+    <source>
+      <activity:service>
+        <title>Google Reader</title>
+      </activity:service>
+    </source>
+    <buzz:visibility>
+      <buzz:aclentry type="group">
+        <poco:id>tag:google.com,2010:buzz-group:@me:@public</poco:id>
+        <uri>https://www.googleapis.com/buzz/v1/people/@me/@groups/G:@me:@public?alt=atom</uri>
+        <poco:name>Public</poco:name>
+      </buzz:aclentry>
+    </buzz:visibility>
+    <link buzz:count="0" href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z13djbjx4miadna1m23wehng0muwz5jzq04/@liked?alt=atom" rel="http://schemas.google.com/buzz/2010#liked" type="application/poco+xml"/>
+  </entry>
+  <entry gd:kind="buzz#activity">
+    <title>Project pubsubhubbub: issue 118 (Polling for feeds that do not ping the hub) commented on</title>
+    <published>2010-08-13T12:02:33.485Z</published>
+    <updated>2010-08-13T12:02:33.485Z</updated>
+    <id>tag:google.com,2010:buzz:z135vvs55xajtrthe04cjldqhk2ffnwpzys0k</id>
+    <link href="http://www.google.com/buzz/105037104815911535953/VZtGi3mbTPQ" rel="alternate" type="text/html"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z135vvs55xajtrthe04cjldqhk2ffnwpzys0k?alt=atom" rel="self" type="application/atom+xml"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z135vvs55xajtrthe04cjldqhk2ffnwpzys0k/@comments?alt=atom" rel="replies" thr:count="0" thr:updated="2010-08-13T12:02:33.485Z" type="application/atom+xml"/>
+    <author>
+      <poco:id>105037104815911535953</poco:id>
+      <poco:photoUrl>http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8</poco:photoUrl>
+      <name>Adewale Oshineye</name>
+      <uri>http://www.google.com/profiles/adewale</uri>
+      <link href="http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8" rel="photo" type="image/jpeg"/>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <content type="text/html">Project &lt;a href="http://code.google.com/p/pubsubhubbub"&gt;pubsubhubbub&lt;/a&gt;:
+ &lt;a class="ot-issue-link" href="http://code.google.com/p/pubsubhubbub/issues/detail?id=118#c1"&gt;issue 118&lt;/a&gt;
+ (Polling for feeds that do not ping the hub) commented on</content>
+    <activity:verb>http://activitystrea.ms/schema/1.0/post</activity:verb>
+    <activity:object>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/note</activity:object-type>
+      <content type="html">Project &lt;a href="http://code.google.com/p/pubsubhubbub"&gt;pubsubhubbub&lt;/a&gt;:
+ &lt;a class="ot-issue-link" href="http://code.google.com/p/pubsubhubbub/issues/detail?id=118#c1"&gt;issue 118&lt;/a&gt;
+ (Polling for feeds that do not ping the hub) commented on</content>
+      <buzz:original-content type="text"/>
+      <link href="http://www.google.com/buzz/105037104815911535953/VZtGi3mbTPQ" rel="alternate" type="text/html"/>
+    </activity:object>
+    <crosspost:source>
+      <id>http://code.google.com/feeds/u/adewale/updates/user/basic/16338474571339876527</id>
+    </crosspost:source>
+    <source>
+      <activity:service>
+        <title>adewale updates - Google Code</title>
+      </activity:service>
+    </source>
+    <buzz:visibility>
+      <buzz:aclentry type="group">
+        <poco:id>tag:google.com,2010:buzz-group:@me:@public</poco:id>
+        <uri>https://www.googleapis.com/buzz/v1/people/@me/@groups/G:@me:@public?alt=atom</uri>
+        <poco:name>Public</poco:name>
+      </buzz:aclentry>
+    </buzz:visibility>
+    <link buzz:count="0" href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z135vvs55xajtrthe04cjldqhk2ffnwpzys0k/@liked?alt=atom" rel="http://schemas.google.com/buzz/2010#liked" type="application/poco+xml"/>
+  </entry>
+  <entry gd:kind="buzz#activity">
+    <title>A modest proposal on internet neutrality - The Irish Times - Fri, Aug 13, 2010 - www.irishtimes.com</title>
+    <published>2010-08-13T11:43:09.175Z</published>
+    <updated>2010-08-13T11:43:09.175Z</updated>
+    <id>tag:google.com,2010:buzz:z13giplx0w3lvhid423wehng0muwz5jzq04</id>
+    <link href="http://www.google.com/buzz/105037104815911535953/76bfPtdsy19" rel="alternate" type="text/html"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z13giplx0w3lvhid423wehng0muwz5jzq04?alt=atom" rel="self" type="application/atom+xml"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z13giplx0w3lvhid423wehng0muwz5jzq04/@comments?alt=atom" rel="replies" thr:count="0" thr:updated="2010-08-13T11:43:09.175Z" type="application/atom+xml"/>
+    <author>
+      <poco:id>105037104815911535953</poco:id>
+      <poco:photoUrl>http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8</poco:photoUrl>
+      <name>Adewale Oshineye</name>
+      <uri>http://www.google.com/profiles/adewale</uri>
+      <link href="http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8" rel="photo" type="image/jpeg"/>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <content type="text/html">&lt;a href="http://www.irishtimes.com/newspaper/finance/2010/0813/1224276713039.html"&gt;&lt;b&gt;A modest proposal on internet neutrality - The Irish Times - Fri, Aug 13, 2010&lt;/b&gt;&lt;/a&gt; - &lt;a href="http://www.irishtimes.com/" class="ot-origin-anchor"&gt;www.irishtimes.com&lt;/a&gt;</content>
+    <activity:verb>http://activitystrea.ms/schema/1.0/share</activity:verb>
+    <activity:object>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/note</activity:object-type>
+      <content type="html">&lt;a href="http://www.irishtimes.com/newspaper/finance/2010/0813/1224276713039.html"&gt;&lt;b&gt;A modest proposal on internet neutrality - The Irish Times - Fri, Aug 13, 2010&lt;/b&gt;&lt;/a&gt; - &lt;a href="http://www.irishtimes.com/" class="ot-origin-anchor"&gt;www.irishtimes.com&lt;/a&gt;</content>
+      <buzz:original-content type="text"/>
+      <link href="http://www.google.com/buzz/105037104815911535953/76bfPtdsy19" rel="alternate" type="text/html"/>
+    </activity:object>
+    <source>
+      <activity:service>
+        <title>Google Reader</title>
+      </activity:service>
+    </source>
+    <buzz:visibility>
+      <buzz:aclentry type="group">
+        <poco:id>tag:google.com,2010:buzz-group:@me:@public</poco:id>
+        <uri>https://www.googleapis.com/buzz/v1/people/@me/@groups/G:@me:@public?alt=atom</uri>
+        <poco:name>Public</poco:name>
+      </buzz:aclentry>
+    </buzz:visibility>
+    <link buzz:count="2" href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z13giplx0w3lvhid423wehng0muwz5jzq04/@liked?alt=atom" rel="http://schemas.google.com/buzz/2010#liked" type="application/poco+xml"/>
+  </entry>
+  <entry gd:kind="buzz#activity">
+    <title>Where Did Demand Media’s Profits Go? - Digits - WSJ - blogs.wsj.com</title>
+    <published>2010-08-13T01:36:13.737Z</published>
+    <updated>2010-08-13T01:36:13.737Z</updated>
+    <id>tag:google.com,2010:buzz:z12lhpuxos30yhj1x23wehng0muwz5jzq04</id>
+    <link href="http://www.google.com/buzz/105037104815911535953/BHPJhnT9eo3" rel="alternate" type="text/html"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z12lhpuxos30yhj1x23wehng0muwz5jzq04?alt=atom" rel="self" type="application/atom+xml"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z12lhpuxos30yhj1x23wehng0muwz5jzq04/@comments?alt=atom" rel="replies" thr:count="1" thr:updated="2010-08-13T04:12:51.406Z" type="application/atom+xml"/>
+    <author>
+      <poco:id>105037104815911535953</poco:id>
+      <poco:photoUrl>http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8</poco:photoUrl>
+      <name>Adewale Oshineye</name>
+      <uri>http://www.google.com/profiles/adewale</uri>
+      <link href="http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8" rel="photo" type="image/jpeg"/>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <content type="text/html">&lt;a href="http://blogs.wsj.com/digits/2010/08/12/where-did-demand-medias-profits-go/"&gt;&lt;b&gt;Where Did Demand Media’s Profits Go? - Digits - WSJ&lt;/b&gt;&lt;/a&gt; - &lt;a href="http://blogs.wsj.com/" class="ot-origin-anchor"&gt;blogs.wsj.com&lt;/a&gt;</content>
+    <activity:verb>http://activitystrea.ms/schema/1.0/share</activity:verb>
+    <activity:object>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/note</activity:object-type>
+      <content type="html">&lt;a href="http://blogs.wsj.com/digits/2010/08/12/where-did-demand-medias-profits-go/"&gt;&lt;b&gt;Where Did Demand Media’s Profits Go? - Digits - WSJ&lt;/b&gt;&lt;/a&gt; - &lt;a href="http://blogs.wsj.com/" class="ot-origin-anchor"&gt;blogs.wsj.com&lt;/a&gt;</content>
+      <buzz:original-content type="text"/>
+      <link href="http://www.google.com/buzz/105037104815911535953/BHPJhnT9eo3" rel="alternate" type="text/html"/>
+    </activity:object>
+    <source>
+      <activity:service>
+        <title>Google Reader</title>
+      </activity:service>
+    </source>
+    <buzz:visibility>
+      <buzz:aclentry type="group">
+        <poco:id>tag:google.com,2010:buzz-group:@me:@public</poco:id>
+        <uri>https://www.googleapis.com/buzz/v1/people/@me/@groups/G:@me:@public?alt=atom</uri>
+        <poco:name>Public</poco:name>
+      </buzz:aclentry>
+    </buzz:visibility>
+    <link buzz:count="0" href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z12lhpuxos30yhj1x23wehng0muwz5jzq04/@liked?alt=atom" rel="http://schemas.google.com/buzz/2010#liked" type="application/poco+xml"/>
+  </entry>
+  <entry gd:kind="buzz#activity">
+    <title>Send from Gmail (by Google) - Google Chrome extension gallery</title>
+    <published>2010-08-13T01:41:16.000Z</published>
+    <updated>2010-08-13T02:18:30.892Z</updated>
+    <id>tag:google.com,2010:buzz:z13thbbg2lachr0xr04cjldqhk2ffnwpzys0k</id>
+    <link href="http://www.google.com/buzz/105037104815911535953/XccQwcFMG9f" rel="alternate" type="text/html"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z13thbbg2lachr0xr04cjldqhk2ffnwpzys0k?alt=atom" rel="self" type="application/atom+xml"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z13thbbg2lachr0xr04cjldqhk2ffnwpzys0k/@comments?alt=atom" rel="replies" thr:count="0" thr:updated="2010-08-13T02:18:30.892Z" type="application/atom+xml"/>
+    <author>
+      <poco:id>105037104815911535953</poco:id>
+      <poco:photoUrl>http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8</poco:photoUrl>
+      <name>Adewale Oshineye</name>
+      <uri>http://www.google.com/profiles/adewale</uri>
+      <link href="http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8" rel="photo" type="image/jpeg"/>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <content type="text/html">Send from Gmail (by Google) - Google Chrome extension gallery</content>
+    <activity:verb>http://activitystrea.ms/schema/1.0/post</activity:verb>
+    <activity:object>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/note</activity:object-type>
+      <content type="html">Send from Gmail (by Google) - Google Chrome extension gallery</content>
+      <buzz:original-content type="text"/>
+      <link href="http://www.google.com/buzz/105037104815911535953/XccQwcFMG9f" rel="alternate" type="text/html"/>
+    </activity:object>
+    <source>
+      <activity:service>
+        <title>del.icio.us</title>
+      </activity:service>
+    </source>
+    <buzz:visibility>
+      <buzz:aclentry type="group">
+        <poco:id>tag:google.com,2010:buzz-group:@me:@public</poco:id>
+        <uri>https://www.googleapis.com/buzz/v1/people/@me/@groups/G:@me:@public?alt=atom</uri>
+        <poco:name>Public</poco:name>
+      </buzz:aclentry>
+    </buzz:visibility>
+    <link buzz:count="2" href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z13thbbg2lachr0xr04cjldqhk2ffnwpzys0k/@liked?alt=atom" rel="http://schemas.google.com/buzz/2010#liked" type="application/poco+xml"/>
+  </entry>
+  <entry gd:kind="buzz#activity">
+    <title>Create your Buzz Group in Gmail Contacts You have now the new contacts in Gmail and would like to...</title>
+    <published>2010-08-11T22:07:09.000Z</published>
+    <updated>2010-08-12T21:48:09.205Z</updated>
+    <id>tag:google.com,2010:buzz:z13bs3b4sknwdjgxh04cjldqhk2ffnwpzys0k</id>
+    <link href="http://www.google.com/buzz/105037104815911535953/W1CP6wCPHo4" rel="alternate" type="text/html"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z13bs3b4sknwdjgxh04cjldqhk2ffnwpzys0k?alt=atom" rel="self" type="application/atom+xml"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z13bs3b4sknwdjgxh04cjldqhk2ffnwpzys0k/@comments?alt=atom" rel="replies" thr:count="8" thr:updated="2010-08-13T01:53:48.461Z" type="application/atom+xml"/>
+    <author>
+      <poco:id>105037104815911535953</poco:id>
+      <poco:photoUrl>http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8</poco:photoUrl>
+      <name>Adewale Oshineye</name>
+      <uri>http://www.google.com/profiles/adewale</uri>
+      <link href="http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8" rel="photo" type="image/jpeg"/>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <content type="text/html">&lt;b&gt;Create your Buzz Group in Gmail Contacts&lt;/b&gt;
+&lt;br /&gt;
+&lt;br /&gt;You have now the new contacts in Gmail and would like to have a special group with all your Buzz contacts?
+&lt;br /&gt;
+&lt;br /&gt;It is as easy as this:
+&lt;br /&gt;
+&lt;br /&gt;1. Goto Contacts
+&lt;br /&gt;2. Insert &amp;quot;&lt;a href="http://www.google.com/profiles/" &gt;http://www.google.com/profiles/&lt;/a&gt;&amp;quot; into the searchbox  and click &amp;quot;Search Contacts&amp;quot;
+&lt;br /&gt;3. Now you have a list of all contacts that have a profile and hopefully have Buzz
+&lt;br /&gt;4. Select All by clicking in the first dropdown menu above the contact list
+&lt;br /&gt;5. Select a Group or create a group with the name &amp;quot;Buzz&amp;quot; or whatever you like
+&lt;br /&gt;6. Done
+&lt;br /&gt;
+&lt;br /&gt;@&lt;a href="http://www.google.com/profiles/109568960804534353862" class="proflink" oid="109568960804534353862"&gt;Stefan Münz&lt;/a&gt; has posted a similiar idea for the old contacts at the beginning of Buzz, if I remember right.</content>
+    <activity:verb>http://activitystrea.ms/schema/1.0/post</activity:verb>
+    <activity:object>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/note</activity:object-type>
+      <content type="html">&lt;b&gt;Create your Buzz Group in Gmail Contacts&lt;/b&gt;
+&lt;br /&gt;
+&lt;br /&gt;You have now the new contacts in Gmail and would like to have a special group with all your Buzz contacts?
+&lt;br /&gt;
+&lt;br /&gt;It is as easy as this:
+&lt;br /&gt;
+&lt;br /&gt;1. Goto Contacts
+&lt;br /&gt;2. Insert &amp;quot;&lt;a href="http://www.google.com/profiles/" &gt;http://www.google.com/profiles/&lt;/a&gt;&amp;quot; into the searchbox  and click &amp;quot;Search Contacts&amp;quot;
+&lt;br /&gt;3. Now you have a list of all contacts that have a profile and hopefully have Buzz
+&lt;br /&gt;4. Select All by clicking in the first dropdown menu above the contact list
+&lt;br /&gt;5. Select a Group or create a group with the name &amp;quot;Buzz&amp;quot; or whatever you like
+&lt;br /&gt;6. Done
+&lt;br /&gt;
+&lt;br /&gt;@&lt;a href="http://www.google.com/profiles/109568960804534353862" class="proflink" oid="109568960804534353862"&gt;Stefan Münz&lt;/a&gt; has posted a similiar idea for the old contacts at the beginning of Buzz, if I remember right.</content>
+      <buzz:original-content type="text"/>
+      <link href="http://www.google.com/buzz/105037104815911535953/W1CP6wCPHo4" rel="alternate" type="text/html"/>
+    </activity:object>
+    <source>
+      <activity:service>
+        <title>Buzz</title>
+      </activity:service>
+    </source>
+    <buzz:visibility>
+      <buzz:aclentry type="group">
+        <poco:id>tag:google.com,2010:buzz-group:@me:@public</poco:id>
+        <uri>https://www.googleapis.com/buzz/v1/people/@me/@groups/G:@me:@public?alt=atom</uri>
+        <poco:name>Public</poco:name>
+      </buzz:aclentry>
+    </buzz:visibility>
+    <link buzz:count="7" href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z13bs3b4sknwdjgxh04cjldqhk2ffnwpzys0k/@liked?alt=atom" rel="http://schemas.google.com/buzz/2010#liked" type="application/poco+xml"/>
+    <buzz:reshare>
+      <buzz:original>
+        <buzz:author>
+          <poco:id>102235836543922327908</poco:id>
+          <poco:photoUrl>http://www.google.com/s2/photos/public/AIbEiAIAAABDCOSiz4Lar9KDHyILdmNhcmRfcGhvdG8qKDBlMjZjZmM3NzVlMTVmYzMzMTYxYzE4OWNiZmViZmU3MjlhYTgzM2MwAb9sFtBQZxtiG339vF_pobXBzw7d</poco:photoUrl>
+          <name>Siegfried Hirsch</name>
+          <uri>http://www.google.com/profiles/siegfried.hirsch</uri>
+        </buzz:author>
+        <link href="https://www.googleapis.com/buzz/v1/activities/102235836543922327908/@self/B:z13agbrqus2tv5ogn04chxzzkw2vylegp4o?alt=atom" rel="via" type="application/atom+xml"/>
+      </buzz:original>
+      <buzz:sharedBy>
+        <buzz:author>
+          <poco:id>102235836543922327908</poco:id>
+          <poco:photoUrl>http://www.google.com/s2/photos/public/AIbEiAIAAABDCOSiz4Lar9KDHyILdmNhcmRfcGhvdG8qKDBlMjZjZmM3NzVlMTVmYzMzMTYxYzE4OWNiZmViZmU3MjlhYTgzM2MwAb9sFtBQZxtiG339vF_pobXBzw7d</poco:photoUrl>
+          <name>Siegfried Hirsch</name>
+          <uri>http://www.google.com/profiles/siegfried.hirsch</uri>
+        </buzz:author>
+        <link href="https://www.googleapis.com/buzz/v1/activities/102235836543922327908/@self/B:z13agbrqus2tv5ogn04chxzzkw2vylegp4o?alt=atom" rel="via" type="application/atom+xml"/>
+      </buzz:sharedBy>
+    </buzz:reshare>
+  </entry>
+  <entry gd:kind="buzz#activity">
+    <title>Arvind Narayanan's journal - Thoughts on the future of the real-time web - arvindn.livejournal.com</title>
+    <published>2010-08-13T01:37:35.255Z</published>
+    <updated>2010-08-13T01:37:35.255Z</updated>
+    <id>tag:google.com,2010:buzz:z123yvviymyvsjv1423wehng0muwz5jzq04</id>
+    <link href="http://www.google.com/buzz/105037104815911535953/7ASE6ZtQrcn" rel="alternate" type="text/html"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z123yvviymyvsjv1423wehng0muwz5jzq04?alt=atom" rel="self" type="application/atom+xml"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z123yvviymyvsjv1423wehng0muwz5jzq04/@comments?alt=atom" rel="replies" thr:count="0" thr:updated="2010-08-13T01:37:35.255Z" type="application/atom+xml"/>
+    <author>
+      <poco:id>105037104815911535953</poco:id>
+      <poco:photoUrl>http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8</poco:photoUrl>
+      <name>Adewale Oshineye</name>
+      <uri>http://www.google.com/profiles/adewale</uri>
+      <link href="http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8" rel="photo" type="image/jpeg"/>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <content type="text/html">&lt;a href="http://arvindn.livejournal.com/126139.html"&gt;&lt;b&gt;Arvind Narayanan&amp;#39;s journal - Thoughts on the future of the real-time web&lt;/b&gt;&lt;/a&gt; - &lt;a href="http://arvindn.livejournal.com/" class="ot-origin-anchor"&gt;arvindn.livejournal.com&lt;/a&gt;</content>
+    <activity:verb>http://activitystrea.ms/schema/1.0/share</activity:verb>
+    <activity:object>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/note</activity:object-type>
+      <content type="html">&lt;a href="http://arvindn.livejournal.com/126139.html"&gt;&lt;b&gt;Arvind Narayanan&amp;#39;s journal - Thoughts on the future of the real-time web&lt;/b&gt;&lt;/a&gt; - &lt;a href="http://arvindn.livejournal.com/" class="ot-origin-anchor"&gt;arvindn.livejournal.com&lt;/a&gt;</content>
+      <buzz:original-content type="text"/>
+      <link href="http://www.google.com/buzz/105037104815911535953/7ASE6ZtQrcn" rel="alternate" type="text/html"/>
+    </activity:object>
+    <source>
+      <activity:service>
+        <title>Google Reader</title>
+      </activity:service>
+    </source>
+    <buzz:visibility>
+      <buzz:aclentry type="group">
+        <poco:id>tag:google.com,2010:buzz-group:@me:@public</poco:id>
+        <uri>https://www.googleapis.com/buzz/v1/people/@me/@groups/G:@me:@public?alt=atom</uri>
+        <poco:name>Public</poco:name>
+      </buzz:aclentry>
+    </buzz:visibility>
+    <link buzz:count="0" href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z123yvviymyvsjv1423wehng0muwz5jzq04/@liked?alt=atom" rel="http://schemas.google.com/buzz/2010#liked" type="application/poco+xml"/>
+  </entry>
+  <entry gd:kind="buzz#activity">
+    <title>Three new features for the Google Buzz API A new "garden hose" feed, people search by activity or...</title>
+    <published>2010-08-12T21:11:47.000Z</published>
+    <updated>2010-08-12T21:14:30.418Z</updated>
+    <id>tag:google.com,2010:buzz:z13xyjhy3rezujmcv23wehng0muwz5jzq04</id>
+    <link href="http://www.google.com/buzz/105037104815911535953/5cVRCnCDdir" rel="alternate" type="text/html"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z13xyjhy3rezujmcv23wehng0muwz5jzq04?alt=atom" rel="self" type="application/atom+xml"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z13xyjhy3rezujmcv23wehng0muwz5jzq04/@comments?alt=atom" rel="replies" thr:count="0" thr:updated="2010-08-12T21:14:30.418Z" type="application/atom+xml"/>
+    <author>
+      <poco:id>105037104815911535953</poco:id>
+      <poco:photoUrl>http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8</poco:photoUrl>
+      <name>Adewale Oshineye</name>
+      <uri>http://www.google.com/profiles/adewale</uri>
+      <link href="http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8" rel="photo" type="image/jpeg"/>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <content type="text/html">&lt;b&gt;Three new features for the Google Buzz API&lt;/b&gt;
+&lt;br /&gt;
+&lt;br /&gt;A new &amp;quot;garden hose&amp;quot; feed, people search by activity or location, and the ability to find related Buzz posts. Learn more at &lt;a href="http://googlecode.blogspot.com/2010/08/new-google-buzz-api-features-including.html" &gt;http://googlecode.blogspot.com/2010/08/new-google-buzz-api-features-including.html&lt;/a&gt;.</content>
+    <activity:verb>http://activitystrea.ms/schema/1.0/post</activity:verb>
+    <activity:object>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/note</activity:object-type>
+      <content type="html">&lt;b&gt;Three new features for the Google Buzz API&lt;/b&gt;
+&lt;br /&gt;
+&lt;br /&gt;A new &amp;quot;garden hose&amp;quot; feed, people search by activity or location, and the ability to find related Buzz posts. Learn more at &lt;a href="http://googlecode.blogspot.com/2010/08/new-google-buzz-api-features-including.html" &gt;http://googlecode.blogspot.com/2010/08/new-google-buzz-api-features-including.html&lt;/a&gt;.</content>
+      <buzz:original-content type="text"/>
+      <link href="http://www.google.com/buzz/105037104815911535953/5cVRCnCDdir" rel="alternate" type="text/html"/>
+      <buzz:attachment>
+        <activity:object-type>http://activitystrea.ms/schema/1.0/photo</activity:object-type>
+        <link href="http://3.bp.blogspot.com/_WEcneQZVud0/TGQgYER4iQI/AAAAAAAAAD0/slNSIwT_Gag/s200/Garden_hose.jpg" rel="enclosure" type="image/jpeg"/>
+        <link href="http://images0-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&amp;gadget=a&amp;resize_h=100&amp;url=http%3A%2F%2F3.bp.blogspot.com%2F_WEcneQZVud0%2FTGQgYER4iQI%2FAAAAAAAAAD0%2FslNSIwT_Gag%2Fs200%2FGarden_hose.jpg" rel="preview" type="image/jpeg"/>
+      </buzz:attachment>
+      <buzz:attachment>
+        <activity:object-type>http://activitystrea.ms/schema/1.0/article</activity:object-type>
+        <title>Google Code Blog: New Google Buzz API features, including a garden hose</title>
+        <content type="html">The official Google developer blog.  The latest news on Google APIs and developer tools.</content>
+        <link href="http://googlecode.blogspot.com/2010/08/new-google-buzz-api-features-including.html" rel="alternate" type="text/html"/>
+      </buzz:attachment>
+    </activity:object>
+    <source>
+      <activity:service>
+        <title>Buzz</title>
+      </activity:service>
+    </source>
+    <buzz:visibility>
+      <buzz:aclentry type="group">
+        <poco:id>tag:google.com,2010:buzz-group:@me:@public</poco:id>
+        <uri>https://www.googleapis.com/buzz/v1/people/@me/@groups/G:@me:@public?alt=atom</uri>
+        <poco:name>Public</poco:name>
+      </buzz:aclentry>
+    </buzz:visibility>
+    <link buzz:count="1" href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z13xyjhy3rezujmcv23wehng0muwz5jzq04/@liked?alt=atom" rel="http://schemas.google.com/buzz/2010#liked" type="application/poco+xml"/>
+    <buzz:reshare>
+      <buzz:original>
+        <buzz:author>
+          <poco:id>111062888259659218284</poco:id>
+          <poco:photoUrl>http://www.google.com/s2/photos/public/AIbEiAIAAABECOz6ztaiyNHDmQEiC3ZjYXJkX3Bob3RvKigyYTBkYmNlNDgyOGI0NDViOTRlYTlkZjVmNzIxZTllNjMzMWFhODljMAEgSk99ukLxRAAHhTbzhgNkGnE-8g</poco:photoUrl>
+          <name>Google Buzz Team</name>
+          <uri>http://www.google.com/profiles/googlebuzz</uri>
+        </buzz:author>
+        <link href="https://www.googleapis.com/buzz/v1/activities/111062888259659218284/@self/B:z13ktp5zapnvi5cbk04cdjyb3mjeulcwv3c?alt=atom" rel="via" type="application/atom+xml"/>
+      </buzz:original>
+      <buzz:sharedBy>
+        <buzz:author>
+          <poco:id>111062888259659218284</poco:id>
+          <poco:photoUrl>http://www.google.com/s2/photos/public/AIbEiAIAAABECOz6ztaiyNHDmQEiC3ZjYXJkX3Bob3RvKigyYTBkYmNlNDgyOGI0NDViOTRlYTlkZjVmNzIxZTllNjMzMWFhODljMAEgSk99ukLxRAAHhTbzhgNkGnE-8g</poco:photoUrl>
+          <name>Google Buzz Team</name>
+          <uri>http://www.google.com/profiles/googlebuzz</uri>
+        </buzz:author>
+        <link href="https://www.googleapis.com/buzz/v1/activities/111062888259659218284/@self/B:z13ktp5zapnvi5cbk04cdjyb3mjeulcwv3c?alt=atom" rel="via" type="application/atom+xml"/>
+      </buzz:sharedBy>
+    </buzz:reshare>
+  </entry>
+  <entry gd:kind="buzz#activity">
+    <title>Just trying to figure out how Buzz can be used for conferences. I'm thinking one would use a hash...</title>
+    <published>2010-08-12T21:35:59.000Z</published>
+    <updated>2010-08-12T21:42:04.081Z</updated>
+    <id>tag:google.com,2010:buzz:z12qedspltvkftskk23wehng0muwz5jzq04</id>
+    <link href="http://www.google.com/buzz/105037104815911535953/3ogeRTR5M7Z" rel="alternate" type="text/html"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z12qedspltvkftskk23wehng0muwz5jzq04?alt=atom" rel="self" type="application/atom+xml"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z12qedspltvkftskk23wehng0muwz5jzq04/@comments?alt=atom" rel="replies" thr:count="0" thr:updated="2010-08-12T21:42:04.081Z" type="application/atom+xml"/>
+    <author>
+      <poco:id>105037104815911535953</poco:id>
+      <poco:photoUrl>http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8</poco:photoUrl>
+      <name>Adewale Oshineye</name>
+      <uri>http://www.google.com/profiles/adewale</uri>
+      <link href="http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8" rel="photo" type="image/jpeg"/>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <content type="text/html">Just trying to figure out how Buzz can be used for conferences. I&amp;#39;m thinking one would use a hashtag or a specific word and search for that to find conversations (sswcbuzz)</content>
+    <activity:verb>http://activitystrea.ms/schema/1.0/post</activity:verb>
+    <activity:object>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/note</activity:object-type>
+      <content type="html">Just trying to figure out how Buzz can be used for conferences. I&amp;#39;m thinking one would use a hashtag or a specific word and search for that to find conversations (sswcbuzz)</content>
+      <buzz:original-content type="text"/>
+      <link href="http://www.google.com/buzz/105037104815911535953/3ogeRTR5M7Z" rel="alternate" type="text/html"/>
+    </activity:object>
+    <source>
+      <activity:service>
+        <title>Buzz</title>
+      </activity:service>
+    </source>
+    <buzz:visibility>
+      <buzz:aclentry type="group">
+        <poco:id>tag:google.com,2010:buzz-group:@me:@public</poco:id>
+        <uri>https://www.googleapis.com/buzz/v1/people/@me/@groups/G:@me:@public?alt=atom</uri>
+        <poco:name>Public</poco:name>
+      </buzz:aclentry>
+    </buzz:visibility>
+    <link buzz:count="0" href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z12qedspltvkftskk23wehng0muwz5jzq04/@liked?alt=atom" rel="http://schemas.google.com/buzz/2010#liked" type="application/poco+xml"/>
+    <buzz:reshare>
+      <buzz:original>
+        <buzz:author>
+          <poco:id>112476999893676758499</poco:id>
+          <poco:photoUrl>http://www.google.com/s2/photos/public/AIbEiAIAAABECOOrwunBqc2TrQEiC3ZjYXJkX3Bob3RvKig2MGFkZTIwOTY3NGY4NWVhNzc4ZjNiMDMzZDFkNGZhMWE5Zjg5M2IxMAHr4rmAubKqQ0Y0UQkNNxVfUnFfgQ</poco:photoUrl>
+          <name>Jonas Nockert</name>
+          <uri>http://www.google.com/profiles/jonasnockert</uri>
+        </buzz:author>
+        <link href="https://www.googleapis.com/buzz/v1/activities/112476999893676758499/@self/B:z12wuz0aplqldzjn2225tjdhmyjwwrio304?alt=atom" rel="via" type="application/atom+xml"/>
+      </buzz:original>
+      <buzz:sharedBy>
+        <buzz:author>
+          <poco:id>112476999893676758499</poco:id>
+          <poco:photoUrl>http://www.google.com/s2/photos/public/AIbEiAIAAABECOOrwunBqc2TrQEiC3ZjYXJkX3Bob3RvKig2MGFkZTIwOTY3NGY4NWVhNzc4ZjNiMDMzZDFkNGZhMWE5Zjg5M2IxMAHr4rmAubKqQ0Y0UQkNNxVfUnFfgQ</poco:photoUrl>
+          <name>Jonas Nockert</name>
+          <uri>http://www.google.com/profiles/jonasnockert</uri>
+        </buzz:author>
+        <link href="https://www.googleapis.com/buzz/v1/activities/112476999893676758499/@self/B:z12wuz0aplqldzjn2225tjdhmyjwwrio304?alt=atom" rel="via" type="application/atom+xml"/>
+      </buzz:sharedBy>
+    </buzz:reshare>
+  </entry>
+  <entry gd:kind="buzz#activity">
+    <title>Does anyone know who built this: http://buzztotwitter.appspot.com/ It's currently over quota but ...</title>
+    <published>2010-08-12T20:42:10.000Z</published>
+    <updated>2010-08-12T20:42:11.228Z</updated>
+    <id>tag:google.com,2010:buzz:z13zvn5jzzq4y1kwz04cjldqhk2ffnwpzys0k</id>
+    <link href="http://www.google.com/buzz/105037104815911535953/TgdmynsoDJ6" rel="alternate" type="text/html"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z13zvn5jzzq4y1kwz04cjldqhk2ffnwpzys0k?alt=atom" rel="self" type="application/atom+xml"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z13zvn5jzzq4y1kwz04cjldqhk2ffnwpzys0k/@comments?alt=atom" rel="replies" thr:count="2" thr:updated="2010-08-12T21:41:47.820Z" type="application/atom+xml"/>
+    <author>
+      <poco:id>105037104815911535953</poco:id>
+      <poco:photoUrl>http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8</poco:photoUrl>
+      <name>Adewale Oshineye</name>
+      <uri>http://www.google.com/profiles/adewale</uri>
+      <link href="http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8" rel="photo" type="image/jpeg"/>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <content type="text/html">Does anyone know who built this: &lt;a href="http://buzztotwitter.appspot.com/" &gt;http://buzztotwitter.appspot.com/&lt;/a&gt;
+&lt;br /&gt;
+&lt;br /&gt;It&amp;#39;s currently over quota but it&amp;#39;s using the old-style feeds rather than the new-style APIs.</content>
+    <activity:verb>http://activitystrea.ms/schema/1.0/post</activity:verb>
+    <activity:object>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/note</activity:object-type>
+      <content type="html">Does anyone know who built this: &lt;a href="http://buzztotwitter.appspot.com/" &gt;http://buzztotwitter.appspot.com/&lt;/a&gt;
+&lt;br /&gt;
+&lt;br /&gt;It&amp;#39;s currently over quota but it&amp;#39;s using the old-style feeds rather than the new-style APIs.</content>
+      <buzz:original-content type="text"/>
+      <link href="http://www.google.com/buzz/105037104815911535953/TgdmynsoDJ6" rel="alternate" type="text/html"/>
+    </activity:object>
+    <source>
+      <activity:service>
+        <title>Buzz</title>
+      </activity:service>
+    </source>
+    <buzz:visibility>
+      <buzz:aclentry type="group">
+        <poco:id>tag:google.com,2010:buzz-group:@me:@public</poco:id>
+        <uri>https://www.googleapis.com/buzz/v1/people/@me/@groups/G:@me:@public?alt=atom</uri>
+        <poco:name>Public</poco:name>
+      </buzz:aclentry>
+    </buzz:visibility>
+    <link buzz:count="0" href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z13zvn5jzzq4y1kwz04cjldqhk2ffnwpzys0k/@liked?alt=atom" rel="http://schemas.google.com/buzz/2010#liked" type="application/poco+xml"/>
+  </entry>
+  <entry gd:kind="buzz#activity">
+    <title>Eric Schmidt is all wrong. Buzz is not an extension of Gmail. Gmail is an extension of Buzz :-)</title>
+    <published>2010-08-12T07:45:53.000Z</published>
+    <updated>2010-08-12T21:32:36.165Z</updated>
+    <id>tag:google.com,2010:buzz:z12uyjrwmqqferb1d23wehng0muwz5jzq04</id>
+    <link href="http://www.google.com/buzz/105037104815911535953/7tu9Upk2xTW" rel="alternate" type="text/html"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z12uyjrwmqqferb1d23wehng0muwz5jzq04?alt=atom" rel="self" type="application/atom+xml"/>
+    <link href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z12uyjrwmqqferb1d23wehng0muwz5jzq04/@comments?alt=atom" rel="replies" thr:count="3" thr:updated="2010-08-12T21:36:41.799Z" type="application/atom+xml"/>
+    <author>
+      <poco:id>105037104815911535953</poco:id>
+      <poco:photoUrl>http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8</poco:photoUrl>
+      <name>Adewale Oshineye</name>
+      <uri>http://www.google.com/profiles/adewale</uri>
+      <link href="http://www.google.com/s2/photos/public/AIbEiAIAAABDCNGKxIbHhNnzRSILdmNhcmRfcGhvdG8qKDliZTM0NGEwMGEyYmFiM2Q1ZmQwZmU2MTU3ZGY2ZTM0N2E2N2I0MjgwAQsGzj5kfM45dscXkq00Lf1VQlR8" rel="photo" type="image/jpeg"/>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </author>
+    <content type="text/html">Eric Schmidt is all wrong. Buzz is not an extension of Gmail. Gmail is an extension of Buzz :-)</content>
+    <activity:verb>http://activitystrea.ms/schema/1.0/post</activity:verb>
+    <activity:object>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/note</activity:object-type>
+      <content type="html">Eric Schmidt is all wrong. Buzz is not an extension of Gmail. Gmail is an extension of Buzz :-)</content>
+      <buzz:original-content type="text"/>
+      <link href="http://www.google.com/buzz/105037104815911535953/7tu9Upk2xTW" rel="alternate" type="text/html"/>
+      <buzz:attachment>
+        <activity:object-type>http://activitystrea.ms/schema/1.0/photo</activity:object-type>
+        <content type="html">Busybuzzing.bmp</content>
+        <link href="https://lh4.googleusercontent.com/_noM0Gzo1vaM/TGOmkHfMx5I/AAAAAAAAOKw/In8TIPWMWWU/Busybuzzing.jpg" media:height="676" media:width="1096" rel="enclosure" type="image/jpeg"/>
+        <link href="http://picasaweb.google.com/janniklindquist/12Aug2010?authkey=Gv1sRgCOH5_bf7l8OvJA#5504426308992288658" rel="alternate" type="text/html"/>
+        <link href="http://images0-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&amp;gadget=a&amp;resize_h=100&amp;url=https%3A%2F%2Flh4.googleusercontent.com%2F_noM0Gzo1vaM%2FTGOmkHfMx5I%2FAAAAAAAAOKw%2FIn8TIPWMWWU%2Fs288%2FBusybuzzing.jpg" rel="preview" type="image/jpeg"/>
+        <link href="http://images0-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&amp;gadget=a&amp;resize_h=100&amp;url=https%3A%2F%2Flh4.googleusercontent.com%2F_noM0Gzo1vaM%2FTGOmkHfMx5I%2FAAAAAAAAOKw%2FIn8TIPWMWWU%2Fs288%2FBusybuzzing.jpg" rel="preview" type="image/jpeg"/>
+      </buzz:attachment>
+    </activity:object>
+    <source>
+      <activity:service>
+        <title>Buzz</title>
+      </activity:service>
+    </source>
+    <buzz:visibility>
+      <buzz:aclentry type="group">
+        <poco:id>tag:google.com,2010:buzz-group:@me:@public</poco:id>
+        <uri>https://www.googleapis.com/buzz/v1/people/@me/@groups/G:@me:@public?alt=atom</uri>
+        <poco:name>Public</poco:name>
+      </buzz:aclentry>
+    </buzz:visibility>
+    <link buzz:count="0" href="https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@self/B:z12uyjrwmqqferb1d23wehng0muwz5jzq04/@liked?alt=atom" rel="http://schemas.google.com/buzz/2010#liked" type="application/poco+xml"/>
+    <buzz:reshare>
+      <buzz:original>
+        <buzz:author>
+          <poco:id>106808688302434879780</poco:id>
+          <poco:photoUrl>http://www.google.com/s2/photos/public/AIbEiAIAAABDCKSS9Kf-vdS-XiILdmNhcmRfcGhvdG8qKDJjYjEzMTgxMzQ3MDFiOWQ1YzhjMWNiMThhZjcxNjM2MDg1MDJkZjcwAezwooCII_Lb9oyPHCoJlTkuZqpk</poco:photoUrl>
+          <name>Jannik Lindquist</name>
+          <uri>http://www.google.com/profiles/janniklindquist</uri>
+        </buzz:author>
+        <link href="https://www.googleapis.com/buzz/v1/activities/106808688302434879780/@self/B:z13gvzjaoor2gnamf23fe1wwdqr1jnwds?alt=atom" rel="via" type="application/atom+xml"/>
+      </buzz:original>
+      <buzz:sharedBy>
+        <buzz:author>
+          <poco:id>106808688302434879780</poco:id>
+          <poco:photoUrl>http://www.google.com/s2/photos/public/AIbEiAIAAABDCKSS9Kf-vdS-XiILdmNhcmRfcGhvdG8qKDJjYjEzMTgxMzQ3MDFiOWQ1YzhjMWNiMThhZjcxNjM2MDg1MDJkZjcwAezwooCII_Lb9oyPHCoJlTkuZqpk</poco:photoUrl>
+          <name>Jannik Lindquist</name>
+          <uri>http://www.google.com/profiles/janniklindquist</uri>
+        </buzz:author>
+        <link href="https://www.googleapis.com/buzz/v1/activities/106808688302434879780/@self/B:z13gvzjaoor2gnamf23fe1wwdqr1jnwds?alt=atom" rel="via" type="application/atom+xml"/>
+      </buzz:sharedBy>
+    </buzz:reshare>
+  </entry>
+</feed>
