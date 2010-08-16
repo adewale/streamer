@@ -32,10 +32,14 @@ OPEN_ACCESS = False
 
 # How often should a task, such as registering a subscription, be retried before we give up
 MAX_TASK_RETRIES = 10
-# Installation specific config ends.
 
 # Maximum number of items to be fetched for any part of the system that wants everything of a given data model type
 MAX_FETCH = 500
+
+# Should Streamer check that posts it receives from a putative hub are for feeds it's actually subscribed to
+SHOULD_VERIFY_INCOMING_POSTS = False
+# Installation specific config ends.
+
 
 from google.appengine.api.labs import taskqueue
 class BackGroundTaskHandler(webapp.RequestHandler):
@@ -59,10 +63,10 @@ class PostFactory(object):
 	@staticmethod
 	def __extractUniqueId(entry):
 		# TODO(ade) Change this to a normal class rather than use staticmethod everywhere
-		if hasattr(entry, 'source'):
-			return entry.source.id
 
-		if hasattr(entry, 'id'):
+		if hasattr(entry, 'id') and not isinstance(entry.id, dict):
+			# We have to check that the id isn't a dictionary because GReader feeds
+			# have multiple ids which FeedParser turns into a dictionary
 			return entry.id
 		elif hasattr(entry, 'link'):
 			return entry.link
@@ -73,8 +77,8 @@ class PostFactory(object):
 	def createPost(url, feedUrl, title, content, datePublished, author, entry):
 	       	uniqueId = PostFactory.__extractUniqueId(entry)
 
-		entryString = repr(entry)
 		logging.debug("Unique id is: %s for entry: %s" % (uniqueId, pprint.pformat(entry)))
+		entryString = repr(entry)
 
 		return Post(key_name=uniqueId, url=url, feedUrl=feedUrl, title=title, content=content, datePublished=datePublished, author=author, entryString=entryString)
 
@@ -91,6 +95,10 @@ class Post(db.Model):
 	def getFeedParserEntry(self):
 		entry = eval(self.entryString)
 		return entry
+
+	@property
+	def day(self):
+		return self.datePublished.strftime('%A %B %d, %Y')
 
 	@staticmethod
 	def deleteAllPostsWithMatchingFeedUrl(url):
@@ -310,11 +318,16 @@ class PostsHandler(webapp.RequestHandler):
 		#TODO Extract out as much of this and move it into a deferred function
 		parser = ContentParser(self.request.body, DEFAULT_HUB, ALWAYS_USE_DEFAULT_HUB)
 		url = parser.extractFeedUrl()
-		if not Subscription.exists(url):
-			#404 chosen because the subscription doesn't exist
-			self.response.set_status(404)
-			self.response.out.write("We don't have a subscription for that feed: %s" % url)
-			return
+
+		# This is a hack since the correct thing to do is to fetch the feed at subscription
+		# time and store the self element inside the feed then use that for comparisons.
+		if SHOULD_VERIFY_INCOMING_POSTS:
+			if not Subscription.exists(url):
+                            #404 chosen because the subscription doesn't exist
+			    self.response.set_status(404)
+			    self.response.out.write("We don't have a subscription for that feed: %s" % url)
+			    logging.warn("We don't have a subscription for that feed: %s" % url)
+			    return
 
 		if not parser.dataValid():
 			parser.logErrors()

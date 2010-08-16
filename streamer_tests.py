@@ -76,6 +76,14 @@ class PostTest(unittest.TestCase):
 		p2.put()
 		self.assertEquals(1, Post.all().count())
 
+	def testCanGenerateHumanReadableDatesFromDateObjects(self):
+		feedUrl = "some feed url"
+		entry1 = feedparser.FeedParserDict({'id':feedUrl})
+		publishedDate = datetime.datetime(2010, 7,4)
+		p1 = PostFactory.createPost(url='someurl', feedUrl=feedUrl, title='title', content=None, datePublished=publishedDate, author=None, entry=entry1)
+		expectedDay = 'Sunday July 04, 2010'
+		self.assertEquals(expectedDay, p1.day)
+
 class ContentParserTest(unittest.TestCase):
 	SAMPLE_FEED = open("test_data/sample_entries").read()
 	BLOGGER_FEED = open("test_data/blogger_feed").read()
@@ -90,6 +98,7 @@ class ContentParserTest(unittest.TestCase):
 	NO_UPDATED_ELEMENT_FEED = open("test_data/no_updated_element_feed").read()
 	FLICKR_RSS_FEED = open("test_data/flickr_rss_feed").read()
 	GREADER_FEED = open("test_data/greader_feed").read()
+	BUZZ_FEED = open("test_data/buzz_feed").read()
 
 	def testCanExtractCorrectNumberOfPostsFromFeedWithMissingUpdatedElement(self):
 		parser = ContentParser(self.NO_UPDATED_ELEMENT_FEED)
@@ -133,11 +142,11 @@ class ContentParserTest(unittest.TestCase):
 		posts = parser.extractPosts()
 		self.assertEquals("""<p><a href="http://www.flickr.com/people/adewale_oshineye/">adewale_oshineye</a> posted a photo:</p>\n\t\n<p><a href="http://www.flickr.com/photos/adewale_oshineye/4589378281/" title="47: First past the post"><img alt="47: First past the post" height="160" src="http://farm5.static.flickr.com/4048/4589378281_265c641ebb_m.jpg" width="240" /></a></p>""", posts[0].content)
 
-	def testExtractsAtomIdFromSourceElementIfPresent(self):
+	def testExtractsAtomIdFromGReaderFeeds(self):
 		parser = ContentParser(self.GREADER_FEED)
 		posts = parser.extractPosts()
-		self.assertEquals("tag:google.com,2005:reader/user/12054031251002776633/source/com.google/link", posts[0].key().name())
-		self.assertEquals("tag:google.com,2005:reader/user/12054031251002776633/syndication/source/s:youtube", posts[1].key().name())
+		self.assertEquals("http://www.flickr.com/photos/chewie007/4519889183/", posts[0].key().name())
+		self.assertEquals("http://www.youtube.com/watch?v=Ma9lzcUe2Zg&feature=autoshare", posts[1].key().name())
 
 	def testCanExtractPostFromRssFeed(self):
 		parser = ContentParser(self.RSS_FEED)
@@ -212,6 +221,7 @@ class ContentParserTest(unittest.TestCase):
 		self.assertEquals("http://news.ycombinator.com/rss", ContentParser(self.RSS_FEED).extractFeedUrl())
 		self.assertEquals("http://www.scripting.com/rss", ContentParser(self.CANONICAL_RSS_FEED).extractFeedUrl())
 		self.assertEquals("http://feeds.feedburner.com/ChrisParsons", ContentParser(self.NO_UPDATED_ELEMENT_FEED).extractFeedUrl())
+		self.assertEquals("https://www.googleapis.com/buzz/v1/activities/105037104815911535953/@public?alt=atom", ContentParser(self.BUZZ_FEED).extractFeedUrl())
 
 	def testCanExtractSourceUrls(self):
 		self.assertEquals("http://pubsubhubbub-loadtest.appspot.com/foo", ContentParser(self.SAMPLE_FEED).extractSourceUrl())

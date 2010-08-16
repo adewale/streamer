@@ -11,7 +11,7 @@ Recommended: Python 2.3 or later
 Recommended: CJKCodecs and iconv_codec <http://cjkpython.i18n.org/>
 """
 
-__version__ = "4.2-pre-" + "$Revision: 311 $"[11:14] + "-svn"
+__version__ = "4.2-pre-" + "$Revision: 315 $"[11:14] + "-svn"
 __license__ = """Copyright (c) 2002-2008, Mark Pilgrim, All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -1011,6 +1011,9 @@ class _FeedParserMixin:
 
     def _start_author(self, attrsD):
         self.inauthor = 1
+        context = self._getContext()
+        context.setdefault('authors', [])
+        context['authors'].append(FeedParserDict())
         self.push('author', 1)
     _start_managingeditor = _start_author
     _start_dc_author = _start_author
@@ -1131,7 +1134,7 @@ class _FeedParserMixin:
     def _getContext(self):
         if self.insource:
             context = self.sourcedata
-        elif self.inimage:
+        elif self.inimage and self.feeddata.has_key('image'):
             context = self.feeddata['image']
         elif self.intextinput:
             context = self.feeddata['textinput']
@@ -1145,6 +1148,8 @@ class _FeedParserMixin:
         context = self._getContext()
         context.setdefault(prefix + '_detail', FeedParserDict())
         context[prefix + '_detail'][key] = value
+        context.setdefault('authors', [FeedParserDict()])
+        context['authors'][-1][key] = value
         self._sync_author_detail()
 
     def _save_contributor(self, key, value):
@@ -2466,6 +2471,14 @@ class _HTMLSanitizer(_BaseHTMLProcessor):
         if not tag in self.acceptable_elements or self.svgOK:
             if tag in self.unacceptable_elements_with_end_tag:
                 self.unacceptablestack += 1
+
+            # add implicit namespaces to html5 inline svg/mathml
+            if self.type.endswith('html'):
+                if not dict(attrs).get('xmlns'):
+                    if tag=='svg':
+                        attrs.append( ('xmlns','http://www.w3.org/2000/svg') )
+                    if tag=='math':
+                        attrs.append( ('xmlns','http://www.w3.org/1998/Math/MathML') )
 
             # not otherwise acceptable, perhaps it is MathML or SVG?
             if tag=='math' and ('xmlns','http://www.w3.org/1998/Math/MathML') in attrs:
