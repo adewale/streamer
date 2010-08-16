@@ -9,12 +9,23 @@
 	{% for post in posts %}
 		<div class="featured-post" align="left">		
 			<div>
+			  {% ifchanged post.day %}
+			  <hr></hr>
+			  <h2>{{post.day}}
+			  <hr></hr>
+			  </h2>
+			  {% endifchanged %}
+
 			  <h3>{{post.title}}</h3>
+			  {% ifnotequal post.title post.content %}
 			  <h4>{{post.content}}</h4>
+			  {% endifnotequal %}
+
+			  <h5>&nbsp;By: {{post.author}} on: {{post.datePublished}} at: <a href="{{post.url}}">{{post.url}}</a></h5>
 			</div>
-			<h5>&nbsp;By: {{post.author}} on: {{post.datePublished}} at: <a href="{{post.url}}">{{post.url}}</a></h5>
+			
 		</div>
-		<hr>
+		<hr></hr>
 	{% endfor %}
 	</div>
 	
