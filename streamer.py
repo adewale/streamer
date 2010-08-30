@@ -16,7 +16,7 @@ import pprint
 import time
 
 # Change these for your installation
-APP_NAME = "streamer-ade"
+APP_NAME = "twtweets"
 
 # This is the token that will act as a shared secret to verify that this application is the one that registered the given subscription. The hub will send us a challenge containing this token.
 SECRET_TOKEN = "SOME_SECRET_TOKEN"
