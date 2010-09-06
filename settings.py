@@ -1,7 +1,7 @@
 
 # These are the settings that tend to differ between installations of Streamer. Tweak these for your installation.
 
-APP_NAME = "twtweets"
+APP_NAME = "streamer-ade"
 
 # This is the token that will act as a shared secret to verify that this application is the one that registered the given subscription. The hub will send us a challenge containing this token.
 SECRET_TOKEN = "SOME_SECRET_TOKEN"
