@@ -231,7 +231,7 @@ class PostsHandler(webapp.RequestHandler):
       return
 
     # Get the last N posts ordered by date
-    limit = 30
+    limit = 60
     posts = db.GqlQuery('SELECT * from Post ORDER by datePublished desc LIMIT %d' % limit)
 
     # Render them in the template
