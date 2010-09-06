@@ -8,3 +8,4 @@
 - Expose an atom feed with support for PSHB and atom:source
 
 - Store the entirety of the feedarser entry and expose all of it in the Atom feed that's generated. We should support MustIgnore by making sure that anything that comes in to Streamer goes out.
+- Change all the class, variable and method names to be PEP 8 compatible
