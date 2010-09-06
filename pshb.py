@@ -1,3 +1,10 @@
+"""Everything you need to subscribe to PSHB feeds on AppEngine
+
+This module depends on the existence of:
+settings.py containing various config parameters as constants
+feedparser.py to parse feeds
+"""
+
 from google.appengine.ext import db
 from google.appengine.api import urlfetch
 
@@ -6,6 +13,7 @@ import feedparser
 import logging
 import pprint
 import settings
+import urllib
 
 class PostFactory(object):
   """A factory for Posts.
@@ -185,3 +193,25 @@ class ContentParser(object):
   def extractSourceUrl(self):
     sourceUrl = self.__extractAtomPermaLink(self.data.feed)
     return sourceUrl
+
+
+class HubSubscriber(object):
+  def __init__(self, url, hub):
+    self.url = url
+    self.hub = hub
+
+  def subscribe(self):
+    parameters = {"hub.callback": "http://%s.appspot.com/posts" % settings.APP_NAME,
+                  "hub.mode": "subscribe",
+                  "hub.topic": self.url,
+                  "hub.verify": "async", # We don't want subscriptions to block until verification happens
+                  "hub.verify_token": settings.SECRET_TOKEN, #TODO Must generate a token based on some secret value
+    }
+    payload = urllib.urlencode(parameters)
+    response = urlfetch.fetch(self.hub,
+                              payload=payload,
+                              method=urlfetch.POST,
+                              headers={'Content-Type': 'application/x-www-form-urlencoded'})
+    logging.info("Status of subscription for feed: %s at hub: %s is: %d" % (self.url, self.hub, response.status_code))
+    if response.status_code != 202:
+      logging.info(response.content)

@@ -5,9 +5,7 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 from google.appengine.ext.webapp.util import login_required
 from google.appengine.ext.webapp.util import run_wsgi_app
-from google.appengine.api import urlfetch
 
-import urllib
 import logging
 import os
 import pshb
@@ -62,26 +60,6 @@ class Subscription(db.Model):
     for key in query.fetch(settings.MAX_FETCH):
       db.delete(key)
 
-class HubSubscriber(object):
-  def __init__(self, url, hub):
-    self.url = url
-    self.hub = hub
-
-  def subscribe(self):
-    parameters = {"hub.callback": "http://%s.appspot.com/posts" % settings.APP_NAME,
-                  "hub.mode": "subscribe",
-                  "hub.topic": self.url,
-                  "hub.verify": "async", # We don't want subscriptions to block until verification happens
-                  "hub.verify_token": settings.SECRET_TOKEN, #TODO Must generate a token based on some secret value
-    }
-    payload = urllib.urlencode(parameters)
-    response = urlfetch.fetch(self.hub,
-                              payload=payload,
-                              method=urlfetch.POST,
-                              headers={'Content-Type': 'application/x-www-form-urlencoded'})
-    logging.info("Status of subscription for feed: %s at hub: %s is: %d" % (self.url, self.hub, response.status_code))
-    if response.status_code != 202:
-      logging.info(response.content)
 
 def render(out, htmlPage, templateValues={}):
   templateValues['admin'] = userIsAdmin()
@@ -182,7 +160,7 @@ def handleNewSubscription(url, nickname):
   subscription.put()
 
   # Tell the hub about the url
-  hubSubscriber = HubSubscriber(url, hub)
+  hubSubscriber = pshb.HubSubscriber(url, hub)
   hubSubscriber.subscribe()
 
   # Store the current content of the feed
