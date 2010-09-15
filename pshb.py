@@ -196,22 +196,24 @@ class ContentParser(object):
 
 
 class HubSubscriber(object):
-  def __init__(self, url, hub):
-    self.url = url
-    self.hub = hub
+  def subscribe(self, url, hub, callback_url):
+    self._talk_to_hub('subscribe', url, hub, callback_url)
 
-  def subscribe(self):
-    parameters = {"hub.callback": "http://%s.appspot.com/posts" % settings.APP_NAME,
-                  "hub.mode": "subscribe",
-                  "hub.topic": self.url,
-                  "hub.verify": "async", # We don't want subscriptions to block until verification happens
+  def unsubscribe(self, url, hub, callback_url):
+    self._talk_to_hub('unsubscribe', url, hub, callback_url)
+
+  def _talk_to_hub(self, mode, url, hub, callback_url):
+    parameters = {"hub.callback": callback_url,
+                  "hub.mode": mode,
+                  "hub.topic": url,
+                  "hub.verify": "async", # We don't want un/subscriptions to block until verification happens
                   "hub.verify_token": settings.SECRET_TOKEN, #TODO Must generate a token based on some secret value
     }
     payload = urllib.urlencode(parameters)
-    response = urlfetch.fetch(self.hub,
+    response = urlfetch.fetch(hub,
                               payload=payload,
                               method=urlfetch.POST,
                               headers={'Content-Type': 'application/x-www-form-urlencoded'})
-    logging.info("Status of subscription for feed: %s at hub: %s is: %d" % (self.url, self.hub, response.status_code))
+    logging.info("Status of %s for feed: %s at hub: %s is: %d" % (mode, url, hub, response.status_code))
     if response.status_code != 202:
       logging.info(response.content)

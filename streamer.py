@@ -100,6 +100,7 @@ class AdminRefreshSubscriptionsHandler(BaseAdminHandler):
       self.redirect('/subscriptions')
     else:
       self.error(403)
+      self.response.out.write("You are not the Admin")
 
 class AdminAddSubscriptionHandler(webapp.RequestHandler):
   @login_required
@@ -110,6 +111,7 @@ class AdminAddSubscriptionHandler(webapp.RequestHandler):
       render(self.response.out, 'add_subscriptions.html', templateValues)
     else:
       self.error(403)
+      self.response.out.write("You are not the Admin")
 
 class AdminDeleteSubscriptionHandler(webapp.RequestHandler):
   @login_required
@@ -120,6 +122,7 @@ class AdminDeleteSubscriptionHandler(webapp.RequestHandler):
       render(self.response.out, 'delete_subscriptions.html', templateValues)
     else:
       self.error(403)
+      self.response.out.write("You are not the Admin")
 
   def post(self):
   # Only admin users can see this page
@@ -131,6 +134,7 @@ class AdminDeleteSubscriptionHandler(webapp.RequestHandler):
       self.redirect('/admin/deleteSubscription')
     else:
       self.error(403)
+      self.response.out.write("You are not the Admin")
 
 class AboutHandler(webapp.RequestHandler):
   def get(self):
@@ -138,13 +142,19 @@ class AboutHandler(webapp.RequestHandler):
 
   # TODO work out to make the handle* functions deferred
 
-def handleDeleteSubscription(url):
+def handleDeleteSubscription(url, hubSubscriber=pshb.HubSubscriber()):
   logging.info("Deleting subscription: %s" % url)
+
   pshb.Post.deleteAllPostsWithMatchingFeedUrl(url)
+  subscription = Subscription.get_by_key_name(url)
+  logging.info('Found: %s' % str(subscription))
+
   Subscription.deleteSubscriptionWithMatchingUrl(url)
+  hubSubscriber.unsubscribe(url, subscription.hub, "http://%s.appspot.com/posts" % settings.APP_NAME)
 
 def handleNewSubscription(url, nickname):
   logging.info("Subscription added: <%s> by <%s>" % (url, nickname))
+  # TODO test this function directly just like we do for handleDeleteSubscription
 
   try:
     parser = pshb.ContentParser(None, settings.DEFAULT_HUB, settings.ALWAYS_USE_DEFAULT_HUB, urlToFetch=url)
@@ -160,8 +170,8 @@ def handleNewSubscription(url, nickname):
   subscription.put()
 
   # Tell the hub about the url
-  hubSubscriber = pshb.HubSubscriber(url, hub)
-  hubSubscriber.subscribe()
+  hubSubscriber = pshb.HubSubscriber()
+  hubSubscriber.subscribe(url, hub, "http://%s.appspot.com/posts" % settings.APP_NAME)
 
   # Store the current content of the feed
   posts = parser.extractPosts()
@@ -180,6 +190,8 @@ class SubscriptionsHandler(BaseAdminHandler):
     # Only admins can add new subscriptions
     if not userIsAdmin():
       self.error(403)
+      self.response.out.write("You are not the Admin")
+      return
 
     # Extract the url from the request
     url = self.request.get('url')
@@ -197,14 +209,21 @@ class PostsHandler(webapp.RequestHandler):
     """Show all the resources in this collection"""
     # If this is a hub challenge
     if self.request.get('hub.challenge'):
-    # If this is a subscription and the url is one we have in our database
-      if self.request.get('hub.mode') == "subscribe" and Subscription.exists(self.request.get('hub.topic')):
+      mode = self.request.get('hub.mode')
+      topic = self.request.get('hub.topic')
+      if mode == "subscribe" and Subscription.exists(topic):
+        # If this is a subscription and the URL is one we have in our database
         self.response.out.write(self.request.get('hub.challenge'))
-        logging.info("Successfully accepted challenge for feed: %s" % self.request.get('hub.topic'))
+        logging.info("Successfully accepted challenge for subscription to feed: %s" % topic)
+      elif mode == "unsubscribe" and not Subscription.exists(topic):
+        # If this is an unsubscription then we shouldn't have the URL in our database since it should already have been
+        # deleted.
+        self.response.out.write(self.request.get('hub.challenge'))
+        logging.info("Successfully accepted challenge for unsubscription to feed: %s" % topic)
       else:
         self.response.set_status(404)
-        self.response.out.write("Challenge failed")
-        logging.info("Challenge failed for feed: %s" % self.request.get('hub.topic'))
+        self.response.out.write("Challenge failed for feed: %s with mode: %s" % (topic, mode))
+        logging.info("Challenge failed for feed: %s with mode: %s" % (topic, mode))
       # Once a challenge has been issued there's no point in returning anything other than challenge passed or failed
       return
 

@@ -1,11 +1,8 @@
 - Adding a feed should send you back to the addSubscription page
 - Add a handler for exporting a textual list of the feeds of the blogs that are being consumed.
 - The handle* function calls should all be made into background tasks by putting them into task queues.
-
-- List all the things needed to be a valid PSHB subscriber. Consider extracting that out as a reusable interface based on callbacks. Make that into its own configurable library.
 - OPML import/export
-
 - Expose an atom feed with support for PSHB and atom:source
-
 - Store the entirety of the feedarser entry and expose all of it in the Atom feed that's generated. We should support MustIgnore by making sure that anything that comes in to Streamer goes out.
 - Change all the class, variable and method names to be PEP 8 compatible
+- Correctly implement support for verification tokens and authenticated content distribution. This will remove the need to deal with feeds, like Google Buzz, that use a slightly different URL in their rel='self' element.

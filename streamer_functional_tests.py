@@ -53,6 +53,15 @@ class SubscriptionsHandlerTest(BaseSubscriptionHandlerTest):
     response = self.post('/bgtasks', data=data, expect_errors=True)
     self.assertEquals('200 OK', response.status)
 
+  def testDeletingFeedDoesNotRaiseAnException(self):
+    url = "http://example.org/atom"
+    f = streamer.Subscription(url=url, hub="http://hub.example.org/", sourceUrl="http://example.org/", key_name=url)
+    f.put()
+
+    data = {'function':'handleDeleteSubscription', 'url': url, 'nickname':'ade'}
+    response = self.post('/bgtasks', data=data, expect_errors=True)
+    self.assertEquals('200 OK', response.status)
+
   def testEnqueuesTaskForNewSubscription(self):
     data = {'url':'http://blog.oshineye.com/feeds/posts/default'}
     self.assertTasksInQueue(0)
@@ -73,6 +82,39 @@ class PostsHandlerTest(FunctionalTestCase, unittest.TestCase):
     responseFromSlash = self.get('/')
     self.assertEquals(responseFromPostsPage.body, responseFromSlash.body)
     self.assertEquals(responseFromPostsPage.status, responseFromSlash.status)
+
+  def testCanAcceptHubChallengeForSubscriptionToExistingFeed(self):
+    url = "http://example.org/atom"
+    hub="http://hub.example.org/"
+    s = streamer.Subscription(url=url, hub=hub, sourceUrl="http://example.org/", key_name=url)
+    s.put()
+
+    challenge = 'some hub challenge message'
+    response = self.get('/posts?hub.mode=subscribe&hub.topic=%s&hub.challenge=%s' % (url, challenge))
+    self.assertOK(response)
+    response.mustcontain(challenge)
+
+  def testAcceptsHubChallengeForUnsubscriptionToDeletedFeed(self):
+    # If the hub wants us to unsubscribe and we don't have the subscription then we should accept it
+    url = "http://example.org/atom"
+
+    challenge = 'some hub challenge message'
+    response = self.get('/posts?hub.mode=unsubscribe&hub.topic=%s&hub.challenge=%s' % (url, challenge))
+    self.assertOK(response)
+    response.mustcontain(challenge)
+
+  def testRejectsHubChallengeForUnsubscriptionToExistingFeed(self):
+    # If the hub wants us to unsubscribe and we have the subscription then the hub is probably confused
+    # so we honour the intentions of our users since they'll think we're still subscribed
+    url = "http://example.org/atom"
+    hub="http://hub.example.org/"
+    s = streamer.Subscription(url=url, hub=hub, sourceUrl="http://example.org/", key_name=url)
+    s.put()
+
+    challenge = 'some hub challenge message'
+    response = self.get('/posts?hub.mode=unsubscribe&hub.topic=%s&hub.challenge=%s' % (url, challenge), expect_errors=True)
+    self.assertEquals('404 Not Found', response.status)
+    response.mustcontain("Challenge failed for feed: %s with mode: %s" % (url, 'unsubscribe'))
 
 class AboutHandlerTest(FunctionalTestCase, unittest.TestCase):
   APPLICATION = streamer.application
