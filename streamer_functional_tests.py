@@ -155,11 +155,3 @@ class AdminDeleteSubscriptionHandlerTest(FunctionalTestCase, unittest.TestCase):
     response = self.get('/admin/deleteSubscription')
     self.assertOK(response)
     response.mustcontain("<title>Delete Subscription</title>")
-
-  # TODO(ade) Write a runtests.py and move this test into it's own module
-
-class ContentParserFunctionalTest(unittest.TestCase):
-  def testCanExtractPostsFromRemoteSite(self):
-    parser = pshb.ContentParser(None, urlToFetch="http://blog.oshineye.com/feeds/posts/default")
-    posts = parser.extractPosts()
-    self.assertTrue(len(posts) > 2)

@@ -21,6 +21,7 @@ You need gae-testbed, nose and nose-gae. So...
 sudo easy_install gaetestbed
 sudo easy_install nose
 sudo easy_install nosegae
+sudo easy_install webtest
 
 Now that you've got the testrunners installed you can run the functional tests:
 	nosetests --with-gae streamer_functional_tests.py 
